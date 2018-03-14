@@ -1,0 +1,6 @@
+name          : ILC
+energy        : 250
+luminosity    : 250 
+elec_pol      : -0.8
+posi_pol      : 0.3
+collider_angle: 0.000

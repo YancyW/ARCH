@@ -1,0 +1,18 @@
+PROCESS          : zh
+RECORD_FILE      : '../../Event_Draw_2hdm/tmp/tmp.dat'
+
+OUTPUT_FILE      : '../../Event_Draw_2hdm/data_a/'
+EVENT_FILE       : '../../Event_Draw_2hdm/events/higgs_a.root'
+SINGLE_PLOT      : '../../Event_Draw_2hdm/plot_a/'
+COMBINE_PLOT     : '../../Event_Draw_2hdm/plot_compare_a/'
+
+DEBUG_FILE       : './control/debug.dat'
+ANALYSIS_FILE    : './control/Event.dat'
+DETECTOR_FILE    : './control/Detector_CEPC.dat'
+FLOW_FILE        : './control/flow.dat'
+SIGNAL_FILE      : './control/signal.dat'
+PLOT_FILE        : './control/plot.dat'
+
+INPUT_FILE       : './control/file_2hdm.dat'
+CUT_FILE         : './control/cut_2hdm_a/'
+VAR_FILE         : './control/Var/Var_elec.dat'

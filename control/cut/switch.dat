@@ -1,0 +1,37 @@
+SWITCH_jet                 :   true 
+SWITCH_jets                :   true
+SWITCH_tjet                :   false
+SWITCH_bjet                :   false
+SWITCH_cjet                :   false
+SWITCH_qjet                :   false
+SWITCH_taujet              :   true 
+SWITCH_gluonjet            :   false
+SWITCH_tagjet              :   false
+SWITCH_untagjet            :   false
+
+SWITCH_lep                 :   true
+SWITCH_elec                :   true
+SWITCH_muon                :   false
+SWITCH_tau                 :   false
+
+SWITCH_photon              :  false
+SWITCH_met                 :  true 
+
+SWITCH_comb                :  true 
+SWITCH_recoil              :  false 
+
+SWITCH_recoil_comb         :  false 
+
+
+SWITCH_global              :  false
+
+
+SWITCH_JetSubStructure     :  false 
+SWITCH_BoostTag            :  false 
+SWITCH_MassDrop            :  false 
+SWITCH_NSubjettiness       :  false 
+SWITCH_JEP                 :  false 
+
+SWITCH_btag                :  false 
+SWITCH_ctag                :  false 
+SWITCH_tautag              :  false 

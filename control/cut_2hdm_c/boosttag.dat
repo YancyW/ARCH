@@ -1,0 +1,9 @@
+CUT_bw           :        15.0
+
+CUT_ht_d         :         0.0
+CUT_ht_u         :     10000.0
+            
+CUT_num          :         1
+CUT_global_d_0   :         1.2
+CUT_global_u_0   :        -0.8
+CUT_global_bin_0 :         0

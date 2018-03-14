@@ -1,0 +1,58 @@
+
+CUT_num_elec                     :          1
+
+ISOLATE_cone_lep_elec            :          0.3
+ISOLATE_cone_had_elec            :          0.3
+ISOLATE_cone_photon_elec         :          0.3
+ISOLATE_coef_lep_elec            :          0.1
+ISOLATE_coef_had_elec            :          0.1
+ISOLATE_coef_photon_elec         :          0.1
+ISOLATE_remainder_photon_elec    :          0.0
+ISOLATE_min_pt_elec              :          1.0
+
+JCUT_e_elec_0                    :       false 
+CUT_ed_elec_0                    :          0.0
+CUT_eu_elec_0                    :      10000.0
+
+JCUT_pt_elec_0                   :        true 
+CUT_ptd_elec_0                   :          0.0
+CUT_ptu_elec_0                   :      10000.0
+
+JCUT_theta_elec_0                :        false 
+CUT_thetad_elec_0                :          0.0
+CUT_thetau_elec_0                :          0.97
+
+JCUT_eta_elec_0                  :        true 
+CUT_etad_elec_0                  :          0.0
+CUT_etau_elec_0                  :          2.5
+
+JCUT_r_lep_elec_0                :        false   
+CUT_cone_lep_elec_0              :          0.0
+CUT_cone_elec_elec_0             :          0.0
+CUT_cone_muon_elec_0             :          0.0
+CUT_cone_tau_elec_0              :          0.0
+
+
+
+JCUT_e_elec_1                    :       false 
+CUT_ed_elec_1                    :          0.0
+CUT_eu_elec_1                    :      10000.0
+
+JCUT_pt_elec_1                   :        true 
+CUT_ptd_elec_1                   :          20.0
+CUT_ptu_elec_1                   :        10000.0
+
+JCUT_eta_elec_1                  :        false 
+CUT_etad_elec_1                  :          0.0
+CUT_etau_elec_1                  :          10.0
+
+JCUT_theta_elec_1                :         true 
+CUT_thetad_elec_1                :          0.0
+CUT_thetau_elec_1                :          2.5
+
+JCUT_r_lep_elec_1                :        false   
+CUT_cone_lep_elec_1              :          0.0
+CUT_cone_elec_elec_1             :          0.0
+CUT_cone_muon_elec_1             :          0.0
+CUT_cone_tau_elec_1              :          0.0
+

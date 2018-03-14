@@ -1,0 +1,62 @@
+FILE_NUM          : 5
+#FILE_0            : '/media/yancy/新加卷/data/bg_wtatajj/Events/run_01/tag_1_delphes_events.root'
+#FILE_1            : '/media/yancy/新加卷/data/bg_wtatajj/Events/run_02/tag_1_delphes_events.root'
+#FILE_2            : '/media/yancy/新加卷/data/bg_wtatajj/Events/run_03/tag_1_delphes_events.root'
+#FILE_3            : '/media/yancy/新加卷/data/bg_wtatajj/Events/run_04/tag_1_delphes_events.root'
+
+
+#FILE_0            : '/media/yancy/新加卷/data/bg_ttll/Events/run_01/tag_1_delphes_events.root'
+#FILE_1            : '/media/yancy/新加卷/data/bg_ttll/Events/run_02/tag_1_delphes_events.root'
+
+
+#FILE_0            : '/media/yancy/新加卷/data/bg_tjtata/Events/run_01/tag_1_delphes_events.root'
+#FILE_1            : '/media/yancy/新加卷/data/bg_tjtata/Events/run_02/tag_1_delphes_events.root'
+#FILE_2            : '/media/yancy/新加卷/data/bg_tjtata/Events/run_03/tag_1_delphes_events.root'
+#FILE_3            : '/media/yancy/新加卷/data/bg_tjtata/Events/run_04/tag_1_delphes_events.root'
+
+
+#FILE_0            : '/media/yancy/新加卷/data/bg_tt/Events/run_01/tag_1_delphes_events.root'
+#FILE_1            : '/media/yancy/新加卷/data/bg_tt/Events/run_02/tag_1_delphes_events.root'
+#FILE_2            : '/media/yancy/新加卷/data/bg_tt/Events/run_03/tag_1_delphes_events.root'
+#FILE_3            : '/media/yancy/新加卷/data/bg_tt/Events/run_04/tag_1_delphes_events.root'
+#FILE_4            : '/media/yancy/新加卷/data/bg_tt/Events/run_05/tag_1_delphes_events.root'
+
+
+FILE_0            : '/media/yancy/新加卷/data/sig_ttlbj/Events/run_03/tag_1_delphes_events.root'
+FILE_1            : '/media/yancy/新加卷/data/sig_ttlbj/Events/run_10/tag_1_delphes_events.root'
+FILE_2            : '/media/yancy/新加卷/data/sig_ttlbj/Events/run_11/tag_1_delphes_events.root'
+FILE_3            : '/media/yancy/新加卷/data/sig_ttlbj/Events/run_07/tag_1_delphes_events.root'
+FILE_4            : '/media/yancy/新加卷/data/sig_ttlbj/Events/run_06/tag_1_delphes_events.root'
+
+CHANNEL_NUM       : 5
+
+#FILE_DESCRIP_0    : wtatajj 
+#FILE_DESCRIP_1    : wtatajj 
+#FILE_DESCRIP_2    : wtatajj 
+#FILE_DESCRIP_3    : wtatajj 
+
+#FILE_DESCRIP_0    : ttll
+#FILE_DESCRIP_1    : ttll
+
+
+#FILE_DESCRIP_0    : tjtata
+#FILE_DESCRIP_1    : tjtata
+#FILE_DESCRIP_2    : tjtata
+#FILE_DESCRIP_3    : tjtata
+
+
+#FILE_DESCRIP_0    : tt
+#FILE_DESCRIP_1    : tt
+#FILE_DESCRIP_2    : tt
+#FILE_DESCRIP_3    : tt
+#FILE_DESCRIP_4    : tt
+
+FILE_DESCRIP_0    : sig
+FILE_DESCRIP_1    : sig
+FILE_DESCRIP_2    : sig
+FILE_DESCRIP_3    : sig
+FILE_DESCRIP_4    : sig
+
+
+Root_Head_Name     : datatrain
+Root_Head_BDT_Name : datatest

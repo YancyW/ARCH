@@ -1,0 +1,31 @@
+NUM_jets      : 4
+NUM_bjet      : 0
+NUM_cjet      : 0
+NUM_qjet      : 0
+NUM_taujet    : 2
+NUM_tagjet    : 0
+NUM_untagjet  : 0
+
+NUM_lep       : 1
+NUM_elec      : 0
+NUM_muon      : 0
+NUM_tau       : 0
+
+NUM_photon    : 0
+NUM_met       : 1
+
+VETO_jets     : false
+VETO_bjet     : false
+VETO_cjet     : false
+VETO_qjet     : false
+VETO_taujet   : false
+VETO_tagjet   : false
+VETO_untagjet : false
+
+VETO_lep      : false
+VETO_elec     : false
+VETO_muon     : false
+VETO_tau      : false
+
+VETO_photon   : false
+VETO_met      : false

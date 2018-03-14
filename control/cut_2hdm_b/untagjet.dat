@@ -1,0 +1,74 @@
+CUT_num_untagjet            :        1
+
+JCUT_e_untagjet_0           :      false 
+CUT_ed_untagjet_0           :        0.0
+CUT_eu_untagjet_0           :     1000.0
+
+JCUT_eta_untagjet_0         :      false         
+CUT_etad_untagjet_0         :        0.0
+CUT_etau_untagjet_0         :    10000.0
+
+JCUT_theta_untagjet_0       :      false         
+CUT_thetad_untagjet_0       :        0.0
+CUT_thetau_untagjet_0       :    10000.0
+
+JCUT_pt_untagjet_0          :      false
+CUT_ptd_untagjet_0          :        0.0
+CUT_ptu_untagjet_0          :    10000.0
+
+JCUT_mass_untagjet_0        :      false
+CUT_massd_untagjet_0        :        0.0
+CUT_massu_untagjet_0        :    10000.0
+
+JCUT_r_lep_untagjet_0       :      false    
+CUT_cone_lep_untagjet_0     :        0.4
+CUT_cone_elec_untagjet_0    :        0.4
+CUT_cone_muon_untagjet_0    :        0.4
+CUT_cone_tau_untagjet_0     :        0.4
+
+JCUT_r_jet_untagjet_0       :      false    
+CUT_cone_alljet_untagjet_0  :        0.4
+CUT_cone_jets_untagjet_0    :        0.4
+CUT_cone_bjet_untagjet_0    :        0.4
+CUT_cone_cjet_untagjet_0    :        0.4
+CUT_cone_qjet_untagjet_0    :        0.4
+CUT_cone_untagjet_untagjet_0:        0.4
+CUT_cone_tagjet_untagjet_0  :        0.4
+
+
+
+JCUT_e_untagjet_1           :      false 
+CUT_ed_untagjet_1           :        0.0
+CUT_eu_untagjet_1           :     1000.0
+
+JCUT_eta_untagjet_1         :      false         
+CUT_etad_untagjet_1         :        0.0
+CUT_etau_untagjet_1         :    10000.0
+
+JCUT_theta_untagjet_1       :      false         
+CUT_thetad_untagjet_1       :        0.0
+CUT_thetau_untagjet_1       :    10000.0
+
+JCUT_pt_untagjet_1          :      false
+CUT_ptd_untagjet_1          :        0.0
+CUT_ptu_untagjet_1          :    10000.0
+
+JCUT_mass_untagjet_1        :      false
+CUT_massd_untagjet_1        :        0.0
+CUT_massu_untagjet_1        :    10000.0
+
+JCUT_r_lep_untagjet_1       :      false    
+CUT_cone_lep_untagjet_1     :        0.4
+CUT_cone_elec_untagjet_1    :        0.4
+CUT_cone_muon_untagjet_1    :        0.4
+CUT_cone_tau_untagjet_1     :        0.4
+
+JCUT_r_jet_untagjet_1       :      false    
+CUT_cone_alljet_untagjet_1  :        0.4
+CUT_cone_jets_untagjet_1    :        0.4
+CUT_cone_bjet_untagjet_1    :        0.4
+CUT_cone_cjet_untagjet_1    :        0.4
+CUT_cone_qjet_untagjet_1    :        0.4
+CUT_cone_untagjet_untagjet_1:        0.4
+CUT_cone_tagjet_untagjet_1  :        0.4
+

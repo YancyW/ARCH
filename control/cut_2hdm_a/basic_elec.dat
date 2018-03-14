@@ -1,0 +1,62 @@
+MinTrackEnergy_basic_elec              :          5.0 
+MaxTrackEnergy_basic_elec              :          100000.0
+MinEnergyDepositByMomentum_basic_elec  :          0.5
+MaxEnergyDepositByMomentum_basic_elec  :          1.3
+MinEcalToHcalFraction_basic_elec       :          0.9
+MaxEcalToHcalFraction_basic_elec       :          100000.0
+MinEyoke_basic_elec                    :          0.0 
+MaxEyoke_basic_elec                    :          100000.0 
+
+MinD0_basic_elec                       :          0.0
+MaxD0_basic_elec                       :          100000.0
+MinZ0_basic_elec                       :          0.0
+MaxZ0_basic_elec                       :          100000.0
+MinR0_basic_elec                       :          0.0
+MaxR0_basic_elec                       :          100000.0
+MinD0Sig_basic_elec                    :          0.0
+MaxD0Sig_basic_elec                    :          50.0
+MinZ0Sig_basic_elec                    :          0.0
+MaxZ0Sig_basic_elec                    :          5.0
+MinR0Sig_basic_elec                    :          0.0
+MaxR0Sig_basic_elec                    :          100000.0
+
+cosConeAngle_basic_elec                :          0.99
+
+
+
+
+
+CUT_num_basic_elec                     :          1
+
+ISOLATE_cone_lep_basic_elec            :          0.3
+ISOLATE_cone_had_basic_elec            :          0.3
+ISOLATE_cone_photon_basic_elec         :          0.3
+ISOLATE_coef_lep_basic_elec            :          0.1
+ISOLATE_coef_had_basic_elec            :          0.1
+ISOLATE_coef_photon_basic_elec         :          0.1
+ISOLATE_remainder_photon_basic_elec    :          0.0
+ISOLATE_min_pt_basic_elec              :          1.0
+
+JCUT_e_basic_elec_0                    :         true
+CUT_ed_basic_elec_0                    :          5.0
+CUT_eu_basic_elec_0                    :      10000.0
+
+JCUT_pt_basic_elec_0                   :        false 
+CUT_ptd_basic_elec_0                   :          5.0
+CUT_ptu_basic_elec_0                   :      10000.0
+
+JCUT_eta_basic_elec_0                  :        false 
+CUT_etad_basic_elec_0                  :          0.0
+CUT_etau_basic_elec_0                  :          2.5
+
+JCUT_theta_basic_elec_0                :         true 
+CUT_thetad_basic_elec_0                :          0.0
+CUT_thetau_basic_elec_0                :          0.97
+
+JCUT_r_lep_basic_elec_0                :        false   
+CUT_cone_lep_basic_elec_0              :          0.0
+CUT_cone_elec_basic_elec_0             :          0.0
+CUT_cone_muon_basic_elec_0             :          0.0
+CUT_cone_tau_basic_elec_0              :          0.0
+
+

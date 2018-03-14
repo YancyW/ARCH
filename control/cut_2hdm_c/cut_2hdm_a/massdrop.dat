@@ -1,0 +1,19 @@
+JCUT        :        true
+CUT_mu      :        0.667
+CUT_y       :        0.09
+coneR       :        1.2
+Rmin        :        0.35
+nfilt       :        3
+
+JCUT_eta_0  :       false 
+CUT_etad_0  :        0.0
+CUT_etau_0  :        3.0
+
+JCUT_pt_0   :      false
+CUT_ptd_0   :       10.0
+CUT_ptu_0   :      500.0
+
+JCUT_mass_0 :       true 
+CUT_massd_0 :       110.0
+CUT_massu_0 :       130.0
+

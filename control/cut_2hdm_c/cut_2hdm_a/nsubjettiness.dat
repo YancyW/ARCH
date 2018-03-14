@@ -1,0 +1,29 @@
+beta        : 1.0
+delta       : 1.0
+p           : 1.0
+R0          : 1.2
+Rcut        : 1.2
+epsilon     : 0.00001
+
+measuretype : Normalized 
+axestype    : wta_kt  
+
+JCUT_tau1   : true 
+CUT_tau1d   : 0.0
+CUT_tau1u   : 10000.0
+
+JCUT_tau2   : true 
+CUT_tau2d   : 0.0
+CUT_tau2u   : 10000.0 
+
+JCUT_tau3   : true 
+CUT_tau3d   : 0.0
+CUT_tau3u   : 10000.0 
+
+JCUT_tau21  : true 
+CUT_tau21d  : 0.0
+CUT_tau21u  : 0.3
+
+JCUT_tau32  : true 
+CUT_tau32d  : 0.0
+CUT_tau32u  : 10000.0 

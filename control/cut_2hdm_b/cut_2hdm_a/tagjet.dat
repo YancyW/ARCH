@@ -1,0 +1,74 @@
+CUT_num_tagjet            :        1
+
+JCUT_e_tagjet_0           :      false 
+CUT_ed_tagjet_0           :        0.0
+CUT_eu_tagjet_0           :     1000.0
+
+JCUT_eta_tagjet_0         :      false         
+CUT_etad_tagjet_0         :        0.0
+CUT_etau_tagjet_0         :    10000.0
+
+JCUT_theta_tagjet_0       :      false         
+CUT_thetad_tagjet_0       :        0.0
+CUT_thetau_tagjet_0       :    10000.0
+
+JCUT_pt_tagjet_0          :      false
+CUT_ptd_tagjet_0          :        0.0
+CUT_ptu_tagjet_0          :    10000.0
+
+JCUT_mass_tagjet_0        :      false
+CUT_massd_tagjet_0        :        0.0
+CUT_massu_tagjet_0        :    10000.0
+
+JCUT_r_lep_tagjet_0       :      false    
+CUT_cone_lep_tagjet_0     :        0.4
+CUT_cone_elec_tagjet_0    :        0.4
+CUT_cone_muon_tagjet_0    :        0.4
+CUT_cone_tau_tagjet_0     :        0.4
+
+JCUT_r_jet_tagjet_0       :      false    
+CUT_cone_alljet_tagjet_0  :        0.4
+CUT_cone_jets_tagjet_0    :        0.4
+CUT_cone_bjet_tagjet_0    :        0.4
+CUT_cone_cjet_tagjet_0    :        0.4
+CUT_cone_qjet_tagjet_0    :        0.4
+CUT_cone_untagjet_tagjet_0:        0.4
+CUT_cone_tagjet_tagjet_0  :        0.4
+
+JCUT_e_tagjet_1           :      false 
+CUT_ed_tagjet_1           :        0.0
+CUT_eu_tagjet_1           :     1000.0
+
+JCUT_eta_tagjet_1         :      false         
+CUT_etad_tagjet_1         :        0.0
+CUT_etau_tagjet_1         :    10000.0
+
+JCUT_theta_tagjet_1       :      false         
+CUT_thetad_tagjet_1       :        0.0
+CUT_thetau_tagjet_1       :    10000.0
+
+JCUT_pt_tagjet_1          :      false
+CUT_ptd_tagjet_1          :        0.0
+CUT_ptu_tagjet_1          :    10000.0
+
+JCUT_mass_tagjet_1        :      false
+CUT_massd_tagjet_1        :        0.0
+CUT_massu_tagjet_1        :    10000.0
+
+JCUT_r_lep_tagjet_1       :      false    
+CUT_cone_lep_tagjet_1     :        0.4
+CUT_cone_elec_tagjet_1    :        0.4
+CUT_cone_muon_tagjet_1    :        0.4
+CUT_cone_tau_tagjet_1     :        0.4
+
+JCUT_r_jet_tagjet_1       :      false    
+CUT_cone_alljet_tagjet_1  :        0.4
+CUT_cone_jets_tagjet_1    :        0.4
+CUT_cone_bjet_tagjet_1    :        0.4
+CUT_cone_cjet_tagjet_1    :        0.4
+CUT_cone_qjet_tagjet_1    :        0.4
+CUT_cone_untagjet_tagjet_1:        0.4
+CUT_cone_tagjet_tagjet_1  :        0.4
+
+
+

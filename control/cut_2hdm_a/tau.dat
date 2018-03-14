@@ -1,0 +1,33 @@
+CUT_num_tau          :          1
+
+ISOLATE_cone_lep_tau          :      0.3
+ISOLATE_cone_had_tau          :      0.3
+ISOLATE_cone_photon_tau          :      0.3
+ISOLATE_coef_lep_tau          :      0.1
+ISOLATE_coef_had_tau          :      0.1
+ISOLATE_coef_photon_tau          :      0.1
+ISOLATE_remainder_photon_tau          :      0.0
+ISOLATE_min_pt_tau          :      1.0
+
+JCUT_e_tau_0         :        false
+CUT_ed_tau_0         :          0.0
+CUT_eu_tau_0         :      10000.0
+
+JCUT_pt_tau_0        :        false
+CUT_ptd_tau_0        :          0.0
+CUT_ptu_tau_0        :      10000.0
+
+JCUT_eta_tau_0       :        false 
+CUT_etad_tau_0       :          0.0
+CUT_etau_tau_0       :      10000.0
+
+JCUT_theta_tau_0     :        false 
+CUT_thetad_tau_0     :          0.0
+CUT_thetau_tau_0     :      10000.0
+
+JCUT_r_lep_tau_0     :        false   
+CUT_cone_lep_tau_0   :          0.0
+CUT_cone_elec_tau_0  :          0.0
+CUT_cone_muon_tau_0  :          0.0
+CUT_cone_tau_tau_0   :          0.0
+

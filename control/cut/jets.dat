@@ -1,0 +1,114 @@
+coneR_jets                :        0.7 
+sort_method_jets          :        e 
+#JetAlgorithms_jets        :        eegenantikt
+JetAlgorithms_jets        :        antikt 
+
+CUT_num_jets              :        1
+
+JCUT_e_jets_0             :       true 
+CUT_ed_jets_0             :        1.0
+CUT_eu_jets_0             :     1000.0
+
+JCUT_eta_jets_0           :      false 
+CUT_etad_jets_0           :        0.0
+CUT_etau_jets_0           :       1000.0
+
+JCUT_theta_jets_0         :       true 
+CUT_thetad_jets_0         :        0.0
+CUT_thetau_jets_0         :        0.99
+
+JCUT_pt_jets_0            :      false 
+CUT_ptd_jets_0            :        0.0
+CUT_ptu_jets_0            :     1000.0
+
+JCUT_mass_jets_0          :      false 
+CUT_massd_jets_0          :        0.0
+CUT_massu_jets_0          :      500.0
+
+JCUT_r_lep_jets_0         :      false    
+CUT_cone_lep_jets_0       :        0.4
+CUT_cone_elec_jets_0      :        0.4
+CUT_cone_muon_jets_0      :        0.4
+CUT_cone_tau_jets_0       :        0.4
+
+JCUT_r_jet_jets_0         :      false    
+CUT_cone_alljet_jets_0    :        1.2
+CUT_cone_jets_jets_0      :        0.7
+CUT_cone_bjet_jets_0      :        0.4
+CUT_cone_cjet_jets_0      :        0.4
+CUT_cone_qjet_jets_0      :        0.4
+CUT_cone_untagjet_jets_0  :        0.4
+CUT_cone_tagjet_jets_0    :        0.4
+
+
+
+JCUT_e_jets_1             :      false 
+CUT_ed_jets_1             :        0.0
+CUT_eu_jets_1             :     1000.0
+
+JCUT_eta_jets_1           :      false 
+CUT_etad_jets_1           :        0.0
+CUT_etau_jets_1           :        3.5
+
+JCUT_theta_jets_1         :      false 
+CUT_thetad_jets_1         :        0.0
+CUT_thetau_jets_1         :        0.97
+
+JCUT_pt_jets_1            :       false 
+CUT_ptd_jets_1            :       10.0
+CUT_ptu_jets_1            :     1000.0
+
+JCUT_mass_jets_1          :      false
+CUT_massd_jets_1          :        0.0
+CUT_massu_jets_1          :    10000.0
+
+JCUT_r_lep_jets_1         :      false    
+CUT_cone_lep_jets_1       :        0.4
+CUT_cone_elec_jets_1      :        0.4
+CUT_cone_muon_jets_1      :        0.4
+CUT_cone_tau_jets_1       :        0.4
+
+JCUT_r_jet_jets_1         :      false    
+CUT_cone_alljet_jets_1    :        0.4
+CUT_cone_jets_jets_1      :        0.4
+CUT_cone_bjet_jets_1      :        0.4
+CUT_cone_cjet_jets_1      :        0.4
+CUT_cone_qjet_jets_1      :        0.4
+CUT_cone_untagjet_jets_1  :        0.4
+CUT_cone_tagjet_jets_1    :        0.4
+
+
+
+JCUT_e_jets_2             :      false 
+CUT_ed_jets_2             :        0.0
+CUT_eu_jets_2             :     1000.0
+
+JCUT_eta_jets_2           :       true 
+CUT_etad_jets_2           :        0.0
+CUT_etau_jets_2           :      100.0
+
+JCUT_pt_jets_2            :       true
+CUT_ptd_jets_2            :        0.0
+CUT_ptu_jets_2            :    10000.0
+
+JCUT_mass_jets_2          :      false
+CUT_massd_jets_2          :        0.0
+CUT_massu_jets_2          :    10000.0
+
+JCUT_r_lep_jets_2         :      false    
+CUT_cone_lep_jets_2       :        0.4
+CUT_cone_elec_jets_2      :        0.4
+CUT_cone_muon_jets_2      :        0.4
+CUT_cone_tau_jets_2       :        0.4
+
+JCUT_r_jet_jets_2         :      false    
+CUT_cone_alljet_jets_2    :        0.4
+CUT_cone_jets_jets_2      :        0.4
+CUT_cone_bjet_jets_2      :        0.4
+CUT_cone_cjet_jets_2      :        0.4
+CUT_cone_qjet_jets_2      :        0.4
+CUT_cone_untagjet_jets_2  :        0.4
+CUT_cone_tagjet_jets_2    :        0.4
+
+
+
