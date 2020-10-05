@@ -2,6 +2,7 @@
 #include "AnalyseClass/AnalyseClass.h"
 void AnalyseClass::Init(CDraw &para, ExRootTreeReader* treeReader, TChain* tree){
 	counter.Init(para);
+	ShowMessage(1,2, "in AnalyseClass::Init para",para.flow.record_event,para.flow.begin_object);
 	if((para.flow.begin_object=="slcio_particle")||(para.flow.begin_object=="slcio_equipment")){
 		slcio  .Init(tree      ,true );
 		delphes.Init(treeReader,false);

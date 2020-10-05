@@ -9,6 +9,7 @@ class ACounter{
 	private:
 		float                _weight;
 		ACounterType         _counter;
+		float                _xection;
 	public:
 		int pass_basic        ;
 		int pass_basic_jet    ,pass_basic_bjet,pass_basic_cjet,pass_basic_qjet,pass_basic_taujet;
@@ -53,7 +54,6 @@ class ACounter{
 		~ACounter(){
 			Clear();
 		}
-
 
 		void Init(CDraw &para);
 

@@ -40,6 +40,8 @@ void AnalyseEvents(CDraw &para, ExRootTreeReader *treeReader, TChain* tree, MyPl
 	for(long long int entry = para.event.Begin_Event(); entry < para.event.End_Event(); ++entry)
 	{
 		para.Get_Event(entry);
+		analyse.var.Init_Value();
+
 		para.debug.Message(2,1,"event num",para.Event());
 		CountNumber(entry,para.Total_Event(),1000,"has dealed with number are");
 
@@ -64,8 +66,9 @@ void AnalyseEvents(CDraw &para, ExRootTreeReader *treeReader, TChain* tree, MyPl
 		para.debug.Message(1,2,"in AnalyseEvents: enter GetFinalState.");
 		if(para.flow.begin_object=="delphes_detector"){
 			para.debug.Message(2,2,"begin detector");
-			Jparticle=GetFinalState(para, analyse.delphes.branchJet, analyse.delphes.branchElectron, analyse.delphes.branchMuon,analyse.delphes.branchPhoton, analyse.delphes.branchMissingET,analyse.delphes.branchParticle,plots,
-					object.Vjet,object.Vbjet,object.Vcjet,object.Vqjet,object.Vtaujet, object.Vtagjet,object.Vuntagjet,object.Velec,object.Vmuon,object.Vtau,object.Vphoton,object.Vmet,analyse);
+			//Jparticle=GetFinalState(para, analyse.delphes.branchJet, analyse.delphes.branchElectron, analyse.delphes.branchMuon,analyse.delphes.branchPhoton, analyse.delphes.branchMissingET,analyse.delphes.branchParticle,plots,
+			//		object.Vjet,object.Vbjet,object.Vcjet,object.Vqjet,object.Vtaujet, object.Vtagjet,object.Vuntagjet,object.Velec,object.Vmuon,object.Vtau,object.Vphoton,object.Vmet,analyse);
+			Jparticle=GetFinalState_detector(para, analyse, object,  plots);
 			para.debug.Message(2,2,"end detector",Jparticle);
 			if(!Jparticle){continue;}
 		}
@@ -109,6 +112,7 @@ void AnalyseEvents(CDraw &para, ExRootTreeReader *treeReader, TChain* tree, MyPl
     	}
     	else{Jjetsub=true;}
 
+		analyse.datatrain->Fill();
     	para.debug.Message(2,2,"finish all cut.");
     	if(Jparticle&&Jcombine&&Jjetsub){
     		analyse.counter.getCounter("All");
@@ -132,8 +136,19 @@ void AnalyseEvents(CDraw &para, ExRootTreeReader *treeReader, TChain* tree, MyPl
 
     }
 
-    analyse.counter.showCounter();
     analyse.counter.sendCounter();
+    //analyse.counter.showCounter();
+
+    if(!para.flow.record_output){
+        freopen(para.path.record_file.c_str(),"a",stdout);
+
+		analyse.counter.sendCounter();
+
+        fclose(stdout);
+        freopen("/dev/tty","w",stdout);
+    }
+
+
 }
 
 

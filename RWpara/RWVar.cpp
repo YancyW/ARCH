@@ -1,7 +1,9 @@
 #include "AnalyseClass/Variable.h"
 
 void AVariable::Read_Var(CDraw &para){
-  	freopen(para.path.record_file.c_str(),"a",stdout);
+	if(!para.flow.record_output){
+		freopen(para.path.record_file.c_str(),"a",stdout);
+	}
 	ShowMessage(3, "read Var");
 	std::string file_name=para.path.var_file;
 	ShowMessage(3, "variable",file_name);

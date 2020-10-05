@@ -30,7 +30,7 @@ void StartProcess(){
 void LoadFile(CDraw &para){
 	ShowMessage(1, "load para");
 	ShowMessage();
-	YAML::Node basic_node = YAML::LoadFile("control/basic.dat");
+	YAML::Node basic_node = YAML::LoadFile("control_bp1/basic.dat");
 
 //	CLoad para;
 

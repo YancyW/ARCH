@@ -1,9 +1,8 @@
 #include "Function/Ffile.h"
-
-
 void CreateFolder(std::string folder_name){
 	boost::filesystem::path dir(folder_name);
-	if(boost::filesystem::create_directory(folder_name)){
+	if(!boost::filesystem::exists(dir)){
+		boost::filesystem::create_directories(dir);  //目录不存在，创建
 		std::cerr<<"Directory Created:  " << folder_name << std::endl;
 	} 
 }
@@ -12,6 +11,7 @@ void CreateFileFolder(std::string file_name){
 	boost::filesystem::path dir(file_name);
 	boost::filesystem::path parent_path = dir.parent_path();
 	if(boost::filesystem::create_directory(parent_path)){
+		boost::filesystem::create_directories(parent_path);  //目录不存在，创建
 		std::cerr<<"Directory Created:  " << parent_path << std::endl;
 	} 
 }

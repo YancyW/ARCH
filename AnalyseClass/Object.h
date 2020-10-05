@@ -19,6 +19,7 @@
 #include "Lib/libstructure.h"
 #include "Function/Fbasic.h"
 #include "Function/Fdelphes.h"
+#include "Function/FTLorentzVector.h"
 #include "RWpara/RWbasic.h"
 #include "Class/file.h"
 #include "Class/DrawClass.h"
@@ -51,12 +52,14 @@ class AObject{
 		std::vector<fastjet::PseudoJet>  VPseudoPhoton;
 		std::vector<Electron*>           Velec;
 		std::vector<Muon*>               Vmuon;
+		std::vector<TLorentzVector>      Vlep,Vlep_m,Vlep_p;
 		std::vector<Jet*>                Vtau;
 		std::vector<Photon*>             Vphoton;
 		std::vector<MissingET*>          Vmet;
 
 		std::vector<TLorentzVector>      Vcombine1,Vcombine2,Vcombine3,Vcombine4, Vcombine5, Vcombine6;
-		TLorentzVector                   Vre_met;
+		std::vector<float>               Vvalue;
+		std::vector<TLorentzVector>      Vre_met;
 		std::vector<Jet*>                Vcombine_jet1   ,Vcombine_jet2   ;
 		std::vector<Electron*>           Vcombine_elec1  ,Vcombine_elec2  ;
 		std::vector<Muon*>               Vcombine_muon1  ,Vcombine_muon2  ;
@@ -277,6 +280,10 @@ class AObject{
 
 		bool  Fill_Jet(CDraw &para, AnalyseClass &analyse);
 		bool  Fill_Lepton(CDraw &para, AnalyseClass &analyse);
+		bool  Fill_Particle_A(CDraw &para, AnalyseClass &analyse);
+		bool  Fill_Particle_B(CDraw &para, AnalyseClass &analyse);
+		bool  Fill_Particle_C(CDraw &para, AnalyseClass &analyse);
+		bool  Fill_Combine   (CDraw &para, AnalyseClass &analyse);
 
 };
 

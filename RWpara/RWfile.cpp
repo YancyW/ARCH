@@ -4,6 +4,7 @@ void CPath::Read_Path(std::string steering_file){
 	YAML::Node path_node = YAML::LoadFile(steering_file);
 	RW_element("RECORD_FILE"    ,path_node,this->record_file   );
 	CreateFileFolder(this->record_file);
+
   	freopen(this->record_file.c_str(),"w",stdout);
 	ShowMessage(3, "read path");
 	RW_element("PROCESS"        ,path_node,this->process       );
@@ -28,7 +29,6 @@ void CPath::Read_Path(std::string steering_file){
 }
 
 void CFile::  Read_File(CPath path){
-	ShowMessage(3, "read file");
 	YAML::Node file_node = YAML::LoadFile(path.input_file);
 	ShowMessage(4);
 
@@ -36,18 +36,21 @@ void CFile::  Read_File(CPath path){
 	RW_element("CHANNEL_NUM"        ,file_node,this->channel_num       );
 	RW_element("Root_Head_Name"     ,file_node,this->root_head_name    );
 	RW_element("Root_Head_BDT_Name" ,file_node,this->root_head_BDT_name);
-	RW_element("CHANNEL_NUM"        ,file_node,this->channel_num       );
+	RW_element("CROSS_SECTION"      ,file_node,this->xection           );
 
-	for(int i=0;i<file_num;i++){
-		RW_vector_element("FILE"         , i, file_node, this->file);
-	}
-	for(int i=0;i<channel_num;i++){
-		RW_vector_element("FILE_DESCRIP" , i, file_node, this->file_descrip);
-	}
+
+	this->file= file_node["FILE"].as<std::vector<std::string> >();
+	this->file_descrip= file_node["FILE_DESCRIP"].as<std::vector<std::string> >();
+	//for(int i=0;i<file_num;i++){
+	//	RW_vector_element("FILE"         , i, file_node, this->file);
+	//}
+	//for(int i=0;i<channel_num;i++){
+	//	RW_vector_element("FILE_DESCRIP" , i, file_node, this->file_descrip);
+	//}
+	ShowMessage(3, "finish reading file.");
 };
 
 void CDebug::  Read_Debug(CPath path){
-	ShowMessage(3, "read debug");
 	YAML::Node debug_node = YAML::LoadFile(path.debug_file);
 
 	RW_element("Debug_mode"                 ,debug_node,this->mode );
@@ -59,6 +62,7 @@ void CDebug::  Read_Debug(CPath path){
 	for(int i=0;i<this->num_debug_mode;i++){
 		RW_vector_element("Debug"       , i, debug_node,  this->debug);
 	}
+	ShowMessage(3, "finish reading debug.");
 }
 
 void CFlow::   Read_Flow(CPath path){

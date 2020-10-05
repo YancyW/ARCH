@@ -40,6 +40,7 @@ class CFile{
 	public:
 		int                    file_num               ;
 		int                    channel_num            ;
+		float                  xection                ;
 		std::vector<std::string>     file                   ;
 		std::vector<std::string>     file_descrip           ;
 		void                     Read_File(CPath path)  ;

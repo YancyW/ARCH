@@ -36,6 +36,7 @@ class AnalyseClass{
     		slcio.Clear();
     		delphes.Clear();
     	    if(IsRecord){
+				ShowMessage(2,"analyse record",IsRecord);
     	    	otfile->cd();
     	    	datatrain->Write();
     	    	if(IsBDTTrain){

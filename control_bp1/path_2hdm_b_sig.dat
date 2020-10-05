@@ -1,0 +1,18 @@
+PROCESS          : sig_b_bp1 
+RECORD_FILE      : './Event_Draw_2hdm/tmp/sig_b_bp1.dat'
+
+OUTPUT_FILE      : './Event_Draw_2hdm/data_b/'
+EVENT_FILE       : './Event_Draw_2hdm/events_b/2hdm_sig_bp1.root'
+SINGLE_PLOT      : './Event_Draw_2hdm/plot_b/'
+COMBINE_PLOT     : './Event_Draw_2hdm/plot_compare_b/'
+
+DEBUG_FILE       : './control_bp1/debug.dat'
+ANALYSIS_FILE    : './control_bp1/Event.dat'
+DETECTOR_FILE    : './control_bp1/Detector.dat'
+FLOW_FILE        : './control_bp1/flow.dat'
+SIGNAL_FILE      : './control_bp1/signal.dat'
+PLOT_FILE        : './control_bp1/plot.dat'
+
+INPUT_FILE       : './control_bp1/file_2hdm_sig.dat'
+CUT_FILE         : './control_bp1/cut_2hdm_b/'
+VAR_FILE         : './control_bp1/Var/Var_2hdm_b.dat'

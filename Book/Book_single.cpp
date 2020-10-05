@@ -23,7 +23,7 @@ void BookHistograms_single(CDraw &para, ExRootResult *result, MyPlots *plots, st
 
 		observe_name="pt";
 
-		BookH_single_observable(result, plots->fJetPT, para.signal.NUM_jets, signal_name, class_name, observe_name, 50, 0.0, 800.0);
+		BookH_single_observable(result, plots->fJetPT, para.signal.NUM_jets, signal_name, class_name, observe_name, 50, 0.0, 100.0);
 
 		observe_name="y";
 		BookH_single_observable(result, plots->fJetY , para.signal.NUM_jets, signal_name, class_name, observe_name, 60, -3.0, 3.0);
@@ -162,7 +162,7 @@ void BookHistograms_single(CDraw &para, ExRootResult *result, MyPlots *plots, st
 
 		observe_name="pt";
 
-		BookH_single_observable(result, plots->fLepPT, para.signal.NUM_lep, signal_name, class_name, observe_name, 50, 0.0, 800.0);
+		BookH_single_observable(result, plots->fLepPT, para.signal.NUM_lep, signal_name, class_name, observe_name, 50, 0.0, 100.0);
 
 		observe_name="y";
 		BookH_single_observable(result, plots->fLepY, para.signal.NUM_lep, signal_name, class_name, observe_name, 60, -3.0, 3.0);
@@ -187,7 +187,7 @@ void BookHistograms_single(CDraw &para, ExRootResult *result, MyPlots *plots, st
 
 		observe_name="pt";
 
-		BookH_single_observable(result, plots->fElectronPT, para.signal.NUM_elec, signal_name, class_name, observe_name, 50, 0.0, 800.0);
+		BookH_single_observable(result, plots->fElectronPT, para.signal.NUM_elec, signal_name, class_name, observe_name, 50, 0.0, 100.0);
 
 		observe_name="y";
 		BookH_single_observable(result, plots->fElectronY, para.signal.NUM_elec, signal_name, class_name, observe_name, 60, -3.0, 3.0);
@@ -210,7 +210,7 @@ void BookHistograms_single(CDraw &para, ExRootResult *result, MyPlots *plots, st
 
 		observe_name="pt";
 
-		BookH_single_observable(result, plots->fMuonPT, para.signal.NUM_muon, signal_name, class_name, observe_name, 50, 0.0, 700.0);
+		BookH_single_observable(result, plots->fMuonPT, para.signal.NUM_muon, signal_name, class_name, observe_name, 50, 0.0, 100.0);
 
 		observe_name="y";
 		BookH_single_observable(result, plots->fMuonY, para.signal.NUM_muon, signal_name, class_name, observe_name, 60, -3.0, 3.0);
@@ -233,7 +233,7 @@ void BookHistograms_single(CDraw &para, ExRootResult *result, MyPlots *plots, st
 
 		observe_name="pt";
 
-		BookH_single_observable(result, plots->fTauPT, para.signal.NUM_tau, signal_name, class_name, observe_name, 50, 0.0, 700.0);
+		BookH_single_observable(result, plots->fTauPT, para.signal.NUM_tau, signal_name, class_name, observe_name, 50, 0.0, 100.0);
 
 		observe_name="y";
 		BookH_single_observable(result, plots->fMuonY, para.signal.NUM_tau, signal_name, class_name, observe_name, 60, -3.0, 3.0);
@@ -260,15 +260,15 @@ void BookHistograms_single(CDraw &para, ExRootResult *result, MyPlots *plots, st
 
 		class_name="combined";
 		observe_name="mW";
-		BookH_single_observable(result, &(plots->fcomb2M), -1, signal_name, class_name, observe_name, 100, 50.0, 150.0);
+		BookH_single_observable(result, &(plots->fcomb2M), -1, signal_name, class_name, observe_name, 100, 0.0, 100.0);
 
 		class_name="combined";
 		observe_name="mH+-";
-		BookH_single_observable(result, &(plots->fcomb3M), -1, signal_name, class_name, observe_name, 400, 100.0, 500.0);
+		BookH_single_observable(result, &(plots->fcomb3M), -1, signal_name, class_name, observe_name, 400, 0.0, 400.0);
 
 		class_name="combined";
 		observe_name="mt";
-		BookH_single_observable(result, &(plots->fcomb4M), -1, signal_name, class_name, observe_name, 100, 130.0, 2300.0);
+		BookH_single_observable(result, &(plots->fcomb4M), -1, signal_name, class_name, observe_name, 100, 0.0, 1000.0);
 
 		class_name="combined";
 		observe_name="pt_tj";
@@ -293,7 +293,7 @@ void BookHistograms_single(CDraw &para, ExRootResult *result, MyPlots *plots, st
 
 		class_name="combined";
 		observe_name="mz";
-		BookH_single_observable(result, &(plots->fcomb2M), -1, signal_name, class_name, observe_name, 50, 100.0, 200.0);
+		BookH_single_observable(result, &(plots->fcomb2M), -1, signal_name, class_name, observe_name, 50, 0.0, 100.0);
 
 		class_name="recoil";
 		observe_name="mass";

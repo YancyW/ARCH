@@ -61,7 +61,9 @@ std::ostream & operator<<(std::ostream & ostr, const std::vector<fastjet::Pseudo
 				}
 				total += jets[i];
 			}
-			printf("%7s %12i %12i %12.5f %12.5f %12.5f %12.5f %12.5f %12.5f %12.5f %12.5f %12i %12.5f  %12.5f\n", "total", 0, 0, total.px(),total.py(),total.pz(),total.e(), total.rap(),total.phi(),total.perp(),total.m(),total.user_index(),(total.has_area() ? total.area() : 0.0 ),0.0);
+			if(jets.size()>1){
+				printf("%7s %12i %12i %12.5f %12.5f %12.5f %12.5f %12.5f %12.5f %12.5f %12.5f %12i %12.5f  %12.5f\n", "total", 0, 0, total.px(),total.py(),total.pz(),total.e(), total.rap(),total.phi(),total.perp(),total.m(),total.user_index(),(total.has_area() ? total.area() : 0.0 ),0.0);
+			}
 		}
 		else {
 			printf("%7s %12s %12s %12s %12s %12s %12s %12s %12s %12s %12s %12s  %12s %12s  %12s\n","jet #", "PID","charge", "x","y","z","e", "rapidity", "phi", "pt","m", "btag","subTau", "area","R"); // label the columns
@@ -75,7 +77,9 @@ std::ostream & operator<<(std::ostream & ostr, const std::vector<fastjet::Pseudo
 				}
 				total += jets[i];
 			}   
-			printf("%7s %12i %12i %12.5f %12.5f %12.5f %12.5f %12.5f %12.5f %12.5f %12.5f  %12i %10.6f %12.5f %12.5f\n", "total", 0, 0, total.px(),total.py(),total.pz(),total.e(), total.rap(),total.phi(),total.perp(),total.m(),total.user_index(),extras->totalTau(),(total.has_area() ? total.area() : 0.0 ),0.0);
+			if(jets.size()>1){
+				printf("%7s %12i %12i %12.5f %12.5f %12.5f %12.5f %12.5f %12.5f %12.5f %12.5f  %12i %10.6f %12.5f %12.5f\n", "total", 0, 0, total.px(),total.py(),total.pz(),total.e(), total.rap(),total.phi(),total.perp(),total.m(),total.user_index(),extras->totalTau(),(total.has_area() ? total.area() : 0.0 ),0.0);
+			}
 		}
 	} 
 	else {
@@ -91,7 +95,9 @@ std::ostream & operator<<(std::ostream & ostr, const std::vector<fastjet::Pseudo
 				}
 				total += jets[i];
 			}
-			printf("%7s %12i %12i %12.5f %12.5f %12.5f %12.5f %12.5f %12.5f %12.5f %12.5f %12i %12.5f\n", "total", 0, 0, total.px(),total.py(),total.pz(),total.e(), total.rap(),total.phi(),total.perp(),total.m(),total.user_index(),0.0);
+			if(jets.size()>1){
+				printf("%7s %12i %12i %12.5f %12.5f %12.5f %12.5f %12.5f %12.5f %12.5f %12.5f %12i %12.5f\n", "total", 0, 0, total.px(),total.py(),total.pz(),total.e(), total.rap(),total.phi(),total.perp(),total.m(),total.user_index(),0.0);
+			}
 		}
 		else {
 			printf("%7s %12s %12s %12s %12s %12s %12s %12s %12s %12s %12s %12s %12s %12s\n","jet #", "PID","charge", "x","y","z","e", "rapidity", "phi", "pt","m", "btag","subTau","R"); // label the columns
@@ -106,7 +112,9 @@ std::ostream & operator<<(std::ostream & ostr, const std::vector<fastjet::Pseudo
 				total += jets[i];
 
 			}   
-			printf("%7s %12i %12i %12.5f %12.5f %12.5f %12.5f %12.5f %12.5f %12.5f %12.5f  %12i %10.6f %12.5f\n", "total", 0, 0, total.px(),total.py(),total.pz(),total.e(), total.rap(),total.phi(),total.perp(),total.m(),total.user_index(),extras->totalTau(),0.0);
+			if(jets.size()>1){
+				printf("%7s %12i %12i %12.5f %12.5f %12.5f %12.5f %12.5f %12.5f %12.5f %12.5f  %12i %10.6f %12.5f\n", "total", 0, 0, total.px(),total.py(),total.pz(),total.e(), total.rap(),total.phi(),total.perp(),total.m(),total.user_index(),extras->totalTau(),0.0);
+			}
 		}
 	}
 
@@ -365,6 +373,5 @@ bool JudgeBtag(fastjet::PseudoJet jet){
 	if((PID%10000)>5000 && (PID%10000) <6000){
 		return(true);
 	}
-
-
+	return(false);
 }

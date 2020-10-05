@@ -1,0 +1,22 @@
+#debug file
+FILE_debug       : true
+FILE_filepath    : true
+
+
+#contral file
+FILE_flow        : true
+FILE_plot        : true
+FILE_signal      : true
+
+
+#analyse file
+FILE_switch      : true
+FILE_jet         : true
+FILE_lepton      : true
+FILE_mEt         : true
+FILE_photon      : true
+FILE_recombine   : true
+FILE_recoil      : true
+FILE_global      : true
+
+

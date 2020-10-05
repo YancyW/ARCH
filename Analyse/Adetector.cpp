@@ -1,10 +1,11 @@
 #include "Adetector.h"
 
 
-bool GetFinalState(CDraw &para, TClonesArray *branchJet      ,TClonesArray *branchElectron ,TClonesArray *branchMuon     ,TClonesArray *branchPhoton   ,TClonesArray *branchMissingET,TClonesArray *branchParticle ,MyPlots* plots,
-		std::vector<Jet*> & Vjet,std::vector<Jet*>& Vbjet,std::vector<Jet*>& Vcjet,std::vector<Jet*>& Vqjet,std::vector<Jet*>& Vtaujet, std::vector<Jet*>& Vtagjet,std::vector<Jet*>& Vuntagjet,
-		std::vector<Electron*>& Velec,std::vector<Muon*>& Vmuon,std::vector<Jet*>& Vtau,std::vector<Photon*>& Vphoton,std::vector<MissingET*>& Vmet, AnalyseClass &analyse){
+//bool GetFinalState(CDraw &para, TClonesArray *branchJet      ,TClonesArray *branchElectron ,TClonesArray *branchMuon     ,TClonesArray *branchPhoton   ,TClonesArray *branchMissingET,TClonesArray *branchParticle ,MyPlots* plots,
+//		std::vector<Jet*> & Vjet,std::vector<Jet*>& Vbjet,std::vector<Jet*>& Vcjet,std::vector<Jet*>& Vqjet,std::vector<Jet*>& Vtaujet, std::vector<Jet*>& Vtagjet,std::vector<Jet*>& Vuntagjet,
+//		std::vector<Electron*>& Velec,std::vector<Muon*>& Vmuon,std::vector<Jet*>& Vtau,std::vector<Photon*>& Vphoton,std::vector<MissingET*>& Vmet, AnalyseClass &analyse){
 
+bool GetFinalState_detector(CDraw &para, AnalyseClass &analyse, AObject &object, MyPlots* plots){
 
 	bool Jjet         = false;
 	bool Jtagjet      = false;
@@ -15,7 +16,7 @@ bool GetFinalState(CDraw &para, TClonesArray *branchJet      ,TClonesArray *bran
 
 	if(para.jet.SWITCH && para.jet.jets.SWITCH){
 		para.debug.Message(3,20,"get jet");
-		Jjet=GetFinalState_detector(para,branchJet,plots,Vjet);
+		Jjet=GetFinalState_detector(para,analyse.delphes.branchJet,plots,object.Vjet);
 		if(Jjet){analyse.counter.getCounter("basic_jet");}
 		else{return(false);}
 	}
@@ -24,18 +25,18 @@ bool GetFinalState(CDraw &para, TClonesArray *branchJet      ,TClonesArray *bran
 	// Analyse tagjets
 	if(para.jet.SWITCH && para.jet.jets.SWITCH && (para.jet.bjet.SWITCH||para.jet.cjet.SWITCH||para.jet.qjet.SWITCH||para.jet.taujet.SWITCH)){
 		para.debug.Message(3,20,"get tagged jet");
-		Jtagjet=GetFinalState_detector(para,analyse,Vjet,Vbjet,Vcjet,Vqjet,Vtaujet, Vuntagjet,plots);
+		Jtagjet=GetFinalState_detector(para,analyse,object.Vjet,object.Vbjet,object.Vcjet,object.Vqjet,object.Vtaujet, object.Vuntagjet,plots);
 		if(!Jtagjet){return(false);}
 	}
 	else{Jtagjet=true;}
 
 	// Analyse elec 
 	if(para.lep.SWITCH && !para.lep.elec.SWITCH && !para.lep.muon.SWITCH){
-		Jelec=GetFinalState_detector(para,branchElectron,plots,Velec);
+		Jelec=GetFinalState_detector(para,analyse.delphes.branchElectron,plots,object.Velec);
 
-		Jmuon=GetFinalState_detector(para,branchMuon,plots,Vmuon);
+		Jmuon=GetFinalState_detector(para,analyse.delphes.branchMuon,plots,object.Vmuon);
 
-		if(Velec.size()+Vmuon.size()<para.signal.NUM_lep){return(false);}
+		if(object.Velec.size()+object.Vmuon.size()<para.signal.NUM_lep){return(false);}
 
 		if(Jelec || Jmuon){
 			analyse.counter.getCounter("basic_lep");
@@ -48,7 +49,7 @@ bool GetFinalState(CDraw &para, TClonesArray *branchJet      ,TClonesArray *bran
 		para.debug.Message(3,20,"get elec or muon seperately");
 		if(para.lep.SWITCH && para.lep.elec.SWITCH){
 			para.debug.Message(3,20,"get elec");
-			Jelec=GetFinalState_detector(para,branchElectron,plots,Velec);
+			Jelec=GetFinalState_detector(para,analyse.delphes.branchElectron,plots,object.Velec);
 			para.debug.Message(3,20,"end get elec",Jelec);
 			if(Jelec){
 				analyse.counter.getCounter("basic_elec");
@@ -60,7 +61,7 @@ bool GetFinalState(CDraw &para, TClonesArray *branchJet      ,TClonesArray *bran
 		// Analyse muon 
 		if(para.lep.SWITCH && para.lep.muon.SWITCH){
 			para.debug.Message(3,20,"get muon");
-			Jmuon=GetFinalState_detector(para,branchMuon,plots,Vmuon);
+			Jmuon=GetFinalState_detector(para,analyse.delphes.branchMuon,plots,object.Vmuon);
 			para.debug.Message(3,20,"end get muon",Jmuon);
 			if(Jmuon){
 				analyse.counter.getCounter("basic_muon");
@@ -73,7 +74,7 @@ bool GetFinalState(CDraw &para, TClonesArray *branchJet      ,TClonesArray *bran
 	// Analyse missing ET
 	if(para.met.SWITCH){
 		para.debug.Message(3,20,"get met");
-		Jmet=GetFinalState_detector(para,branchMissingET,plots,Vmet);
+		Jmet=GetFinalState_detector(para,analyse.delphes.branchMissingET,plots,object.Vmet);
 		para.debug.Message(3,20,"end get met",Jmet);
 		if(Jmet){
 			analyse.counter.getCounter("basic_met");
@@ -81,6 +82,20 @@ bool GetFinalState(CDraw &para, TClonesArray *branchJet      ,TClonesArray *bran
 		else{return(false);}
 	}
 	else{Jmet=true;}
+
+
+    if(object.Vtaujet.size()>=2){
+    	object.Fill_Particle_A(para,analyse);
+    }
+    else if(object.Vtaujet.size()==1){
+    	bool JPB=object.Fill_Particle_B(para,analyse);
+		if(!JPB){
+			return(false);
+		}
+    }
+    else if(object.Vtaujet.size()==0){
+    	object.Fill_Particle_C(para,analyse);
+    }
 
 	//  number pass the all basic cuts;
 	para.debug.Message(3,20,"get all basic cuts");
@@ -128,8 +143,6 @@ bool GetFinalState_detector(CDraw &para, TClonesArray *branchElectron, MyPlots *
 
   		if( para.lep.elec.JCUT_pt  [0] == true && ( pt  < para.lep.elec.CUT_ptd  [0] || pt  > para.lep.elec.CUT_ptu  [0] )){continue;}
   		if( para.lep.elec.JCUT_eta [0] == true && ( y   < para.lep.elec.CUT_etad [0] || y   > para.lep.elec.CUT_etau [0] )){continue;}
-////	if(!ABasic_Cut(para, pt, para.lep.elec.JCUT_pt[0], para.lep.elec.CUT_ptd[0], para.lep.elec.CUT_ptu[0])){continue;}
-////	if(!ABasic_Cut(para, pt, para.lep.elec.JCUT_pt[0], para.lep.elec.CUT_ptd[0], para.lep.elec.CUT_ptu[0]), 1){continue;}
 		elec.push_back(elec_ptr);
 		loope++;
 	}
@@ -154,7 +167,7 @@ bool GetFinalState_detector(CDraw &para, TClonesArray *branchElectron, MyPlots *
 			return(false);
 		}
 	}
-	else if(para.lep.SWITCH &&  para.lep.elec.SWITCH){
+	else if(para.lep.SWITCH &&  para.lep.elec.SWITCH ){
 		if(loope>=1&&loope>=para.signal.NUM_elec){
 			for(loop1=1;loop1<para.lep.elec.CUT_num;loop1++){
 				pt   = elec[loop1-1]->PT;
@@ -175,6 +188,7 @@ bool GetFinalState_detector(CDraw &para, TClonesArray *branchElectron, MyPlots *
 			return(false);
 		}
 	}
+	return(true);
 }
 
 
@@ -241,6 +255,7 @@ bool GetFinalState_detector(CDraw &para, TClonesArray *branchMuon, MyPlots *plot
 		}
 		else{para.debug.Message(3,22,"false: muon num cut",loopm);return(false);}
 	}
+	return(true);
 }
 
 
@@ -262,7 +277,8 @@ bool GetFinalState_detector(CDraw &para, TClonesArray *branchJet, MyPlots *plots
 		int taujet = jet_ptr->TauTag;
 		y  = std::abs(jet_ptr->Eta);
 		mass = jet_ptr->Mass;
-		if( para.jet.jets.JCUT_pt  [0] == true && ( pt     < para.jet.jets.CUT_ptd  [0] || pt     > para.jet.jets.CUT_ptu  [0] )){para.debug.Message(4,23,"false: jets single jet pt",  pt  );continue;}//endif
+		//if( para.jet.jets.JCUT_pt  [0] == true && ( pt     < para.jet.jets.CUT_ptd  [0] || pt     > para.jet.jets.CUT_ptu  [0] )){para.debug.ShowMessage(4,23,"false: jets single jet pt",  pt  );continue;}//endif
+		if( para.jet.jets.JCUT_pt  [0] == true && ( pt     < 20 || pt     > para.jet.jets.CUT_ptu  [0] )){ShowMessage(4,23,"false: jets single jet pt",  pt  );continue;}//endif
 		if( para.jet.jets.JCUT_mass[0] == true && ( mass   < para.jet.jets.CUT_massd[0] || mass   > para.jet.jets.CUT_massu[0] )){para.debug.Message(4,23,"false: jets single jet eta", y   );continue;}//endif
 		if( para.jet.jets.JCUT_eta [0] == true && ( y      < para.jet.jets.CUT_etad [0] || y      > para.jet.jets.CUT_etau [0] )){para.debug.Message(4,23,"false: jets single jet mass",mass);continue;}//endif
 		loopj++;
@@ -326,7 +342,7 @@ bool GetFinalState_detector(CDraw &para, AnalyseClass& analyse, std::vector<Jet*
 		y    = std::abs(jet.at(loop1)->Eta);
 		mass = jet.at(loop1)->Mass;
 
-		if(jet.at(loop1)->BTag==1 ){
+		if(jet.at(loop1)->BTag==1 &&  para.jet.bjet.SWITCH){
 			if( para.jet.bjet.JCUT_pt  [0] == true && ( pt     < para.jet.bjet.CUT_ptd  [0] || pt     > para.jet.bjet.CUT_ptu  [0] )){para.debug.Message(4,26,"false: bjet single jet pt  ", loop1,  pt);continue;}//endif
 			if( para.jet.bjet.JCUT_mass[0] == true && ( mass   < para.jet.bjet.CUT_massd[0] || mass   > para.jet.bjet.CUT_massu[0] )){para.debug.Message(4,26,"false: bjet single jet mass", loop1,mass);continue;}//endif
 			if( para.jet.bjet.JCUT_eta [0] == true && ( y      < para.jet.bjet.CUT_etad [0] || y      > para.jet.bjet.CUT_etau [0] )){para.debug.Message(4,26,"false: bjet single jet eta ", loop1,   y);continue;}//endif
@@ -338,7 +354,7 @@ bool GetFinalState_detector(CDraw &para, AnalyseClass& analyse, std::vector<Jet*
 			bjet.push_back(jet.at(loop1));
 		}
 
-		else if(jet.at(loop1)->BTag==2 ){
+		else if(jet.at(loop1)->BTag==2 && para.jet.cjet.SWITCH){
 			if( para.jet.cjet.JCUT_pt  [0] == true && ( pt     < para.jet.cjet.CUT_ptd  [0] || pt     > para.jet.cjet.CUT_ptu  [0] )){para.debug.Message(4,26,"false: cjet single jet pt  ", loop1,  pt);continue;}//endif
 			if( para.jet.cjet.JCUT_mass[0] == true && ( mass   < para.jet.cjet.CUT_massd[0] || mass   > para.jet.cjet.CUT_massu[0] )){para.debug.Message(4,26,"false: cjet single jet mass", loop1,mass);continue;}//endif
 			if( para.jet.cjet.JCUT_eta [0] == true && ( y      < para.jet.cjet.CUT_etad [0] || y      > para.jet.cjet.CUT_etau [0] )){para.debug.Message(4,26,"false: cjet single jet eta ", loop1,   y);continue;}//endif
@@ -348,7 +364,7 @@ bool GetFinalState_detector(CDraw &para, AnalyseClass& analyse, std::vector<Jet*
 			}
 			cjet.push_back(jet.at(loop1));
 		}
-		else if(jet.at(loop1)->TauTag==1 ){
+		else if(jet.at(loop1)->TauTag==1 && para.jet.taujet.SWITCH){
 			if( para.jet.taujet.JCUT_pt  [0] == true && ( pt          < para.jet.taujet.CUT_ptd  [0] || pt          > para.jet.taujet.CUT_ptu  [0] )){para.debug.Message(4,26,"false: cjet single jet pt  ", loop1,  pt);continue;}//endif
 			if( para.jet.taujet.JCUT_mass[0] == true && ( mass        < para.jet.taujet.CUT_massd[0] || mass        > para.jet.taujet.CUT_massu[0] )){para.debug.Message(4,26,"false: cjet single jet mass", loop1,mass);continue;}//endif
 			if( para.jet.taujet.JCUT_eta [0] == true && ( y           < para.jet.taujet.CUT_etad [0] || y           > para.jet.taujet.CUT_etau [0] )){para.debug.Message(4,26,"false: cjet single jet eta ", loop1,   y);continue;}//endif

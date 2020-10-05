@@ -16,6 +16,33 @@
 
 #include "Function/Froot.h"
 
+
+template <class TMess_single>
+void ShowMessage_single(TMess_single t)
+{
+	std::cout << t << " " ;
+}
+
+template <typename TMess1, typename... TMess4> 
+void ShowMessage(int level, TMess1 mess, TMess4... ddata4){
+	std::cout.setf(std::ios::left);
+	std::string fill="";
+	std::string fill_inc="     ";
+
+	int  fillnum_inc=5;
+	int  fillnum=0;
+	for(int i=0;i<level;i++){
+		fill+=fill_inc;
+		fillnum+=fillnum_inc;
+	}
+
+	std::cout << fill << std::setw(66-fillnum) << std::setfill(' ') << mess  << ":    " ;
+	int arr[] = {(ShowMessage_single(ddata4), 0)...};
+	std::cout << std::endl;
+}
+
+
+/*
 template <typename TMess1, typename TMess2,typename TMess3, typename TMess4, typename TMess5> 
 void ShowMessage(int level, TMess1 mess, TMess2 ddata, TMess3 ddata_comm, TMess4 ddata4, TMess5 ddata5){
 	std::cout.setf(std::ios::left);
@@ -118,6 +145,8 @@ void ShowMessage(int level, TMess1 mess, TMess2 ddata, TMess3 ddata_comm){
 }
 
 
+*/
+
 template <typename TMess1, typename TMess2> 
 void ShowMessage(int level, TMess1 mess, TMess2 ddata){
 	std::cout.setf(std::ios::left);
@@ -149,8 +178,6 @@ void ShowMessage(int level, TMess1 mess, TMess2 ddata){
 
 		std::cout << fill << std::setw(66-fillnum) << std::setfill(' ') << mess  << ":    " << ddata << std::endl;
 }
-
-
 
 void ShowMessage(int level, std::string mess);
 void ShowMessage (int level);

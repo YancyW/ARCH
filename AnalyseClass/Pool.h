@@ -328,10 +328,12 @@ class APool{
 
 		int Set_Is_DS_Used(bool judge){
 			_IsDSUsed = judge;
+			return(_IsDSUsed);
 		}
 
 		int Set_Has_DS_Best(bool judge){
 			_HasDSBest = judge;
+			return(_HasDSBest);
 		}
 
 		void Set_DS_Pool();
@@ -356,10 +358,12 @@ class APool{
 
 		int Set_Is_SS_Used(bool judge){
 			_IsSSUsed = judge;
+			return(_IsSSUsed);
 		}
 
 		int Set_Has_SS_Best(bool judge){
 			_HasSSBest = judge;
+			return(_HasSSBest);
 		}
 
 		void Get_SS_Pairs();

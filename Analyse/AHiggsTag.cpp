@@ -35,6 +35,9 @@ bool AHiggsTag(CDraw &para, MyPlots *plots, fastjet::ClusterSequence &cs, std::v
 	if(JMD&&JNS){
 		return(true);
 	}
+	else{
+		return(false);
+	}
 }
 
 

@@ -1,0 +1,65 @@
+FILE_NUM          : 45
+CHANNEL_NUM       : 45
+
+FILE            : ['/home/ywang/Code/Workplace/eta_24/data_ttbar_tau_quark/tag_1_delphes_events_1.root'
+                  ,'/home/ywang/Code/Workplace/eta_24/data_ttbar_tau_quark/tag_1_delphes_events_2.root'
+                  ,'/home/ywang/Code/Workplace/eta_24/data_ttbar_tau_quark/tag_1_delphes_events_3.root'
+                  ,'/home/ywang/Code/Workplace/eta_24/data_ttbar_tau_quark/tag_1_delphes_events_4.root'
+                  ,'/home/ywang/Code/Workplace/eta_24/data_ttbar_tau_quark/tag_1_delphes_events_5.root'
+                  ,'/home/ywang/Code/Workplace/eta_24/data_ttbar_tau_quark/tag_1_delphes_events_6.root'
+                  ,'/home/ywang/Code/Workplace/eta_24/data_ttbar_tau_quark/tag_1_delphes_events_7.root'
+                  ,'/home/ywang/Code/Workplace/eta_24/data_ttbar_tau_quark/tag_1_delphes_events_8.root'
+                  ,'/home/ywang/Code/Workplace/eta_24/data_ttbar_tau_quark/tag_1_delphes_events_9.root'
+                  ,'/home/ywang/Code/Workplace/eta_24/data_ttbar_tau_quark/tag_1_delphes_events_10.root'
+                  ,'/home/ywang/Code/Workplace/eta_24/data_ttbar_tau_quark/tag_1_delphes_events_11.root'
+                  ,'/home/ywang/Code/Workplace/eta_24/data_ttbar_tau_quark/tag_1_delphes_events_12.root'
+                  ,'/home/ywang/Code/Workplace/eta_24/data_ttbar_tau_quark/tag_1_delphes_events_13.root'
+                  ,'/home/ywang/Code/Workplace/eta_24/data_ttbar_tau_quark/tag_1_delphes_events_14.root'
+                  ,'/home/ywang/Code/Workplace/eta_24/data_ttbar_tau_quark/tag_1_delphes_events_15.root'
+                  ,'/home/ywang/Code/Workplace/eta_24/data_ttbar_tau_quark/tag_1_delphes_events_16.root'
+                  ,'/home/ywang/Code/Workplace/eta_24/data_ttbar_tau_quark/tag_1_delphes_events_17.root'
+                  ,'/home/ywang/Code/Workplace/eta_24/data_ttbar_tau_quark/tag_1_delphes_events_18.root'
+                  ,'/home/ywang/Code/Workplace/eta_24/data_ttbar_tau_quark/tag_1_delphes_events_19.root'
+                  ,'/home/ywang/Code/Workplace/eta_24/data_ttbar_tau_quark/tag_1_delphes_events_20.root'
+                  ,'/home/ywang/Code/Workplace/eta_24/data_ttbar_tau_quark/tag_1_delphes_events_21.root'
+                  ,'/home/ywang/Code/Workplace/eta_24/data_ttbar_tau_quark/tag_1_delphes_events_22.root'
+                  ,'/home/ywang/Code/Workplace/eta_24/data_ttbar_tau_quark/tag_1_delphes_events_23.root'
+                  ,'/home/ywang/Code/Workplace/eta_24/data_ttbar_tau_quark/tag_1_delphes_events_24.root'
+                  ,'/home/ywang/Code/Workplace/eta_24/data_ttbar_tau_quark/tag_1_delphes_events_25.root'
+                  ,'/home/ywang/Code/Workplace/eta_24/data_ttbar_tau_quark/tag_1_delphes_events_26.root'
+                  ,'/home/ywang/Code/Workplace/eta_24/data_ttbar_tau_quark/tag_1_delphes_events_27.root'
+                  ,'/home/ywang/Code/Workplace/eta_24/data_ttbar_tau_quark/tag_1_delphes_events_28.root'
+                  ,'/home/ywang/Code/Workplace/eta_24/data_ttbar_tau_quark/tag_1_delphes_events_29.root'
+                  ,'/home/ywang/Code/Workplace/eta_24/data_ttbar_tau_quark/tag_1_delphes_events_30.root'
+                  ,'/home/ywang/Code/Workplace/eta_24/data_ttbar_tau_quark/tag_1_delphes_events_31.root'
+                  ,'/home/ywang/Code/Workplace/eta_24/data_ttbar_tau_quark/tag_1_delphes_events_32.root'
+                  ,'/home/ywang/Code/Workplace/eta_24/data_ttbar_tau_quark/tag_1_delphes_events_33.root'
+                  ,'/home/ywang/Code/Workplace/eta_24/data_ttbar_tau_quark/tag_1_delphes_events_34.root'
+                  ,'/home/ywang/Code/Workplace/eta_24/data_ttbar_tau_quark/tag_1_delphes_events_35.root'
+                  ,'/home/ywang/Code/Workplace/eta_24/data_ttbar_tau_quark/tag_1_delphes_events_36.root'
+                  ,'/home/ywang/Code/Workplace/eta_24/data_ttbar_tau_quark/tag_1_delphes_events_37.root'
+                  ,'/home/ywang/Code/Workplace/eta_24/data_ttbar_tau_quark/tag_1_delphes_events_38.root'
+                  ,'/home/ywang/Code/Workplace/eta_24/data_ttbar_tau_quark/tag_1_delphes_events_39.root'
+                  ,'/home/ywang/Code/Workplace/eta_24/data_ttbar_tau_quark/tag_1_delphes_events_40.root'
+                  ,'/home/ywang/Code/Workplace/eta_24/data_ttbar_tau_quark/tag_1_delphes_events_41.root'
+                  ,'/home/ywang/Code/Workplace/eta_24/data_ttbar_tau_quark/tag_1_delphes_events_42.root'
+                  ,'/home/ywang/Code/Workplace/eta_24/data_ttbar_tau_quark/tag_1_delphes_events_43.root'
+                  ,'/home/ywang/Code/Workplace/eta_24/data_ttbar_tau_quark/tag_1_delphes_events_44.root'
+                  ,'/home/ywang/Code/Workplace/eta_24/data_ttbar_tau_quark/tag_1_delphes_events_45.root'
+                  ]
+ 
+
+
+FILE_DESCRIP            : [tt_tau_quark, tt_tau_quark, tt_tau_quark, tt_tau_quark, tt_tau_quark, tt_tau_quark, tt_tau_quark, tt_tau_quark, tt_tau_quark, tt_tau_quark
+                          ,tt_tau_quark, tt_tau_quark, tt_tau_quark, tt_tau_quark, tt_tau_quark, tt_tau_quark, tt_tau_quark, tt_tau_quark, tt_tau_quark, tt_tau_quark
+                          ,tt_tau_quark, tt_tau_quark, tt_tau_quark, tt_tau_quark, tt_tau_quark, tt_tau_quark, tt_tau_quark, tt_tau_quark, tt_tau_quark, tt_tau_quark
+                          ,tt_tau_quark, tt_tau_quark, tt_tau_quark, tt_tau_quark, tt_tau_quark, tt_tau_quark, tt_tau_quark, tt_tau_quark, tt_tau_quark, tt_tau_quark
+                          ,tt_tau_quark, tt_tau_quark, tt_tau_quark, tt_tau_quark, tt_tau_quark
+                          ]
+ 
+CROSS_SECTION   : 38680 
+
+Root_Head_Name     : datatrain
+Root_Head_BDT_Name : datatest
+
+

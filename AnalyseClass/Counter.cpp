@@ -2,6 +2,7 @@
 
 void ACounter::Init(CDraw &para){
 	AllEntries   = para.Total_Event();
+	_xection     = para.file.xection;
 	jetSwitch    = para.jet.SWITCH; 
 	jetsSwitch   = para.jet.jets.SWITCH; 
 	bjetSwitch   = para.jet.bjet.SWITCH; 
@@ -44,8 +45,8 @@ void ACounter::setCounterSingle(std::string event_name,float num){
 
 void ACounter::showCounter(){
 	ShowMessage(2," OutPut --- Species for All Particle" );
-	for(ACounterType::iterator it = _counter.begin(); it!= _counter.end(); ++it ){
-		ShowMessage(2,"number  of "+it->first+" is" , it->second);
+	for(ACounterType::iterator it=_counter.begin(); it!= _counter.end(); ++it ){
+		ShowMessage(2,"number  of "+it->first+" is" , it->second, "xection is", it->second/AllEntries*_xection);
 	}
 }
 
@@ -130,81 +131,154 @@ void ACounter::getCounter(std::string event_name){
 void ACounter::sendCounter(std::string event_name){
 	if(event_name=="basic_jet"&& jetSwitch && jetsSwitch){
 		ShowMessage(2,"number    passed cut basic  jet is        " , pass_basic_jet);
-		ShowMessage(2,"efficient passed cut basic  jet is        " ,float(pass_basic_jet     )/float(AllEntries));
+		float num=float(pass_basic_jet     )/float(AllEntries);
+		float cut_xection=num *_xection;
+		ShowMessage(2,"efficient passed cut basic  jet is        " , num, "xection is", cut_xection);
+		setCounterSingle(event_name,float(pass_basic_jet));
 	}
 	if(event_name=="basic_tagged_bjet"&& jetSwitch && jetsSwitch &&  bjetSwitch){
-		ShowMessage(2,"efficient passed cut tagged bjet is       ", float(pass_basic_bjet    )/float(AllEntries));
+		float num=float(pass_basic_bjet     )/float(AllEntries);
+		float cut_xection=num *_xection;
+		ShowMessage(2,"efficient passed cut tagged bjet is       ", num, "xection is", cut_xection);
+		setCounterSingle(event_name,float(pass_basic_bjet));
 	}
 	if(event_name=="basic_tagged_cjet"&& jetSwitch && jetsSwitch &&  cjetSwitch){
-		ShowMessage(2,"efficient passed cut tagged cjet is       ", float(pass_basic_cjet    )/float(AllEntries));
+		float num=float(pass_basic_cjet     )/float(AllEntries);
+		float cut_xection=num *_xection;
+		ShowMessage(2,"efficient passed cut tagged cjet is       ", num, "xection is", cut_xection);
+		setCounterSingle(event_name,float(pass_basic_cjet));
 	}
 	if(event_name=="basic_tagged_taujet"&& jetSwitch && jetsSwitch &&  taujetSwitch){
-		ShowMessage(2,"efficient passed cut tagged taujet is     ", float(pass_basic_taujet  )/float(AllEntries));
+		float num=float(pass_basic_taujet     )/float(AllEntries);
+		float cut_xection=num *_xection;
+		ShowMessage(2,"efficient passed cut tagged taujet is     ", num, "xection is", cut_xection);
+		setCounterSingle(event_name,float(pass_basic_taujet));
 	}
 	if(event_name=="basic_tagged_qjet"&& jetSwitch && jetsSwitch &&  qjetSwitch){
-		ShowMessage(2,"efficient passed cut tagged qjet is       ", float(pass_basic_qjet    )/float(AllEntries));
+		float num=float(pass_basic_qjet     )/float(AllEntries);
+		float cut_xection=num *_xection;
+		ShowMessage(2,"efficient passed cut tagged qjet is       ", num, "xection is", cut_xection);
+		setCounterSingle(event_name,float(pass_basic_qjet));
 	}
 	if(event_name=="basic_lep"&& lepSwitch && !elecSwitch && !muonSwitch ){
-		ShowMessage(2,"efficient passed cut baisc lep  is        ", float(pass_basic_lep     )/float(AllEntries));
+		float num=float(pass_basic_lep     )/float(AllEntries);
+		float cut_xection=num *_xection;
+		ShowMessage(2,"efficient passed cut baisc lep  is        ", num, "xection is", cut_xection);
+		setCounterSingle(event_name,float(pass_basic_lep));
 	}
 	if(event_name=="basic_elec"&& lepSwitch && elecSwitch && !muonSwitch ){
-		ShowMessage(2,"efficient passed cut baisc elec is        ", float(pass_basic_elec    )/float(AllEntries));
+		float num=float(pass_basic_elec     )/float(AllEntries);
+		float cut_xection=num *_xection;
+		ShowMessage(2,"efficient passed cut baisc elec is        ", num, "xection is", cut_xection);
+		setCounterSingle(event_name,float(pass_basic_elec));
 	}
 	if(event_name=="basic_muon"&& lepSwitch && !elecSwitch && muonSwitch ){
-		ShowMessage(2,"efficient passed cut basic muon is        ", float(pass_basic_muon    )/float(AllEntries));
+		float num=float(pass_basic_muon     )/float(AllEntries);
+		float cut_xection=num *_xection;
+		ShowMessage(2,"efficient passed cut basic muon is        ", num, "xection is", cut_xection);
+		setCounterSingle(event_name,float(pass_basic_muon));
 	}
 	if(event_name=="basic_met"&& metSwitch){
-		ShowMessage(2,"efficient passed cut basic  met is        ", float(pass_basic_met     )/float(AllEntries));
+		float num=float(pass_basic_met     )/float(AllEntries);
+		float cut_xection=num *_xection;
+		ShowMessage(2,"efficient passed cut basic  met is        ", num, "xection is", cut_xection);
+		setCounterSingle(event_name,float(pass_basic_met));
 	}
 	if(event_name=="basic" ){
-		ShowMessage(2,"efficient passed cut basic is             ", float(pass_basic         )/float(AllEntries));
+		float num=float(pass_basic     )/float(AllEntries);
+		float cut_xection=num *_xection;
+		ShowMessage(2,"efficient passed cut basic is             ", num, "xection is", cut_xection);
+		setCounterSingle(event_name,float(pass_basic));
 	}
 	if(event_name=="operation_combine1"&& combSwitch){
-		ShowMessage(2,"efficient passed cut remass1    is        ", float(pass_remass1       )/float(AllEntries));
+		float num=float(pass_remass1)/float(AllEntries);
+		float cut_xection=num *_xection;
+		ShowMessage(2,"efficient passed cut remass1    is        ", num, "xection is", cut_xection);
+		setCounterSingle(event_name,float(pass_remass1));
 	}
 	if(event_name=="operation_combine2"&& combSwitch){
-		ShowMessage(2,"efficient passed cut remass2    is        ", float(pass_remass2       )/float(AllEntries));
+		float num=float(pass_remass2)/float(AllEntries);
+		float cut_xection=num *_xection;
+		ShowMessage(2,"efficient passed cut remass2    is        ", num, "xection is", cut_xection);
+		setCounterSingle(event_name,float(pass_remass2));
 	}
 	if(event_name=="operation_combine3"&& combSwitch){
-		ShowMessage(2,"efficient passed cut remass3    is        ", float(pass_remass3       )/float(AllEntries));
+		float num=float(pass_remass3)/float(AllEntries);
+		float cut_xection=num *_xection;
+		ShowMessage(2,"efficient passed cut remass3    is        ", num, "xection is", cut_xection);
+		setCounterSingle(event_name,float(pass_remass3));
 	}
 	if(event_name=="operation_combine4"&& combSwitch){
-		ShowMessage(2,"efficient passed cut remass4    is        ", float(pass_remass4       )/float(AllEntries));
+		float num=float(pass_remass4)/float(AllEntries);
+		float cut_xection=num *_xection;
+		ShowMessage(2,"efficient passed cut remass4    is        ", num, "xection is", cut_xection);
+		setCounterSingle(event_name,float(pass_remass4));
 	}
 	if(event_name=="operation_combine5"&& combSwitch){
-		ShowMessage(2,"efficient passed cut remass5    is        ", float(pass_remass5       )/float(AllEntries));
+		float num=float(pass_remass5)/float(AllEntries);
+		float cut_xection=num *_xection;
+		ShowMessage(2,"efficient passed cut remass5    is        ", num, "xection is", cut_xection);
+		setCounterSingle(event_name,float(pass_remass5));
 	}
 	if(event_name=="operation_combine6"&& combSwitch){
-		ShowMessage(2,"efficient passed cut remass6    is        ", float(pass_remass6       )/float(AllEntries));
+		float num=float(pass_remass6)/float(AllEntries);
+		float cut_xection=num *_xection;
+		ShowMessage(2,"efficient passed cut remass6    is        ", num, "xection is", cut_xection);
+		setCounterSingle(event_name,float(pass_remass6));
 	}
 	if(event_name=="operation_recoil"&& recoilSwitch){
-		ShowMessage(2,"efficient passed cut recoilmass is        ", float(pass_recoilmass    )/float(AllEntries));
+		float num=float(pass_recoilmass)/float(AllEntries);
+		float cut_xection=num *_xection;
+		ShowMessage(2,"efficient passed cut recoilmass is        ", num, "xection is", cut_xection);
+		setCounterSingle(event_name,float(pass_recoilmass));
 	}
 	if(event_name=="operation_recoil_comb"&& recombSwitch){
-		ShowMessage(2,"efficient passed cut comb recoil is       ", float(pass_comb_recoil   )/float(AllEntries));
+		float num=float(pass_comb_recoil)/float(AllEntries);
+		float cut_xection=num *_xection;
+		ShowMessage(2,"efficient passed cut comb recoil is       ", num, "xection is", cut_xection);
+		setCounterSingle(event_name,float(pass_comb_recoil));
 	}
 	if(event_name=="JSS_Massdrop"&& mdSwitch){
-		ShowMessage(2,"efficient passed cut MassDrop   is        ", float(pass_massdrop      )/float(AllEntries));
+		float num=float(pass_massdrop)/float(AllEntries);
+		float cut_xection=num *_xection;
+		ShowMessage(2,"efficient passed cut MassDrop   is        ", num, "xection is", cut_xection);
+		setCounterSingle(event_name,float(pass_massdrop));
 	}
 	if(event_name=="JSS_Nsubjettiness"&& nsubSwitch){
-		ShowMessage(2,"efficient passed cut NSubjettiness is     ", float(pass_nsubjettiness )/float(AllEntries));
+		float num=float(pass_nsubjettiness)/float(AllEntries);
+		float cut_xection=num *_xection;
+		ShowMessage(2,"efficient passed cut NSubjettiness is     ", num, "xection is", cut_xection);
+		setCounterSingle(event_name,float(pass_nsubjettiness));
 	}
 	if(event_name=="JSS_BoostTag"&& boostSwitch){
-		ShowMessage(2,"efficient passed cut BoostTag   is        ", float(pass_boosttag      )/float(AllEntries));
+		float num=float(pass_boosttag)/float(AllEntries);
+		float cut_xection=num *_xection;
+		ShowMessage(2,"efficient passed cut BoostTag   is        ", num, "xection is", cut_xection);
+		setCounterSingle(event_name,float(pass_boosttag));
 	}
 	if(event_name=="JSS"&& jetsubSwitch){
-		ShowMessage(2,"efficient passed cut JetSubStructure is   " , float(pass_jetsub       )/float(AllEntries));
+		float num=float(pass_jetsub)/float(AllEntries);
+		float cut_xection=num *_xection;
+		ShowMessage(2,"efficient passed cut JetSubStructure is   " ,num, "xection is", cut_xection);
+		setCounterSingle(event_name,float(pass_jetsub));
 	}
 	if(event_name=="JES_JEP"&& jepSwitch){
-		ShowMessage(2,"efficient passed cut JEP        is        ", float(pass_jep           )/float(AllEntries));
+		float num=float(pass_jep)/float(AllEntries);
+		float cut_xection=num *_xection;
+		ShowMessage(2,"efficient passed cut JEP        is        ", num, "xection is", cut_xection);
+		setCounterSingle(event_name,float(pass_jep));
 	}
 	if(event_name=="All"){
-		ShowMessage(2,"efficient passed cut all        is        " , float(pass              )/float(AllEntries));
+		float num=float(pass)/float(AllEntries);
+		float cut_xection=num *_xection;
+		ShowMessage(2,"efficient passed cut all        is        " ,num, "xection is", cut_xection);
+		setCounterSingle(event_name,float(pass));
 	}
 }
 void ACounter::sendCounter(){
 	ShowMessage(2," OutPut --- Efficience for Cut" );
 	ShowMessage(2,"all entries are                      " , AllEntries);
+	ShowMessage(2,"total cross section is               " , _xection);
 	sendCounter("basic_jet");
 	sendCounter("basic_tagged_bjet");
 	sendCounter("basic_tagged_cjet");
@@ -267,4 +341,5 @@ void ACounter::Clear(){
 
 	_counter          .clear();
 	_weight           = 1;
+	_xection          = 0;
 }

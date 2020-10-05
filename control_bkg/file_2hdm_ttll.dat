@@ -1,0 +1,32 @@
+FILE_NUM          : 17
+CHANNEL_NUM       : 17
+
+ 
+FILE            : ['/home/ywang/Code/Workplace/eta_24/data_ttll/tag_1_delphes_events_1.root'
+                 , '/home/ywang/Code/Workplace/eta_24/data_ttll/tag_1_delphes_events_2.root' 
+                 , '/home/ywang/Code/Workplace/eta_24/data_ttll/tag_1_delphes_events_3.root' 
+                 , '/home/ywang/Code/Workplace/eta_24/data_ttll/tag_1_delphes_events_4.root' 
+                 , '/home/ywang/Code/Workplace/eta_24/data_ttll/tag_1_delphes_events_5.root' 
+                 , '/home/ywang/Code/Workplace/eta_24/data_ttll/tag_1_delphes_events_6.root' 
+                 , '/home/ywang/Code/Workplace/eta_24/data_ttll/tag_1_delphes_events_7.root' 
+                 , '/home/ywang/Code/Workplace/eta_24/data_ttll/tag_1_delphes_events_8.root' 
+                 , '/home/ywang/Code/Workplace/eta_24/data_ttll/tag_1_delphes_events_9.root' 
+                 , '/home/ywang/Code/Workplace/eta_24/data_ttll/tag_1_delphes_events_10.root' 
+                 , '/home/ywang/Code/Workplace/eta_24/data_ttll/tag_1_delphes_events_11.root' 
+                 , '/home/ywang/Code/Workplace/eta_24/data_ttll/tag_1_delphes_events_12.root' 
+                 , '/home/ywang/Code/Workplace/eta_24/data_ttll/tag_1_delphes_events_13.root' 
+                 , '/home/ywang/Code/Workplace/eta_24/data_ttll/tag_1_delphes_events_14.root' 
+                 , '/home/ywang/Code/Workplace/eta_24/data_ttll/tag_1_delphes_events_15.root' 
+                 , '/home/ywang/Code/Workplace/eta_24/data_ttll/tag_1_delphes_events_16.root' 
+                 , '/home/ywang/Code/Workplace/eta_24/data_ttll/tag_1_delphes_events_17.root' 
+                    ]
+
+
+FILE_DESCRIP      : [ttll, ttll, ttll, ttll, ttll, ttll, ttll, ttll, ttll, ttll 
+                    ,ttll, ttll, ttll, ttll, ttll, ttll, ttll
+                    ]
+
+CROSS_SECTION   : 14.6 
+
+Root_Head_Name     : datatrain
+Root_Head_BDT_Name : datatest

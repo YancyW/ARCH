@@ -2,8 +2,8 @@
 
 std::ostream & operator<< (std::ostream & ostr, Jet* particle){
 	printf("\n"); // label the columns
-	printf("%12s %12s %12s %12s %12s \n", "rapidity", "phi", "pt","m","btag"); // label the columns
-	printf("%12.5f %12.5f %12.5f %12.5f  %12i\n",  particle->Eta,particle->Phi,particle->PT,particle->Mass,particle->BTag);
+	printf("%12s %12s %12s %12s %12s %12s %12s %12s %12s \n", "px","py","pz","e","rapidity", "phi", "pt","m","btag"); // label the columns
+	printf("%12.5f %12.5f %12.5f %12.5f %12.5f %12.5f %12.5f %12.5f %12i\n",  particle->P4()[0], particle->P4()[1], particle->P4()[1], particle->P4()[2], particle->Eta,particle->Phi,particle->PT,particle->Mass,particle->BTag);
 	return ostr;
 }
 
@@ -13,9 +13,9 @@ std::ostream & operator<<(std::ostream & ostr, const std::vector<Jet*> particles
 	if (particles.size() == 0) return ostr;
 
 	printf("\n"); // label the columns
-	printf("%7s %12s %12s %12s %12s %12s \n","jet #",  "rapidity", "phi", "pt","m","btag"); // label the columns
+	printf("%7s %12s %12s %12s %12s %12s %12s %12s %12s %12s \n","jet #", "px","py","pz","e", "rapidity", "phi", "pt","m","btag"); // label the columns
 	for (unsigned int i = 0; i < particles.size(); i++) {
-		printf("%5u %12.5f %12.5f %12.5f %12.5f %12i\n", i,  particles[i]->Eta,particles[i]->Phi,particles[i]->PT,particles[i]->Mass,particles[i]->BTag);
+		printf("%5u %12.5f %12.5f %12.5f %12.5f %12.5f %12.5f %12.5f %12.5f %12i\n", i, particles[i]->P4()[0], particles[i]->P4()[1], particles[i]->P4()[2], particles[i]->P4()[3], particles[i]->Eta,particles[i]->Phi,particles[i]->PT,particles[i]->Mass,particles[i]->BTag);
 
 	}
 	return ostr;

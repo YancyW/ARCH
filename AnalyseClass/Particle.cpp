@@ -355,7 +355,7 @@ void AParticle::Set_Mother(std::vector<int> inM){
 }
 
 void AParticle::Set_Daughter(int inD){
-	_Mother.push_back(inD);
+	_Daughter.push_back(inD);
 }
 
 void AParticle::Set_Daughter(std::vector<int> inD){
@@ -651,9 +651,41 @@ std::ostream & operator<<(std::ostream & ostr, AParticle& particle){
 
 std::ostream & operator<<(std::ostream & ostr, std::vector<AParticle> &particle){
 	printf("\n"); // ]label the columns
+
+
+	printf("%12s %12s %12s %12s %12s %12s %12s %12s %12s %12s %12s %12s %12s %12s %12s %12s %12s \n","ith", "ID" ,"PID","charge", "px","py","pz","e", "rapidity","CosTheta","phi", "pt","m","M1","M2","D1","D2"); // label the columns
 	for (unsigned int i = 0; i < particle.size(); i++) {
-		printf("%12s %12s %12s %12s %12s %12s %12s %12s %12s %12s %12s %12s %12s \n","ith", "ID" ,"PID","charge", "px","py","pz","e", "rapidity","CosTheta","phi", "pt","m"); // label the columns
-		printf("%12i %12i %12i %12.5f %12.5f %12.5f %12.5f %12.5f %12.5f %12.5f %12.5f %12.5f %12.5f  \n",i+1, particle[i].ID(), particle[i].PID(), particle[i].Charge(), particle[i].Px(),particle[i].Py(),particle[i].Pz(),particle[i].E(), particle[i].Y(),particle[i].CosTheta(),particle[i].Phi(),particle[i].Pt(),particle[i].M());
+		int parent1, parent2;
+		int daughter1,daughter2;
+		AParticle* in=&particle[i];
+		if(in->Mother().size()==0){
+		    parent1 = -1;
+		    parent2 = -1;
+		}
+		else if(in->Mother().size()==1){
+		    parent1 = in->Mother()[0];
+		    parent2 = -1;
+		}
+		else if(in->Mother().size()>=2){
+		    parent1 = in->Mother()[0];
+		    parent2 = in->Mother()[1];
+		}
+		
+		if(in->Daughter().size()==0){
+		    daughter1 = -1;
+		    daughter2 = -1;
+		}
+		else if(in->Daughter().size()==1){
+		    daughter1 = in->Daughter()[0];
+		    daughter2 = -1;
+		}
+		else if(in->Daughter().size()>=2){
+		    daughter1 = in->Daughter()[0];
+		    daughter2 = in->Daughter()[1];
+		}
+
+
+		printf("%12i %12i %12i %12.5f %12.5f %12.5f %12.5f %12.5f %12.5f %12.5f %12.5f %12.5f %12.5f %12i %12i %12i %12i   \n",i+1, particle[i].ID(), particle[i].PID(), particle[i].Charge(), particle[i].Px(),particle[i].Py(),particle[i].Pz(),particle[i].E(), particle[i].Y(),particle[i].CosTheta(),particle[i].Phi(),particle[i].Pt(),particle[i].M(),parent1,parent2,daughter1,daughter2);
 
 	}
 	return ostr;
@@ -664,9 +696,8 @@ std::ostream & operator<<(std::ostream & ostr, std::vector<AParticle> &particle)
 
 std::ostream & operator<<(std::ostream & ostr, AParticleType particle){
 	printf("\n"); // ]label the columns
+	printf("%12s %12s %12s %12s %12s %12s %12s %12s %12s %12s %12s %12s %12s \n","ith", "ID" ,"PID","charge", "px","py","pz","e", "rapidity","CosTheta","phi", "pt","m"); // label the columns
 	for (unsigned int i = 0; i < particle.size(); i++) {
-
-		printf("%12s %12s %12s %12s %12s %12s %12s %12s %12s %12s %12s %12s %12s \n","ith", "ID" ,"PID","charge", "px","py","pz","e", "rapidity","CosTheta","phi", "pt","m"); // label the columns
 		printf("%12i %12i %12i %12.5f %12.5f %12.5f %12.5f %12.5f %12.5f %12.5f %12.5f %12.5f %12.5f  \n", i+1, particle[i]->ID(), particle[i]->PID(), particle[i]->Charge(), particle[i]->Px(),particle[i]->Py(),particle[i]->Pz(),particle[i]->E(), particle[i]->Y(),particle[i]->CosTheta(),particle[i]->Phi(),particle[i]->Pt(),particle[i]->M());
 	}
 	return ostr;

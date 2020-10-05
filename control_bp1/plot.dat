@@ -1,0 +1,191 @@
+PLOT_jet                :   false 
+PLOT_e_jets             :   false
+PLOT_pt_jets            :   false
+PLOT_eta_jets           :   false
+PLOT_mass_jets          :   false
+PLOT_r_lep_jets         :   false
+PLOT_r_jet_jets         :   false
+
+
+PLOT_e_tjet             :   false
+PLOT_pt_tjet            :   false
+PLOT_eta_tjet           :   false
+PLOT_mass_tjet          :   false
+PLOT_r_lep_tjet         :   false
+PLOT_r_jet_tjet         :   false
+
+PLOT_e_bjet             :   false
+PLOT_pt_bjet            :   false
+PLOT_eta_bjet           :   false
+PLOT_mass_bjet          :   false
+PLOT_r_lep_bjet         :   false
+PLOT_r_jet_bjet         :   false
+
+
+PLOT_e_cjet             :   false
+PLOT_pt_cjet            :   false
+PLOT_eta_cjet           :   false
+PLOT_mass_cjet          :   false
+PLOT_r_lep_cjet         :   false
+PLOT_r_jet_cjet         :   false
+
+
+PLOT_e_qjet             :   false
+PLOT_pt_qjet            :   false
+PLOT_eta_qjet           :   false
+PLOT_mass_qjet          :   false
+PLOT_r_lep_qjet         :   false
+PLOT_r_jet_qjet         :   false
+
+
+PLOT_e_taujet             :   false
+PLOT_pt_taujet            :   false
+PLOT_eta_taujet           :   false
+PLOT_mass_taujet          :   false
+PLOT_r_lep_taujet         :   false
+PLOT_r_jet_taujet         :   false
+
+PLOT_e_gluonjet             :   false
+PLOT_pt_gluonjet            :   false
+PLOT_eta_gluonjet           :   false
+PLOT_mass_gluonjet          :   false
+PLOT_r_lep_gluonjet         :   false
+PLOT_r_jet_gluonjet         :   false
+
+PLOT_e_tagjet           :   false
+PLOT_pt_tagjet          :   false
+PLOT_eta_tagjet         :   false
+PLOT_mass_tagjet        :   false
+PLOT_r_lep_tagjet       :   false
+PLOT_r_jet_tagjet       :   false
+
+
+PLOT_e_untagjet         :   false
+PLOT_pt_untagjet        :   false
+PLOT_eta_untagjet       :   false
+PLOT_mass_untagjet      :   false
+PLOT_r_lep_untagjet     :   false
+PLOT_r_jet_untagjet     :   false
+
+
+PLOT_lepton             :   false
+PLOT_e_lep              :   false
+PLOT_pt_lep             :   false
+PLOT_eta_lep            :   false
+PLOT_r_lep_lep          :   false
+
+
+PLOT_e_elec             :   false
+PLOT_pt_elec            :   false
+PLOT_eta_elec           :   false
+PLOT_r_lep_elec         :   false
+
+
+PLOT_e_muon             :   false
+PLOT_pt_muon            :   false
+PLOT_eta_muon           :   false
+PLOT_r_lep_muon         :   false
+
+
+PLOT_e_tau              :   false
+PLOT_pt_tau             :   false
+PLOT_eta_tau            :   false
+PLOT_r_lep_tau          :   false
+
+
+PLOT_photon             :   false
+PLOT_pt_photon          :   false
+PLOT_eta_photon         :   false
+PLOT_r_photon_photon    :   false
+PLOT_r_lep_photon       :   false
+PLOT_r_jet_photon       :   false
+
+
+PLOT_met                :   false
+PLOT_pt_met             :   false
+PLOT_eta_met            :   false
+PLOT_r_photon_met       :   false
+PLOT_r_lep_met          :   false
+PLOT_r_jet_met          :   false
+
+
+
+PLOT_comb               :   false
+
+PLOT_comb_pt_jets       :   false
+PLOT_comb_eta_jets      :   false
+PLOT_comb_mass_jets     :   false
+
+PLOT_comb_pt_bjet       :   false
+PLOT_comb_eta_bjet      :   false
+PLOT_comb_mass_bjet     :   false
+
+PLOT_comb_pt_cjet       :   false
+PLOT_comb_eta_cjet      :   false
+PLOT_comb_mass_cjet     :   false
+
+PLOT_comb_pt_qjet       :   false
+PLOT_comb_eta_qjet      :   false
+PLOT_comb_mass_qjet     :   false
+
+PLOT_comb_pt_tagjet     :   false
+PLOT_comb_eta_tagjet    :   false
+PLOT_comb_mass_tagjet   :   false
+
+PLOT_comb_pt_untagjet   :   false
+PLOT_comb_eta_untagjet  :   false
+PLOT_comb_mass_untagjet :   false
+
+PLOT_comb_pt_lep        :   false
+PLOT_comb_eta_lep       :   false
+PLOT_comb_mass_lep      :   false
+
+PLOT_comb_pt_elec       :   false
+PLOT_comb_eta_elec      :   false
+PLOT_comb_mass_elec     :   false
+
+PLOT_comb_pt_muon       :   false
+PLOT_comb_eta_muon      :   false
+PLOT_comb_mass_muon     :   false
+
+PLOT_comb_pt_tau        :   false
+PLOT_comb_eta_tau       :   false
+PLOT_comb_mass_tau      :   false
+
+PLOT_comb_pt_photon     :   false
+PLOT_comb_eta_photon    :   false
+PLOT_comb_mass_photon   :   false
+  
+
+
+PLOT_recoil               :   false
+
+PLOT_recoil_mass_jets     :   false
+
+PLOT_recoil_mass_bjet     :   false
+
+PLOT_recoil_mass_cjet     :   false
+
+PLOT_recoil_mass_qjet     :   false
+
+PLOT_recoil_mass_tagjet   :   false
+
+PLOT_recoil_mass_untagjet :   false
+
+PLOT_recoil_mass_lep      :   false
+
+PLOT_recoil_mass_elec     :   false
+
+PLOT_recoil_mass_muon     :   false
+
+PLOT_recoil_mass_tau      :   false
+
+PLOT_recoil_mass_photon   :   false
+  
+PLOT_JetSubStructure      :   false
+PLOT_JEP                  :   false
+PLOT_global               :   false
+
+PLOT_MassDrop             :    true 
+PLOT_NSubjettiness        :   false
+PLOT_BoostTag             :   false

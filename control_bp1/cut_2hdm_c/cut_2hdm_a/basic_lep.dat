@@ -1,0 +1,30 @@
+CUT_num_basic_lep          :          1
+
+
+ISOLATE_cone_lep_basic_lep :           0.3
+ISOLATE_cone_had_basic_lep :           0.3
+ISOLATE_cone_photon_basic_lep   :      0.3
+ISOLATE_coef_lep_basic_lep      :      0.1
+ISOLATE_coef_had_basic_lep      :      0.1
+ISOLATE_coef_photon_basic_lep   :      0.1
+ISOLATE_remainder_photon_basic_lep  :  0.0
+ISOLATE_min_pt_basic_lep        :      1.0
+
+JCUT_e_basic_lep_0         :         true 
+CUT_ed_basic_lep_0         :         5.0
+CUT_eu_basic_lep_0         :      10000.0
+
+JCUT_pt_basic_lep_0        :         true 
+CUT_ptd_basic_lep_0        :         5.0
+CUT_ptu_basic_lep_0        :      10000.0
+
+JCUT_eta_basic_lep_0       :         true 
+CUT_etad_basic_lep_0       :          0.0
+CUT_etau_basic_lep_0       :          2.5
+
+JCUT_r_lep_basic_lep_0     :        false   
+CUT_cone_lep_basic_lep_0   :          0.0
+CUT_cone_elec_basic_lep_0  :          0.0
+CUT_cone_muon_basic_lep_0  :          0.0
+CUT_cone_tau_basic_lep_0   :          0.0
+

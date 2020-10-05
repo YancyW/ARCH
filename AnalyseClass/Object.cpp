@@ -74,20 +74,21 @@ void AObject::Read_Delphes_MCParticle(CDraw &para, ADelphes &var){
 	for(int i=0;i<num;i++){
 		gen=(GenParticle*) var.branchParticle->At(i);
 
-		if(gen->Status==1){
-			AParticle MCp(gen->Px,gen->Py,gen->Pz,gen->E,gen->Charge,gen->PID);
-			MCp._Is_MC_Particle.Set();
+		AParticle MCp(gen->Px,gen->Py,gen->Pz,gen->E,gen->Charge,gen->PID);
+		MCp._Is_MC_Particle.Set();
+		MCp.Set_Mother(gen->M1);
+		MCp.Set_Mother(gen->M2);
+		MCp.Set_Daughter(gen->D1);
+		MCp.Set_Daughter(gen->D2);
+//		if(gen->Status==1){
 			OMCParticle_ori.push_back(MCp);
-		}
-		else if(gen->Status==2){
+//		}
+//		else if(gen->Status==2){
+  		if(gen->Status==2){
 			if(std::abs(gen->PID)==5){
-				AParticle MCp(gen->Px,gen->Py,gen->Pz,gen->E,gen->Charge,gen->PID);
-				MCp._Is_MC_Particle.Set();
 				OMCbquark_ori.push_back(MCp);
 			}
 			else if(std::abs(gen->PID)==4){
-				AParticle MCp(gen->Px,gen->Py,gen->Pz,gen->E,gen->Charge,gen->PID);
-				MCp._Is_MC_Particle.Set();
 				OMCcquark_ori.push_back(MCp);
 			}
 		}
@@ -143,6 +144,45 @@ void AObject::Read_Delphes_AnalysedParticle(CDraw &para, ADelphes &var){
 
 void AObject::Init(AnalyseClass &analysis, CDraw &para){
 	IsReadMCPar = false;
+	Vneutralhad      .clear();
+	Vjet             .clear();
+	VPseudoJet       .clear();
+	VPseudoElec      .clear();
+	VPseudoMuon      .clear();
+	VPseudoPhoton    .clear();
+	VPseudoMet       .clear();
+	Vbjet            .clear();
+	Vcjet            .clear();
+	Vqjet            .clear();
+	Vtaujet          .clear();
+	Vtagjet          .clear();
+	Vuntagjet        .clear();
+	Vbquark          .clear();
+	Vcquark          .clear();
+	Velec            .clear();
+	Vmuon            .clear();
+	Vlep             .clear();
+	Vlep_m           .clear();
+	Vlep_p           .clear();
+	Vvalue           .clear();
+	Vtau             .clear();
+	Vphoton          .clear();
+	Vmet             .clear();
+	Vre_met          .clear();
+	Vcombine1        .clear();
+	Vcombine2        .clear();
+	Vcombine3        .clear();
+	Vcombine4        .clear();
+	Vcombine5        .clear();
+	Vcombine6        .clear();
+	Vcombine_jet1    .clear();
+	Vcombine_jet2    .clear();
+	Vcombine_elec1   .clear();
+	Vcombine_elec2   .clear();
+	Vcombine_muon1   .clear();
+	Vcombine_muon2   .clear();
+	Vcombine_photon1 .clear();
+	Vcombine_photon2 .clear();
 	OMCSpecies              .Init();
 
 	OMCLep                  .Init();
@@ -188,7 +228,8 @@ void AObject::Init(AnalyseClass &analysis, CDraw &para){
 	}
 	else if(para.flow.begin_object=="delphes_detector"){
 		para.debug.Message(2,83,"In AObject::Init,  begin to Read Particle","delphes detector ");
-		Read_Delphes_AnalysedParticle(para,analysis.delphes); 
+	//	Read_Delphes_AnalysedParticle(para,analysis.delphes); 
+	//	Read_Delphes_MCParticle(para,analysis.delphes); 
 	}
 	else{
 		ShowMessage(2,"wrong para for para.flow.begin_object",para.flow.begin_object);
@@ -216,9 +257,20 @@ void AObject::Clear(){
 	if(!Vcquark          .empty()){Vcquark          .clear();}
 	if(!Velec            .empty()){Velec            .clear();}
 	if(!Vmuon            .empty()){Vmuon            .clear();}
+	if(!Vlep             .empty()){Vlep             .clear();}
+	if(!Vlep_p           .empty()){Vlep_p           .clear();}
+	if(!Vlep_m           .empty()){Vlep_m           .clear();}
+	if(!Vvalue           .empty()){Vvalue           .clear();}
 	if(!Vtau             .empty()){Vtau             .clear();}
 	if(!Vphoton          .empty()){Vphoton          .clear();}
 	if(!Vmet             .empty()){Vmet             .clear();}
+	if(!Vre_met          .empty()){Vre_met          .clear();}
+	if(!Vcombine1        .empty()){Vcombine1        .clear();}
+	if(!Vcombine2        .empty()){Vcombine2        .clear();}
+	if(!Vcombine3        .empty()){Vcombine3        .clear();}
+	if(!Vcombine4        .empty()){Vcombine4        .clear();}
+	if(!Vcombine5        .empty()){Vcombine5        .clear();}
+	if(!Vcombine6        .empty()){Vcombine6        .clear();}
 	if(!Vcombine_jet1    .empty()){Vcombine_jet1    .clear();}
 	if(!Vcombine_jet2    .empty()){Vcombine_jet2    .clear();}
 	if(!Vcombine_elec1   .empty()){Vcombine_elec1   .clear();}
@@ -445,6 +497,7 @@ bool AObject::Fill(CDraw &para, AnalyseClass &analyse){
 	else{
 		return(false);
 	}
+	return(true);
 }
 
 

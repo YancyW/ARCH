@@ -30,9 +30,8 @@ class ExRootTreeReader;
 #include "Class/DrawClass.h"
 #include "AnalyseClass/AnalyseClass.h"
 
-bool AN_RC_w_lnu(float wmass, float mw_d, float mw_u, Electron* Vlep, MissingET* Vmet, TLorentzVector &re_w, TLorentzVector &re_nu);
-bool AN_RC_w_lnu(float wmass, float mw_d, float mw_u, Muon* Vlep, MissingET* Vmet, TLorentzVector &re_w, TLorentzVector &re_nu);
-bool AN_RC_lnu_TLorentvector(float re_mass, TLorentzVector &plepton, TLorentzVector &pneutrino, TLorentzVector &re_w, TLorentzVector &re_nu);
+bool AN_RC_w_lnu(float wmass, float mw_d, float mw_u, TLorentzVector& Vlep, MissingET* Vmet, TLorentzVector &re_w, TLorentzVector &re_nu);
+bool AN_RC_lnu(float re_mass, TLorentzVector &plepton, TLorentzVector &pneutrino, TLorentzVector &re_w, TLorentzVector &re_nu);
 
 #endif
 
