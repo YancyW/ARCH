@@ -1,4 +1,4 @@
-# DrawBeauty
+# ARCH 
 Analyse input event root files and generate observables
 
 ## change.log
@@ -27,4 +27,6 @@ Analyse input event root files and generate observables
 - 2017/11: v0.14
     - debug for memory leak
     - change jet properties into particle, now jet is also a pool.
+- 2020/10: v0.15
+    - code has been tested in JEP/CNN/2HDMtype1 paper. 
 
