@@ -10,11 +10,11 @@ void CJet::Read_Jet_particle(CPath path, std::string particle_name,CJet_cut &jet
 	RW_element(particle_name,"PLOT_mass"  ,plot_node  ,jet.PLOT_mass  );
 	RW_element(particle_name,"PLOT_r_jet" ,plot_node  ,jet.PLOT_r_jet );
 
-	std::string switch_name=path.cut_file+"switch.dat";
+	std::string switch_name=path.cut_folder+"switch.dat";
 	YAML::Node switch_node = YAML::LoadFile(switch_name);
 	RW_element(particle_name,"SWITCH"  ,switch_node,jet.SWITCH);
 
-	std::string file_name=path.cut_file+particle_name+".dat";
+	std::string file_name=path.cut_folder+particle_name+".dat";
 	YAML::Node jet_node = YAML::LoadFile(file_name);
 
 	ShowMessage(4);
@@ -72,7 +72,7 @@ void CJet::Read_Jet(CPath path){
 	YAML::Node plot_node = YAML::LoadFile(path.plot_file);
 	RW_element("PLOT_jet"    ,plot_node  ,this->PLOT  );
 
-	std::string switch_name=path.cut_file+"switch.dat";
+	std::string switch_name=path.cut_folder+"switch.dat";
 	YAML::Node switch_node = YAML::LoadFile(switch_name);
 	RW_element("SWITCH_jet"  ,switch_node,this->SWITCH);
 

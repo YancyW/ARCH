@@ -15,18 +15,23 @@ class CPath{
 	private:
 	public:
 		std::string   process      ;
+		std::string   output_folder    ;
+		std::string   input_folder     ;
+
 		std::string   record_file  ;
-		std::string   output_file  ;
-		std::string   event_file   ;
+
+		std::string   data_folder  ;
+		std::string   event_folder ;
 		std::string   single_plot  ;
 		std::string   combine_plot ;
+		std::string   event_file   ;
 
 		std::string   input_file   ;
 		std::string   debug_file   ;
 		std::string   analyse_file ;
 		std::string   detector_file;
 		std::string   flow_file    ;
-		std::string   cut_file     ;
+		std::string   cut_folder     ;
 		std::string   plot_file    ;
 		std::string   signal_file  ;
 		std::string   var_file     ;
@@ -98,7 +103,7 @@ class CSignal{
 		bool VETO_tau      ;
 		bool VETO_met      ;
 		bool VETO_photon   ;
-		void Read_Signal(CPath path) ;
+		void Read_Signal(std::string file_name) ;
 };
 
 

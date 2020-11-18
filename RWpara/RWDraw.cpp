@@ -19,7 +19,7 @@ void CDraw::Read(){
 	Jflow = true;
 
 	ShowMessage(3, "read signal.");
-	this->signal.Read_Signal(path);
+	this->signal.Read_Signal(path.signal_file);
 	Jsignal= true;
 
 	ShowMessage(3, "read event.");

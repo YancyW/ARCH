@@ -1,0 +1,14 @@
+cut    : false 
+record_output : false 
+
+level         : 2
+
+#BeginObject   : slcio_particle 
+BeginObject   : delphes_particle 
+#BeginObject   : Test 
+RecordObject   : jet
+
+plot          : false 
+record_event  : true 
+BDT_training  : false 
+BDT_level     : 3 

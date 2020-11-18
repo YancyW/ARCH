@@ -31,6 +31,8 @@ class ExRootTreeReader;
 #include "AnalyseClass/Object.h"
 #include "Analyse/Abasic.h"
 #include "Analyse/AN_rc_w_lnu.h"
+#include "Analyse/Arecoil.h"
+#include "Analyse/Acomb_recoil.h"
 
 
 bool Combine2_direct(TLorentzVector mom1, TLorentzVector mom2,float cut_mlow, float cut_mup, float cut_ptlow, float cut_ptup, float *mass_re);

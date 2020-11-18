@@ -5,11 +5,11 @@ void CGlobal:: Read_Global(CPath path){
 	YAML::Node plot_node = YAML::LoadFile(path.plot_file);
 	RW_element("PLOT_global"    ,plot_node  ,this->PLOT  );
 
-	std::string switch_name=path.cut_file+"switch.dat";
+	std::string switch_name=path.cut_folder+"switch.dat";
     YAML::Node switch_node = YAML::LoadFile(switch_name);
     RW_element("SWITCH_global"  ,switch_node,this->SWITCH);
 
-	std::string file_name=path.cut_file+"global.dat";
+	std::string file_name=path.cut_folder+"global.dat";
 	YAML::Node global_node = YAML::LoadFile(file_name);
 
 	RW_element("CUT_bw"              ,global_node,this->CUT_bw             );

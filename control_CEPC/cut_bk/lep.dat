@@ -1,0 +1,55 @@
+CUT_num_lep          :          1
+ISOLATE_cone_lep_lep :           0.3
+ISOLATE_cone_had_lep :           0.3
+ISOLATE_cone_photon_lep   :      0.98
+ISOLATE_coef_lep_lep      :      0.1
+ISOLATE_coef_had_lep      :      0.1
+ISOLATE_coef_photon_lep   :      0.1
+ISOLATE_remainder_photon_lep  :  0.0
+ISOLATE_min_pt_lep        :      1.0
+
+JCUT_e_lep_0         :        true 
+CUT_ed_lep_0         :         5.0
+CUT_eu_lep_0         :      10000.0
+
+JCUT_pt_lep_0        :        false 
+CUT_ptd_lep_0        :         5.0
+CUT_ptu_lep_0        :      10000.0
+
+JCUT_eta_lep_0       :        false 
+CUT_etad_lep_0       :          0.0
+CUT_etau_lep_0       :          5.0
+
+JCUT_theta_lep_0     :         true 
+CUT_thetad_lep_0     :          0.0
+CUT_thetau_lep_0     :          0.97
+
+JCUT_r_lep_lep_0     :        false   
+CUT_cone_lep_lep_0   :          0.0
+CUT_cone_elec_lep_0  :          0.0
+CUT_cone_muon_lep_0  :          0.0
+CUT_cone_tau_lep_0   :          0.0
+
+
+JCUT_e_lep_1         :       false 
+CUT_ed_lep_1         :         5.0
+CUT_eu_lep_1         :      10000.0
+
+JCUT_pt_lep_1        :       false 
+CUT_ptd_lep_1        :          0.0
+CUT_ptu_lep_1        :      10000.0
+
+JCUT_eta_lep_1       :       false 
+CUT_etad_lep_1       :          0.0
+CUT_etau_lep_1       :          10.0
+
+JCUT_theta_lep_1     :        false 
+CUT_thetad_lep_1     :          0.0
+CUT_thetau_lep_1     :          0.97
+
+JCUT_r_lep_lep_1     :        false   
+CUT_cone_lep_lep_1   :          0.0
+CUT_cone_elec_lep_1  :          0.0
+CUT_cone_muon_lep_1  :          0.0
+CUT_cone_tau_lep_1   :          0.0
+

@@ -1,0 +1,6 @@
+name          : CEPC 
+energy        : 240
+luminosity    : 5000 
+elec_pol      : 0.0
+posi_pol      : 0.0
+collider_angle: 0.000

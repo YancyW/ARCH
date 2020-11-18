@@ -1,0 +1,394 @@
+#whether open debug mode
+Debug_mode : false 
+
+
+#---------------------------------------------------
+ 
+ 
+ 
+#mode smaller than level will be presented
+#0 general information -- must be shown  
+#1-3 general information -- tell the sequence
+# 1 -- at non-loop level, for debug_mode 1,20,30,40...
+# 2 -- first loop
+# 3 -- second loop
+# 4 -- third loop
+#5-10 special information -- tell the detail 
+Debug_level: 10
+
+#total debug mode number
+Debug_mode_num  : 110 
+
+#mode for which number is false will be presented 
+#for all/
+Debug_0    : true 
+
+
+#---------------------------------------------------
+ 
+ 
+ 
+#for Analyse/Analyse
+Debug_1    : true 
+
+#for Analyse/Acombine
+Debug_2    : false 
+
+#for Analyse/Arecoil
+Debug_3    : false 
+
+#for Analyse/Acomb_recoil
+Debug_4    : false 
+
+#for Analyse/AJetSubstructure
+Debug_5    : false 
+
+#for Analyse/AHiggsTag
+Debug_6    : false 
+
+#for Analyse/AMassDrop
+Debug_7    : false 
+
+#for Analyse/ANSubjettiness
+Debug_8    : false 
+
+#for Analyse/AJep
+Debug_9    : false 
+
+
+
+#for Analyse/Analyse
+Debug_10    : false 
+
+#for Analyse/BTag
+Debug_11    : false 
+
+#for Analyse/Acombine
+Debug_12    : false 
+
+#for Analyse/Arecoil
+Debug_13    : false 
+
+#for Analyse/Acomb_recoil
+Debug_14    : false 
+
+#for Analyse/AJetSubstructure
+Debug_15    : false 
+
+#for Analyse/AHiggsTag
+Debug_16    : false 
+
+#for Analyse/AMassDrop
+Debug_17    : false 
+
+#for Analyse/ANSubjettiness
+Debug_18    : false 
+
+#for Analyse/count number
+Debug_19    : false 
+
+
+#---------------------------------------------------
+
+
+#for Analyse/Adetector
+Debug_20    : false 
+
+#for Analyse/Adetector/elec
+Debug_21    : false 
+
+#for Analyse/Adetector/muon
+Debug_22    : false
+
+#for Analyse/Adetector/jet
+Debug_23    : false
+
+#for Analyse/Adetector/photon
+Debug_24    : false
+
+#for Analyse/Adetector/missingEt
+Debug_25    : false
+
+#for Analyse/Adetector/
+Debug_26    : false
+
+#for Analyse/Adetector/
+Debug_27    : false
+
+#for Analyse/Adetector/
+Debug_28    : false
+
+#for Analyse/Adetector/assistant function
+Debug_29    : false
+
+
+
+#---------------------------------------------------
+
+#for Analyse/Aequipment
+Debug_30    : false 
+
+#for Analyse/Aequipment/elec
+Debug_31    : false 
+
+#for Analyse/Aequipment/muon
+Debug_32    : false 
+
+#for Analyse/Aequipment/jet
+Debug_33    : false 
+
+#for Analyse/Aequipment/photon
+Debug_34    : false
+
+#for Analyse/Aequipment/missingEt
+Debug_35    : false 
+
+#for Analyse/Aequipment/
+Debug_36    : false
+
+#for Analyse/Aequipment/
+Debug_37    : false
+
+#for Analyse/Aequipment/
+Debug_38    : false
+
+#for Analyse/Aequipment/assistant function
+Debug_39    : false 
+
+
+
+#---------------------------------------------------
+
+#for Analyse/Aparticle
+Debug_40    : false 
+
+#for Analyse/Aparticle/elec
+Debug_41    : false 
+
+#for Analyse/Aparticle/muon
+Debug_42    : false
+
+#for Analyse/Aparticle/jet
+Debug_43    : false 
+
+#for Analyse/Aparticle/photon
+Debug_44    : false
+
+#for Analyse/Aparticle/missingEt
+Debug_45    : false
+
+#for Analyse/Aparticle/
+Debug_46    : false
+
+#for Analyse/Aparticle/
+Debug_47    : false
+
+#for Analyse/Aparticle/
+Debug_48    : false
+
+#for Analyse/Aparticle/assistant function
+Debug_49    : false 
+
+
+#---------------------------------------------------
+ 
+ 
+#for RWpara
+
+#for RWpara/Aparticle
+Debug_50    : false 
+
+#for RWpara/Aparticle
+Debug_51    : false 
+
+#for RWpara/Aparticle
+Debug_52    : false 
+
+#for RWpara/Aparticle
+Debug_53    : false 
+
+#for RWpara/Aparticle
+Debug_54    : false 
+
+#for RWpara/Aparticle
+Debug_55    : false 
+
+#for RWpara/Aparticle
+Debug_56    : false 
+
+#for RWpara/Aparticle
+Debug_57    : false 
+
+#for RWpara/Aparticle
+Debug_58    : false 
+
+#for RWpara/Aparticle
+Debug_59    : false 
+
+
+#---------------------------------------------------
+
+# for Book all
+Debug_60    : false
+
+# for Book single
+Debug_61    : false 
+
+# for Book
+Debug_62    : false
+
+# for Book
+Debug_63    : false
+
+# for Book
+Debug_64    : false
+
+# for Book
+Debug_65    : false
+
+# for Book
+Debug_66    : false
+
+# for Book
+Debug_67    : false
+
+# for Book
+Debug_68    : false
+
+# for Book
+Debug_69    : false
+
+ 
+#---------------------------------------------------
+
+
+# for Fram 
+Debug_70    : false 
+
+# for Fram---Analyse_BasicInfo 
+Debug_71    : false
+
+# for Fram---Fillplot
+Debug_72    : false 
+
+# for Fram---Fillplot_all
+Debug_73    : false
+
+# for Fram 
+Debug_74    : false
+
+# for Fram 
+Debug_75    : false
+
+# for Fram 
+Debug_76    : false
+
+# for Fram 
+Debug_77    : false
+
+# for Fram 
+Debug_78    : false
+
+# for Fram 
+Debug_79    : false
+
+#---------------------------------------------------
+ 
+# for AnalyseClass/Particle 
+Debug_80    : false 
+
+# for AnalyseClass/Pair
+Debug_81    : false
+
+# for AnalyseClass/Lepton
+Debug_82    : false
+
+# for AnalyseClass/Object 
+Debug_83    : false
+
+# for AnalyseClass/Object Read_Delphes_MCParticle 
+Debug_84    : false 
+
+# for AnalyseClass/Object Read_Delphes_ReconstructedParticle 
+Debug_85    : false
+
+# for AnalyseClass/Object Read_Delphes_AnalysedParticle
+Debug_86    : false
+
+# for AnalyseClass/Object Read_slcio MCParticle
+Debug_87    : false
+
+# for AnalyseClass/Object Read_slcio ReconstructedParticle
+Debug_88    : false
+
+# for AnalyseClass/Object Read_stdhep
+Debug_89    : false
+
+ 
+#---------------------------------------------------
+
+
+# for Lib 
+Debug_90    : false
+
+# for Lib 
+Debug_91    : false
+
+# for Lib 
+Debug_92    : false
+
+# for Lib 
+Debug_93    : false
+
+# for Lib 
+Debug_94    : false
+
+# for Lib 
+Debug_95    : false
+
+# for Lib 
+Debug_96    : false 
+
+# for Lib 
+Debug_97    : false 
+
+# for Lib 
+Debug_98    : false 
+
+# for Lib 
+Debug_99    : true 
+
+
+#---------------------------------------------------
+
+
+# for Object 
+Debug_100    : false 
+ 
+# for Object 
+Debug_101    : false 
+ 
+# for Object 
+Debug_102    : false 
+ 
+# for Object 
+Debug_103    : false 
+ 
+# for Object 
+Debug_104    : false 
+ 
+# for Object 
+Debug_105    : false 
+ 
+# for Object 
+Debug_106    : false 
+ 
+# for Object 
+Debug_107    : false 
+ 
+# for Object 
+Debug_108    : false 
+ 
+# for Object 
+Debug_109    : false 
+ 

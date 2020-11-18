@@ -10,11 +10,11 @@ void CMet::    Read_Met(CPath path){
 	RW_element("PLOT_r_lep_met"     ,plot_node  ,this->PLOT_r_lep   );
 	RW_element("PLOT_r_jet_met"     ,plot_node  ,this->PLOT_r_jet   );
 
-	std::string switch_name=path.cut_file+"switch.dat";
+	std::string switch_name=path.cut_folder+"switch.dat";
     YAML::Node switch_node = YAML::LoadFile(switch_name);
     RW_element("SWITCH_met"  ,switch_node,this->SWITCH);
 
-	std::string file_name=path.cut_file+"met.dat";
+	std::string file_name=path.cut_folder+"met.dat";
 	YAML::Node met_node = YAML::LoadFile(file_name);
 
 	RW_vector_element("JCUT_e"         ,0 ,met_node,this->JCUT_e         );

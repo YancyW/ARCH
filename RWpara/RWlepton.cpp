@@ -9,12 +9,12 @@ void CLepton::Read_Lepton_particle(CPath path, std::string particle_name,CLepton
 		RW_element(particle_name,"PLOT_eta"   ,plot_node  ,lep.PLOT_eta   );
 		RW_element(particle_name,"PLOT_r_lep" ,plot_node  ,lep.PLOT_r_lep );
 
-		std::string switch_name=path.cut_file+"switch.dat";
+		std::string switch_name=path.cut_folder+"switch.dat";
 		YAML::Node switch_node = YAML::LoadFile(switch_name);
 		RW_element(particle_name,"SWITCH"  ,switch_node,lep.SWITCH);
 	}
 
-	std::string file_name=path.cut_file+particle_name+".dat";
+	std::string file_name=path.cut_folder+particle_name+".dat";
 	YAML::Node lep_node = YAML::LoadFile(file_name);
 
 
@@ -96,7 +96,7 @@ void CLepton::Read_Lepton(CPath path){
 	YAML::Node plot_node = YAML::LoadFile(path.plot_file);
 	RW_element("PLOT_lepton"    ,plot_node  ,this->PLOT  );
 
-	std::string switch_name=path.cut_file+"switch.dat";
+	std::string switch_name=path.cut_folder+"switch.dat";
 	YAML::Node switch_node = YAML::LoadFile(switch_name);
 	RW_element("SWITCH_lep"  ,switch_node,this->SWITCH);
 

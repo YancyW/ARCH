@@ -1,8 +1,8 @@
 #include "Class/file.h"
 
 void CPath::Create_Folder(){
-	CreateFolder(this->output_file);
-	CreateFileFolder(this->event_file);
-	CreateFolder(this->single_plot);
-	CreateFolder(this->combine_plot);
+     ::Create_Folder(this->data_folder);
+     ::Create_Folder(this->event_folder);
+     ::Create_Folder(this->single_plot);
+     ::Create_Folder(this->combine_plot);
 }

@@ -103,8 +103,8 @@ AnalyseEvents	Analyse/Analyse.cpp	/^void AnalyseEvents(CDraw &para, ExRootTreeRe
 Analyse_BasicInfo	Fram/Fram.cpp	/^void Analyse_BasicInfo(CDraw &para, ExRootResult *result, std::string sigfile, std::string sampledescrip, Long64_t &sample_num)$/;"	f
 Analysis_Combine	Analyse/Acombine.cpp	/^bool Analysis_Combine(CDraw &para, MyPlots *plots, AObject& object,bool *Jcomb1, bool *Jcomb2, bool *Jcomb3, bool *Jcomb4, bool *Jcomb5, bool *Jcomb6){$/;"	f
 Analysis_Combine_Recoil	Analyse/Acomb_recoil.cpp	/^bool Analysis_Combine_Recoil(CDraw &para, MyPlots *plots,std::vector<Jet*> Vjet,std::vector<Jet*> Vbjet,std::vector<Jet*> Vcjet, std::vector<Jet*> Vqjet, std::vector<Jet*> Vuntagjet, std::vector<Electron*> Velec,std::vector<Muon*> Vmuon, $/;"	f
-Analysis_Recoil	Analyse/Arecoil.cpp	/^bool Analysis_Recoil(CDraw &para, MyPlots *plots,std::vector<Jet*> Vjet,std::vector<Jet*> Vbjet,std::vector<Jet*> Vcjet, std::vector<Jet*> Vqjet,std::vector<Electron*> Velec,std::vector<Muon*> Vmuon,$/;"	f
-Analysis_Recoil	Analyse/Arecoil.h	/^bool Analysis_Recoil(CDraw &para, MyPlots *plots, TRecoil particle){$/;"	f
+Analysis_Recoil	Analyse/Arecoil.cpp	/^bool Analysis_Recoil(CDraw &para, MyPlots *plots,AObject& object){$/;"	f
+Analysis_Recoil_For_Special_Particles	Analyse/Arecoil.h	/^bool Analysis_Recoil_For_Special_Particles(CDraw &para, MyPlots *plots, TRecoil particle){$/;"	f
 Avariable	AnalyseClass/Variable.h	/^		Avariable(){$/;"	f	class:Avariable
 Avariable	AnalyseClass/Variable.h	/^class Avariable{$/;"	c
 Avariable_vec	AnalyseClass/Variable.h	/^		Avariable_vec(){$/;"	f	class:Avariable_vec
@@ -152,7 +152,6 @@ CCONE_PHOTON	Class/kinematic.h	/^class CCONE_PHOTON{$/;"	c
 CCONE_PHOTON	Class/kinematic1.h	/^class CCONE_PHOTON{$/;"	c
 CCombine	Class/combine.h	/^class CCombine{$/;"	c
 CCombine_cut	Class/combine.h	/^class CCombine_cut: public CPT, public CETA, public CTHETA, public CMASS{$/;"	c
-CCut	Class/Cut.h	/^class CCut{$/;"	c
 CDebug	Class/debug.h	/^class CDebug{$/;"	c
 CDetector	Class/Detector.h	/^class CDetector{$/;"	c
 CDraw	Class/DrawClass.h	/^class CDraw{$/;"	c
@@ -240,7 +239,6 @@ CUT_massd	Class/kinematic.h	/^		std::vector <float>   CUT_massd         ;$/;"	m	
 CUT_massr	Class/kinematic.h	/^		std::vector <float>   CUT_massr         ;$/;"	m	class:CMASS
 CUT_massu	Class/kinematic.h	/^		std::vector <float>   CUT_massu         ;$/;"	m	class:CMASS
 CUT_mu	Class/MassDrop.h	/^		float  CUT_mu;$/;"	m	class:CMassDrop
-CUT_num	Class/Cut.h	/^		int              CUT_num;$/;"	m	class:CCut
 CUT_num	Class/Jet.h	/^		int         CUT_num       ;$/;"	m	class:CJet_cut
 CUT_num	Class/combine.h	/^		int                   CUT_num ;$/;"	m	class:CCombine_cut
 CUT_num	Class/global.h	/^		int      CUT_num                    ;$/;"	m	class:CGlobal
@@ -306,9 +304,9 @@ CosTheta	AnalyseClass/Jet.cpp	/^std::vector<float> AJet::CosTheta(){$/;"	f	class
 CosTheta	AnalyseClass/Pair.h	/^		float CosTheta(){$/;"	f	class:APair
 CosTheta	AnalyseClass/Particle.cpp	/^float AParticle::CosTheta(){$/;"	f	class:AParticle
 CountNumber	Function/Fbasic.cpp	/^void CountNumber(int variable, int tot_num, int slot,std::string  Message){$/;"	f
-CreateFileFolder	Function/Ffile.cpp	/^void CreateFileFolder(std::string file_name){$/;"	f
-CreateFolder	Function/Ffile.cpp	/^void CreateFolder(std::string folder_name){$/;"	f
+Create_File_Folder	Function/Ffile.cpp	/^void Create_File_Folder(std::string file_name){$/;"	f
 Create_Folder	Class/file.cpp	/^void CPath::Create_Folder(){$/;"	f	class:CPath
+Create_Folder	Function/Ffile.cpp	/^void Create_Folder(std::string folder_name){$/;"	f
 Cut	AnalyseClass/Jet.cpp	/^bool AJet::Cut(AParticle* par, CJet_cut &cut){$/;"	f	class:AJet
 Cut	AnalyseClass/Lepton.cpp	/^bool ALepton::Cut(AParticle* par, CLepton_cut &lep_cut){$/;"	f	class:ALepton
 DEFINE_H	Lib/Define.h	3;"	d
@@ -316,13 +314,14 @@ DS_Pair	AnalyseClass/Pool.h	/^		APairVec DS_Pair(){\/\/ds means different sign$/
 DS_Pair_Num	AnalyseClass/Pool.h	/^		int DS_Pair_Num(){$/;"	f	class:APool
 Daughter	AnalyseClass/Particle.cpp	/^std::vector<int> AParticle::Daughter(){$/;"	f	class:AParticle
 DefRecomb	Class/JetSubStructure.h	/^typedef fastjet::JetDefinition::DefaultRecombiner DefRecomb;$/;"	t
-DelphesPath	makefile	/^DelphesPath=\/home\/ywang\/Software\/executable\/delphes$/;"	m
-DelphesextPath	makefile	/^DelphesextPath=$(DelphesPath)\/external$/;"	m
+DelphesPath	makefile	/^DelphesPath=${HOME}\/Software\/executable\/MG5_aMC_v2_6_5\/Delphes$/;"	m
+DelphesextPath	makefile	/^DelphesextPath=${HOME}\/Software\/executable\/MG5_aMC_v2_6_5\/Delphes\/external$/;"	m
 DeltaR	Analyse/Ajet_function.cpp	/^double DeltaR( fastjet::PseudoJet jet1, fastjet::PseudoJet jet2)$/;"	f
 DeltaR	Analyse/Ajet_function.cpp	/^double DeltaR(double_t eta1, double_t phi1,double_t eta2, double_t phi2)$/;"	f
 E	AnalyseClass/Jet.cpp	/^std::vector<float> AJet::E(){$/;"	f	class:AJet
 E	AnalyseClass/Particle.cpp	/^float AParticle::E(){$/;"	f	class:AParticle
 ELEMENT_DATATYPE_H	AnalyseClass/Information.h	2;"	d
+EXRootPath	makefile	/^EXRootPath=${DelphesextPath}\/ExRootAnalysis$/;"	m
 Elec_Pool	AnalyseClass/Lepton.h	/^		APool Elec_Pool(){$/;"	f	class:ALepton
 EndProcess	Fram/Fsection.cpp	/^void EndProcess(){$/;"	f
 End_Event	Class/Event.h	/^		Long64_t End_Event(){$/;"	f	class:CEvent
@@ -333,7 +332,7 @@ Eta	AnalyseClass/Particle.cpp	/^float AParticle::Eta(){$/;"	f	class:AParticle
 Event	Class/DrawClass.h	/^		long long int Event(){$/;"	f	class:CDraw
 Event	Class/Event.h	/^		long long int Event(){$/;"	f	class:CEvent
 Exist	AnalyseClass/Judge.h	/^		bool Exist(){return(_Exist);}$/;"	f	class:AJudge
-FASTLIBS	makefile	/^FASTLIBS = -Wl,-rpath,\/home\/ywang\/Software\/lib\/fastjet\/lib -lm -L\/home\/ywang\/Software\/lib\/fastjet\/lib -lfastjettools -lfastjet$/;"	m
+FASTLIBS	makefile	/^FASTLIBS = -Wl,-rpath,${FastjetPath} -lm -L${FastjetPath} -lfastjettools -lfastjet$/;"	m
 FFILE_H	Function/Ffile.h	3;"	d
 FLAGS	makefile	/^FLAGS=-std=c++14 -g$/;"	m
 FP	AnalyseClass/Particle.cpp	/^fastjet::PseudoJet AParticle::FP(){$/;"	f	class:AParticle
@@ -342,7 +341,7 @@ FUNCTION_FASTJET	Function/Ffastjet.h	3;"	d
 FUNCTION_ROOT	Function/Froot.h	3;"	d
 FUNCTION_TLV	Function/FTLorentzVector.h	3;"	d
 FVECTOR_H	Function/Fvector.h	3;"	d
-FastjetPath	makefile	/^FastjetPath=\/home\/ywang\/Software\/lib\/fastjet\/lib$/;"	m
+FastjetPath	makefile	/^FastjetPath=${HOME}\/Software\/lib\/fastjet-install\/lib$/;"	m
 Fill	AnalyseClass/Object.cpp	/^bool AObject::Fill(CDraw &para, AnalyseClass &analyse){$/;"	f	class:AObject
 Fill_Combine	AnalyseClass/Object_Combine.cpp	/^bool AObject::Fill_Combine(CDraw &para, AnalyseClass &analyse){$/;"	f	class:AObject
 Fill_Jet	AnalyseClass/Object_Jet.cpp	/^bool AObject::Fill_Jet(CDraw &para, AnalyseClass &analyse){$/;"	f	class:AObject
@@ -368,7 +367,6 @@ FloatVecVecIter	Lib/Define.h	/^typedef std::vector<std::vector<float> >::iterato
 Fram	Fram/Fram.cpp	/^void Fram(CDraw &para)$/;"	f
 GLOBAL_PARA_BoostTag	Class/BoostTag.h	3;"	d
 GLOBAL_PARA_COMBINE	Class/combine.h	3;"	d
-GLOBAL_PARA_CUT_H	Class/Cut.h	3;"	d
 GLOBAL_PARA_DEBUG	Class/debug.h	3;"	d
 GLOBAL_PARA_DETECTOR	Class/Detector.h	3;"	d
 GLOBAL_PARA_FILE	Class/file.h	2;"	d
@@ -388,19 +386,19 @@ GLOBAL_PARA_RECOIL	Class/recoil.h	2;"	d
 GLOBAL_PARA_TAG	Class/Tag.h	2;"	d
 GetAxes	Class/NSubjettiness.h	/^		CAxesStruct    GetAxes(){$/;"	f	class:CNSubjettiness
 GetCombine	Analyse/Acombine.cpp	/^bool GetCombine(CDraw &para,MyPlots* plots,AObject &object, AnalyseClass &analyse){$/;"	f
-GetFinalState	Analyse/Aequipment.cpp	/^bool GetFinalState(CDraw &para, TClonesArray *branchEFlowTrack,	TClonesArray *branchEFlowNeutralHadron,	TClonesArray *branchEFlowPhoton,TClonesArray *branchElectron ,TClonesArray *branchMuon,TClonesArray *branchMissingET,MyPlots* plots,$/;"	f
-GetFinalState	Analyse/Aparticle.cpp	/^bool GetFinalState(CDraw &para, TClonesArray *branchParticle,MyPlots* plots,$/;"	f
-GetFinalState	Analyse/Aslcio_particle.cpp	/^bool GetFinalState(CDraw &para, AnalyseClass &analyse, AObject &object, MyPlots* plots){$/;"	f
 GetFinalState_cut	Analyse/Aequipment.cpp	/^bool GetFinalState_cut(CDraw &para, std::vector<fastjet::PseudoJet> &input_jet, MyPlots *plots,std::vector<fastjet::PseudoJet> &jet){$/;"	f
 GetFinalState_detector	Analyse/Adetector.cpp	/^bool GetFinalState_detector(CDraw &para, AnalyseClass &analyse, AObject &object, MyPlots* plots){$/;"	f
-GetFinalState_detector	Analyse/Adetector.cpp	/^bool GetFinalState_detector(CDraw &para, AnalyseClass& analyse, std::vector<Jet*> &jet,std::vector<Jet*> &bjet, std::vector<Jet*> &cjet, std::vector<Jet*> &qjet, std::vector<Jet*>& taujet, std::vector<Jet*> &untagjet, MyPlots *plots){$/;"	f
-GetFinalState_detector	Analyse/Adetector.cpp	/^bool GetFinalState_detector(CDraw &para, TClonesArray *branchElectron, MyPlots *plots,std::vector<Electron*> &elec){$/;"	f
-GetFinalState_detector	Analyse/Adetector.cpp	/^bool GetFinalState_detector(CDraw &para, TClonesArray *branchJet, MyPlots *plots,std::vector<Jet*> &jet){$/;"	f
-GetFinalState_detector	Analyse/Adetector.cpp	/^bool GetFinalState_detector(CDraw &para, TClonesArray *branchMissingET, MyPlots *plots,std::vector<MissingET*> &met){$/;"	f
-GetFinalState_detector	Analyse/Adetector.cpp	/^bool GetFinalState_detector(CDraw &para, TClonesArray *branchMuon, MyPlots *plots,std::vector<Muon*> &muon){$/;"	f
-GetFinalState_detector	Analyse/Adetector.cpp	/^void GetFinalState_detector(TClonesArray *branchJet, std::vector<fastjet::PseudoJet> &jet){$/;"	f
-GetFinalState_equipment	Analyse/Aequipment.cpp	/^void GetFinalState_equipment(CDraw &para,TClonesArray *branchEFlowNeutralHadron,TClonesArray *branchEFlowTrack,TClonesArray *branchEFlowPhoton, TClonesArray *branchElectron, TClonesArray *branchMuon,  std::vector<fastjet::PseudoJet> &jet_candi){$/;"	f
+GetFinalState_detector_elec	Analyse/Adetector.cpp	/^bool GetFinalState_detector_elec(CDraw &para, TClonesArray *branchElectron, MyPlots *plots,std::vector<Electron*> &elec){$/;"	f
+GetFinalState_detector_jet	Analyse/Adetector.cpp	/^bool GetFinalState_detector_jet(CDraw &para, TClonesArray *branchJet, MyPlots *plots,std::vector<Jet*> &jet){$/;"	f
+GetFinalState_detector_jet_classify	Analyse/Adetector.cpp	/^bool GetFinalState_detector_jet_classify(CDraw &para, AnalyseClass& analyse, std::vector<Jet*> &jet,std::vector<Jet*> &bjet, std::vector<Jet*> &cjet, std::vector<Jet*> &qjet, std::vector<Jet*>& taujet, std::vector<Jet*> &untagjet, MyPlots *plots){$/;"	f
+GetFinalState_detector_met	Analyse/Adetector.cpp	/^bool GetFinalState_detector_met(CDraw &para, TClonesArray *branchMissingET, MyPlots *plots,std::vector<MissingET*> &met){$/;"	f
+GetFinalState_detector_muon	Analyse/Adetector.cpp	/^bool GetFinalState_detector_muon(CDraw &para, TClonesArray *branchMuon, MyPlots *plots,std::vector<Muon*> &muon){$/;"	f
+GetFinalState_detector_pseudojet	Analyse/Adetector.cpp	/^void GetFinalState_detector_pseudojet(TClonesArray *branchJet, std::vector<fastjet::PseudoJet> &jet){$/;"	f
+GetFinalState_equipment	Analyse/Aequipment.cpp	/^bool GetFinalState_equipment(CDraw &para, TClonesArray *branchEFlowTrack,	TClonesArray *branchEFlowNeutralHadron,	TClonesArray *branchEFlowPhoton,TClonesArray *branchElectron ,TClonesArray *branchMuon,TClonesArray *branchMissingET,MyPlots* plots,$/;"	f
+GetFinalState_equipment_track	Analyse/Aequipment.cpp	/^void GetFinalState_equipment_track(CDraw &para,TClonesArray *branchEFlowNeutralHadron,TClonesArray *branchEFlowTrack,TClonesArray *branchEFlowPhoton, TClonesArray *branchElectron, TClonesArray *branchMuon,  std::vector<fastjet::PseudoJet> &jet_candi){$/;"	f
 GetFinalState_particle	Analyse/ALepton.cpp	/^bool GetFinalState_particle(CDraw &para,std::vector<fastjet::PseudoJet> plus, std::vector<fastjet::PseudoJet> minus, MyPlots* plots,std::vector<fastjet::PseudoJet> &Vlepton)$/;"	f
+GetFinalState_particle	Analyse/Aparticle.cpp	/^bool GetFinalState_particle(CDraw &para, TClonesArray *branchParticle,MyPlots* plots,$/;"	f
+GetFinalState_slcio	Analyse/Aslcio_particle.cpp	/^bool GetFinalState_slcio(CDraw &para, AnalyseClass &analyse, AObject &object, MyPlots* plots){$/;"	f
 GetGenParticle	Analyse/Aparticle.cpp	/^bool GetGenParticle(CDraw &para, TClonesArray *branchParticle,std::vector<fastjet::PseudoJet> & Vparticle)$/;"	f
 GetMeasure	Class/NSubjettiness.h	/^		CMeasureStruct GetMeasure()             $/;"	f	class:CNSubjettiness
 GetUnit	Function/Fbasic.cpp	/^std::string GetUnit(std::string observe_name){$/;"	f
@@ -413,6 +411,8 @@ Get_Class_ptr	Lib/libstructure.cpp	/^TH1* Get_Class_ptr(CDraw &para, MyPlots *pl
 Get_DS_Pairs	AnalyseClass/Pool.cpp	/^void APool::Get_DS_Pairs(){$/;"	f	class:APool
 Get_Event	Class/DrawClass.h	/^		void Get_Event(long long int num){$/;"	f	class:CDraw
 Get_Event	Class/Event.h	/^		void Get_Event(long long int num){$/;"	f	class:CEvent
+Get_File_Ext	Function/Ffile.cpp	/^std::string Get_File_Ext(std::string input){$/;"	f
+Get_File_Folder	Function/Ffile.cpp	/^std::string Get_File_Folder(std::string input){$/;"	f
 Get_Global_ID	AnalyseClass/Particle.h	/^		static int Get_Global_ID(){$/;"	f	class:AParticle
 Get_Instruct_ID	AnalyseClass/Particle.h	/^		void Get_Instruct_ID(){$/;"	f	class:AParticle
 Get_JEP	AnalyseClass/Pair.cpp	/^void APair::Get_JEP(){$/;"	f	class:APair
@@ -441,7 +441,7 @@ Has_Recoil	AnalyseClass/Pair.h	/^		bool  Has_Recoil  (){return(_HasRecoil)  ;}$/
 Has_SS_Best	AnalyseClass/Pool.h	/^		int Has_SS_Best(){$/;"	f	class:APool
 Has_Second	AnalyseClass/Pair.h	/^		bool  Has_Second  (){return(_HasSecond)  ;}$/;"	f	class:APair
 ID	AnalyseClass/Particle.cpp	/^int AParticle::ID(){$/;"	f	class:AParticle
-INCLUDE	makefile	/^INCLUDE = -I. -I..  -I$(RootPath)\/include  \\$/;"	m
+INCLUDE	makefile	/^INCLUDE = -I. -I..  -I$(RootPath)\/include -I$(DelphesPath) -I$(DelphesextPath) -I${EXRootPath} -I${YAMLPath}\/include$/;"	m
 ISOLATE_coef_had	Class/kinematic.h	/^		float                 ISOLATE_coef_had  ;$/;"	m	class:CCONE_JET
 ISOLATE_coef_had	Class/kinematic1.h	/^		float                 ISOLATE_coef_had  ;$/;"	m	class:CCONE_JET
 ISOLATE_coef_lep	Class/kinematic.h	/^		float                 ISOLATE_coef_lep  ;$/;"	m	class:CCONE_LEP
@@ -738,7 +738,7 @@ Pz	AnalyseClass/Particle.cpp	/^float AParticle::Pz(){$/;"	f	class:AParticle
 QJet_Pool	AnalyseClass/Jet.cpp	/^APool AJet::QJet_Pool(){$/;"	f	class:AJet
 Qjet	AnalyseClass/Jet.cpp	/^AParticleType AJet::Qjet(){$/;"	f	class:AJet
 R0	Class/NSubjettiness.h	/^		float   R0           ;$/;"	m	class:CNSubjettiness
-ROOTLIBS	makefile	/^ROOTLIBS = -L\/home\/ywang\/Software\/executable\/root\/lib -lCore -lRIO -lNet -lHist -lGraf -lGraf3d -lGpad -lTree -lRint -lPostscript -lMatrix -lPhysics -lMathCore -lThread -lMultiProc -pthread -lEG -lm -ldl -rdynamic$/;"	m
+ROOTLIBS	makefile	/^ROOTLIBS = -L${RootPath}\/lib -lCore -lRIO -lNet -lHist -lGraf -lGraf3d -lGpad -lTree -lRint -lPostscript -lMatrix -lPhysics -lMathCore -lThread -lMultiProc -pthread -lEG -lm -ldl -rdynamic$/;"	m
 RW_element	RWpara/RWbasic.cpp	/^void RW_element(std::string name, YAML::Node node_name, bool   &variable_name){$/;"	f
 RW_element	RWpara/RWbasic.cpp	/^void RW_element(std::string name, YAML::Node node_name, float &variable_name){$/;"	f
 RW_element	RWpara/RWbasic.cpp	/^void RW_element(std::string name, YAML::Node node_name, int    &variable_name){$/;"	f
@@ -772,7 +772,6 @@ Read	RWpara/RWDraw.cpp	/^void CDraw::Read(){$/;"	f	class:CDraw
 Read_BoostTag	RWpara/RWBoostTag.cpp	/^void CBoostTag:: Read_BoostTag(CPath path){$/;"	f	class:CBoostTag
 Read_Combine	RWpara/RWcombine.cpp	/^void CCombine::Read_Combine(CPath path){$/;"	f	class:CCombine
 Read_Combine_particle	RWpara/RWcombine.cpp	/^void CCombine::Read_Combine_particle(CPath path , std::string particle_name,CCombine_cut &comb){$/;"	f	class:CCombine
-Read_Cut	RWpara/RWCut.cpp	/^void CCut:: Read_Cut(CPath path,CFlow flow){$/;"	f	class:CCut
 Read_Debug	RWpara/RWfile.cpp	/^void CDebug::  Read_Debug(CPath path){$/;"	f	class:CDebug
 Read_Delphes_AnalysedParticle	AnalyseClass/Object.cpp	/^void AObject::Read_Delphes_AnalysedParticle(CDraw &para, ADelphes &var){$/;"	f	class:AObject
 Read_Delphes_MCParticle	AnalyseClass/Object.cpp	/^void AObject::Read_Delphes_MCParticle(CDraw &para, ADelphes &var){$/;"	f	class:AObject
@@ -798,7 +797,7 @@ Read_Recoil_particle	RWpara/RWrecoil.cpp	/^void CRecoil::Read_Recoil_particle(CP
 Read_SLCIO_MCParticle	AnalyseClass/Object.cpp	/^void AObject::Read_SLCIO_MCParticle(CDraw &para, ASlcio &var){$/;"	f	class:AObject
 Read_SLCIO_ReconstructedParticle	AnalyseClass/Object.cpp	/^void AObject::Read_SLCIO_ReconstructedParticle(CDraw &para, ASlcio &var){$/;"	f	class:AObject
 Read_STDHep_Particle	AnalyseClass/Object.cpp	/^void AObject::Read_STDHep_Particle(CDraw &para, AStdhep &var){$/;"	f	class:AObject
-Read_Signal	RWpara/RWfile.cpp	/^void CSignal::Read_Signal(CPath path){$/;"	f	class:CSignal
+Read_Signal	RWpara/RWfile.cpp	/^void CSignal::Read_Signal(std::string file_name){$/;"	f	class:CSignal
 Read_Tag	RWpara/RWTag.cpp	/^void CTag::Read_Tag(CPath path){$/;"	f	class:CTag
 Read_Tag_Particle	RWpara/RWTag.cpp	/^void CTag::Read_Tag_Particle(CPath path, std::string particle_name,CTag_Particle &particle){$/;"	f	class:CTag
 Read_Var	RWpara/RWVar.cpp	/^void AVariable::Read_Var(CDraw &para){$/;"	f	class:AVariable
@@ -807,7 +806,7 @@ Reset_Global_ID	AnalyseClass/Particle.h	/^		static void Reset_Global_ID(){$/;"	f
 Reset_Instruct_ID	AnalyseClass/Particle.h	/^		static void Reset_Instruct_ID(){$/;"	f	class:AParticle
 Rid_Instruct_ID	AnalyseClass/Particle.h	/^		void Rid_Instruct_ID(){$/;"	f	class:AParticle
 Rmin	Class/MassDrop.h	/^		float  Rmin  ;$/;"	m	class:CMassDrop
-RootPath	makefile	/^RootPath=\/home\/ywang\/Software\/executable\/root$/;"	m
+RootPath	makefile	/^RootPath=${HOME}\/Software\/executable\/root$/;"	m
 SRCS	makefile	/^SRCS = \\$/;"	m
 SS_Pair	AnalyseClass/Pool.h	/^		APairVec SS_Pair(){\/\/ds means different sign$/;"	f	class:APool
 SS_Pair_Num	AnalyseClass/Pool.h	/^		int SS_Pair_Num(){$/;"	f	class:APool
@@ -957,7 +956,7 @@ What_Jet_Name	AnalyseClass/Particle.cpp	/^std::string AParticle::What_Jet_Name()
 What_Jet_Type	AnalyseClass/Particle.cpp	/^float       AParticle::What_Jet_Type(){$/;"	f	class:AParticle
 Y	AnalyseClass/Particle.cpp	/^float AParticle::Y(){$/;"	f	class:AParticle
 YAML	AnalyseClass/Variable.h	/^namespace YAML{$/;"	n
-YAMLPath	makefile	/^YAMLPath=\/home\/ywang\/Software\/lib\/yaml-cpp\/$/;"	m
+YAMLPath	makefile	/^YAMLPath=${HOME}\/Software\/lib\/yaml-cpp\/$/;"	m
 _Charge	AnalyseClass/Particle.h	/^		float                _Charge     ; \/\/ particle charge$/;"	m	class:AParticle
 _CosTheta	AnalyseClass/Particle.h	/^		float                _CosTheta   ; \/\/ particle cos of theta$/;"	m	class:AParticle
 _Daughter	AnalyseClass/Particle.h	/^		std::vector<int>     _Daughter   ; \/\/ particle 1st mother | hepevt.jmohep[number][0] - 1$/;"	m	class:AParticle
@@ -1091,6 +1090,7 @@ _tjet_pool	AnalyseClass/Jet.h	/^		APool                           _tjet_pool    
 _tot_num	Class/Event.h	/^		Long64_t _loop_begin, _loop_end, _tot_num;$/;"	m	class:CEvent
 _vec	AnalyseClass/Pair.h	/^		AParticleType         _vec;$/;"	m	class:APair
 _weight	AnalyseClass/Counter.h	/^		float                _weight;$/;"	m	class:ACounter
+_xection	AnalyseClass/Counter.h	/^		float                _xection;$/;"	m	class:ACounter
 analyse_file	Class/file.h	/^		std::string   analyse_file ;$/;"	m	class:CPath
 axestype	Class/NSubjettiness.h	/^		std::string    axestype     ;$/;"	m	class:CNSubjettiness
 basic_elec	Class/lepton.h	/^    	CLepton_cut basic_elec ;$/;"	m	class:CLepton
@@ -1142,9 +1142,8 @@ ctag	Class/Tag.h	/^		CTag_Particle ctag;$/;"	m	class:CTag
 cut	Class/file.h	/^		bool                  cut                  ;$/;"	m	class:CFlow
 cut_energy	Class/kinematic1.h	/^		std::vector <CKINEMATIC_BASIC>    cut_energy ;$/;"	m	class:CENERGY
 cut_eta	Class/kinematic1.h	/^		std::vector <CKINEMATIC_BASIC>    cut_eta  ;$/;"	m	class:CETA
-cut_file	Class/file.h	/^		std::string   cut_file     ;$/;"	m	class:CPath
+cut_folder	Class/file.h	/^		std::string   cut_folder     ;$/;"	m	class:CPath
 cut_level	AnalyseClass/Variable.h	/^		int cut_level;$/;"	m	class:AVariable
-cut_level	Class/Cut.h	/^		int              cut_level;$/;"	m	class:CCut
 cut_mass	Class/kinematic1.h	/^		std::vector <CENERGY_Basic>    cut_mass ;$/;"	m	class:CCONE_LEP
 cut_mass	Class/kinematic1.h	/^		std::vector <CKINEMATIC_BASIC>    cut_mass ;$/;"	m	class:CMASS
 cut_max	AnalyseClass/Variable.h	/^		float         cut_max    ;$/;"	m	class:Avariable
@@ -1157,6 +1156,7 @@ cut_theta	Class/kinematic1.h	/^		std::vector <CKINEMATIC_BASIC>    cut_theta;$/;
 data_elec	AnalyseClass/Information.h	/^		Variable                        data_elec          ;$/;"	m	class:Infomation
 data_elec_gen	AnalyseClass/Information.h	/^		Variable                        data_elec_gen      ;$/;"	m	class:Infomation
 data_elec_recovery	AnalyseClass/Information.h	/^		Variable                        data_elec_recovery ;$/;"	m	class:Infomation
+data_folder	Class/file.h	/^		std::string   data_folder  ;$/;"	m	class:CPath
 data_muon	AnalyseClass/Information.h	/^		Variable                        data_muon          ;$/;"	m	class:Infomation
 data_muon_gen	AnalyseClass/Information.h	/^		Variable                        data_muon_gen      ;$/;"	m	class:Infomation
 data_muon_recovery	AnalyseClass/Information.h	/^		Variable                        data_muon_recovery ;$/;"	m	class:Infomation
@@ -1191,6 +1191,7 @@ eta	Class/kinematic.h	/^		float                 eta               ;$/;"	m	class:
 event	Class/DrawBeauty.h	/^		CEvent             event        ;$/;"	m	class:CDrawBeauty
 event	Class/DrawClass.h	/^		CEvent             event        ;$/;"	m	class:CDraw
 event_file	Class/file.h	/^		std::string   event_file   ;$/;"	m	class:CPath
+event_folder	Class/file.h	/^		std::string   event_folder ;$/;"	m	class:CPath
 event_num	Class/Event.h	/^		long long int    event_num    ;$/;"	m	class:CEvent
 fBJetPT	Lib/libstructure.h	/^  TH1 *fBJetPT[10];$/;"	m	struct:MyPlots
 fBJetY	Lib/libstructure.h	/^  TH1 *fBJetY [10];$/;"	m	struct:MyPlots
@@ -1261,6 +1262,7 @@ init	AnalyseClass/Information.h	/^		void init(){$/;"	f	class:Number
 init	AnalyseClass/Information.h	/^		void init(){$/;"	f	class:Variable
 init_energy	AnalyseClass/Information.h	/^		float                           init_energy        ;$/;"	m	class:Infomation
 input_file	Class/file.h	/^		std::string   input_file   ;$/;"	m	class:CPath
+input_folder	Class/file.h	/^		std::string   input_folder     ;$/;"	m	class:CPath
 jep	Class/DrawBeauty.h	/^    	CJEP               jep          ;$/;"	m	class:CDrawBeauty
 jep	Class/DrawClass.h	/^    	CJEP               jep          ;$/;"	m	class:CDraw
 jepSwitch	AnalyseClass/Counter.h	/^		bool jepSwitch    ;$/;"	m	class:ACounter
@@ -1310,7 +1312,6 @@ lumi	Class/Detector.h	/^		float                lumi                     ;$/;"	m	
 main	ARCH.cpp	/^int main(int argc, char*argv[]) {$/;"	f
 make_PseudoJet_constituents	Analyse/Ajet_function.cpp	/^std::vector<fastjet::PseudoJet> make_PseudoJet_constituents( Jet* jet )$/;"	f
 mass	Class/kinematic.h	/^		float                 mass              ;$/;"	m	class:CMASS
-max	Class/Cut.h	/^		std::vector<float> max;$/;"	m	class:CCut
 mccf0	AnalyseClass/Slcio.h	/^		int mccf0[500], mccf1[500], mcpa0[500], mcpa1[500];$/;"	m	class:ASlcio
 mccf1	AnalyseClass/Slcio.h	/^		int mccf0[500], mccf1[500], mcpa0[500], mcpa1[500];$/;"	m	class:ASlcio
 mccha	AnalyseClass/Slcio.h	/^		float mcene[500], mccha[500], mctim[500];$/;"	m	class:ASlcio
@@ -1345,7 +1346,6 @@ measuretype	Class/NSubjettiness.h	/^		std::string    measuretype  ;$/;"	m	class:
 met	Class/DrawBeauty.h	/^    	CMet               met          ;$/;"	m	class:CDrawBeauty
 met	Class/DrawClass.h	/^    	CMet               met          ;$/;"	m	class:CDraw
 metSwitch	AnalyseClass/Counter.h	/^		bool metSwitch    ;$/;"	m	class:ACounter
-min	Class/Cut.h	/^		std::vector<float> min;$/;"	m	class:CCut
 mode	Class/debug.h	/^		bool   mode;$/;"	m	class:CDebug
 muon	Class/combine.h	/^		CCombine_cut     muon;$/;"	m	class:CCombine
 muon	Class/lepton.h	/^		CLepton_cut muon ;$/;"	m	class:CLepton
@@ -1433,7 +1433,7 @@ operator =	AnalyseClass/Pool.h	/^inline const APool&  APool::operator = (const A
 operator ==	AnalyseClass/Particle.h	/^inline bool AParticle::operator == (const AParticle& P1){$/;"	f	class:AParticle
 otfile	AnalyseClass/AnalyseClass.h	/^    	TFile*             otfile       ;$/;"	m	class:AnalyseClass
 out_weight	AnalyseClass/AnalyseClass.h	/^    	float              out_weight   ;$/;"	m	class:AnalyseClass
-output_file	Class/file.h	/^		std::string   output_file  ;$/;"	m	class:CPath
+output_folder	Class/file.h	/^		std::string   output_folder    ;$/;"	m	class:CPath
 p	Class/NSubjettiness.h	/^		float   p            ;$/;"	m	class:CNSubjettiness
 pass	AnalyseClass/Counter.h	/^		int pass;$/;"	m	class:ACounter
 pass_basic	AnalyseClass/Counter.h	/^		int pass_basic        ;$/;"	m	class:ACounter
@@ -1473,6 +1473,7 @@ pillh	AnalyseClass/Slcio.h	/^		float  pillh[ 500 ] ;$/;"	m	class:ASlcio
 pipdg	AnalyseClass/Slcio.h	/^		int    pipdg[ 500 ] ;$/;"	m	class:ASlcio
 pityp	AnalyseClass/Slcio.h	/^		int    pityp[ 500 ] ;$/;"	m	class:ASlcio
 plot	Class/file.h	/^		bool                  plot                 ;$/;"	m	class:CFlow
+plot_1D	plot_1D.C	/^void plot_1D(std::vector<std::string> input_name) {$/;"	f
 plot_file	Class/file.h	/^		std::string   plot_file    ;$/;"	m	class:CPath
 plot_histgram	plot_histgram.C	/^void plot_histgram(std::vector<std::string> mhmass) {$/;"	f
 plot_switch	AnalyseClass/Variable.h	/^		bool          plot_switch;$/;"	m	class:Avariable
@@ -1529,12 +1530,6 @@ recoilSwitch	AnalyseClass/Counter.h	/^		bool recoilSwitch ;$/;"	m	class:ACounter
 recoil_mass	AnalyseClass/Information.h	/^		Avariable  recoil_mass                ;$/;"	m	class:Variable
 recombSwitch	AnalyseClass/Counter.h	/^		bool recombSwitch ;$/;"	m	class:ACounter
 recombine	Class/JetSubStructure.h	/^		virtual void recombine(const fastjet::PseudoJet & pa, const fastjet::PseudoJet & pb, $/;"	f	class:FlavourRecombiner
-reconstruct_chargeH	Analyse/Acombine.cpp	/^bool reconstruct_chargeH(CDraw &para, TH1 *comb, TLorentzVector &VA, TLorentzVector &VW,float obj_mass, float cut_mlow, float cut_mup,  TLorentzVector &Vcombine){$/;"	f
-reconstruct_cms_topj	Analyse/Acombine.cpp	/^bool reconstruct_cms_topj(CDraw &para, TH1 *comb, TLorentzVector Vtop, TLorentzVector Vjet,float obj_mass, float cut_mlow, float cut_mup,  TLorentzVector &Vcombine, float &Vvalue){$/;"	f
-reconstruct_met	Analyse/Acombine.cpp	/^bool reconstruct_met(CDraw &para, TH1 *comb, std::vector<TLorentzVector>& Vlep, std::vector<MissingET*> met, std::vector<TLorentzVector> &Vmet,float obj_mass, float cut_mlow, float cut_mup,  TLorentzVector &Vcombine){$/;"	f
-reconstruct_met_threebody	Analyse/Acombine.cpp	/^bool reconstruct_met_threebody(CDraw &para, TH1 *comb, std::vector<TLorentzVector>& Vtau, std::vector<TLorentzVector>& Vlep, std::vector<MissingET*> met, std::vector<TLorentzVector> &Vmet,float obj_mass, float cut_mlow, float cut_mup,  TLorentzVector &Vcombine){$/;"	f
-reconstruct_top	Analyse/Acombine.cpp	/^bool reconstruct_top(CDraw &para, TH1 *comb, TLorentzVector VchargeH, TLorentzVector Vbjet,float obj_mass, float cut_mlow, float cut_mup,  TLorentzVector &Vcombine){$/;"	f
-reconstruct_topj	Analyse/Acombine.cpp	/^bool reconstruct_topj(CDraw &para, TH1 *comb, TLorentzVector Vtop, TLorentzVector Vjet,float obj_mass, float cut_mlow, float cut_mup,  TLorentzVector &Vcombine){$/;"	f
 record_event	Class/file.h	/^		bool                  record_event         ;$/;"	m	class:CFlow
 record_file	Class/file.h	/^		std::string   record_file  ;$/;"	m	class:CPath
 record_object	Class/file.h	/^		std::string           record_object        ;$/;"	m	class:CFlow
@@ -1594,6 +1589,7 @@ x_bin	AnalyseClass/Variable.h	/^		int           x_bin      ;$/;"	m	class:Avariab
 x_max	AnalyseClass/Variable.h	/^		float         x_max      ;$/;"	m	class:Avariable
 x_min	AnalyseClass/Variable.h	/^		float         x_min      ;$/;"	m	class:Avariable
 x_name	AnalyseClass/Variable.h	/^		std::string   x_name     ;$/;"	m	class:Avariable
+xection	Class/file.h	/^		float                  xection                ;$/;"	m	class:CFile
 y_bin	AnalyseClass/Variable.h	/^		int           y_bin      ;$/;"	m	class:Avariable
 y_max	AnalyseClass/Variable.h	/^		float         y_max      ;$/;"	m	class:Avariable
 y_min	AnalyseClass/Variable.h	/^		float         y_min      ;$/;"	m	class:Avariable

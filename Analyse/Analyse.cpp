@@ -74,7 +74,7 @@ void AnalyseEvents(CDraw &para, ExRootTreeReader *treeReader, TChain* tree, MyPl
 		}
 		else if(para.flow.begin_object=="delphes_equipment"){
 			para.debug.Message(2,2,"begin equipment");
-			Jparticle=GetFinalState(para, analyse.delphes.branchEFlowTrack, analyse.delphes.branchEFlowNeutralHadron, analyse.delphes.branchEFlowPhoton,analyse.delphes.branchElectron, analyse.delphes.branchMuon, analyse.delphes.branchMissingET,plots,
+			Jparticle=GetFinalState_equipment(para, analyse.delphes.branchEFlowTrack, analyse.delphes.branchEFlowNeutralHadron, analyse.delphes.branchEFlowPhoton,analyse.delphes.branchElectron, analyse.delphes.branchMuon, analyse.delphes.branchMissingET,plots,
 					analyse.delphes.branchParticle,
 					object.VPseudoJet,object.Vbquark,object.Vcquark,object.Velec,object.Vmuon,object.Vphoton,object.Vmet,analyse);
 			para.debug.Message(2,2,"end equipment",Jparticle);
@@ -82,20 +82,20 @@ void AnalyseEvents(CDraw &para, ExRootTreeReader *treeReader, TChain* tree, MyPl
 		}
 		else if(para.flow.begin_object=="delphes_particle"){
 			para.debug.Message(2,2,"begin particle");
-			Jparticle=GetFinalState(para, analyse, object,  plots);
+			Jparticle=GetFinalState_slcio(para, analyse, object,  plots);
 			para.debug.Message(2,2,"end particle",Jparticle);
 			if(!Jparticle){continue;}
 		}
 		else if(para.flow.begin_object=="slcio_particle"){
 			para.debug.Message(2,2,"begin slcio_particle");
-			Jparticle=GetFinalState(para, analyse, object,  plots);
+			Jparticle=GetFinalState_slcio(para, analyse, object,  plots);
 			para.debug.Message(2,2,"end slcio particle",Jparticle);
 			if(!Jparticle){continue;}
 		}
 		else{Jparticle=true;}
 
         if(para.flow.begin_object=="delphes_detector"){
-    		para.debug.Message(2,2,"		begin combine");
+    		para.debug.Message(2,2,"begin combine");
 			Jcombine=GetCombine(para,plots,object,analyse);
     		para.debug.Message(2,2,"end combine",Jcombine);
     		if(!Jcombine){continue;}
@@ -112,7 +112,7 @@ void AnalyseEvents(CDraw &para, ExRootTreeReader *treeReader, TChain* tree, MyPl
     	}
     	else{Jjetsub=true;}
 
-		analyse.datatrain->Fill();
+		//analyse.datatrain->Fill();
     	para.debug.Message(2,2,"finish all cut.");
     	if(Jparticle&&Jcombine&&Jjetsub){
     		analyse.counter.getCounter("All");
@@ -136,8 +136,8 @@ void AnalyseEvents(CDraw &para, ExRootTreeReader *treeReader, TChain* tree, MyPl
 
     }
 
-    analyse.counter.sendCounter();
-    //analyse.counter.showCounter();
+    analyse.counter.showCounter();
+	analyse.counter.sendCounter();
 
     if(!para.flow.record_output){
         freopen(para.path.record_file.c_str(),"a",stdout);

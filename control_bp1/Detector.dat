@@ -1,6 +1,0 @@
-name          : LHC 
-energy        : 14000 
-luminosity    : 300 
-elec_pol      : 0.0
-posi_pol      : 0.0
-collider_angle: 0.0

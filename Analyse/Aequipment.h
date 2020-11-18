@@ -36,14 +36,14 @@ class ExRootTreeReader;
 #include "AnalyseClass/AnalyseClass.h"
 
 
-bool GetFinalState(CDraw &para, TClonesArray *branchEFlowTrack,	TClonesArray *branchEFlowNeutralHadron,	TClonesArray *branchEFlowPhoton,TClonesArray *branchElectron ,TClonesArray *branchMuon, TClonesArray *branchMissingET,MyPlots* plots,
+bool GetFinalState_equipment(CDraw &para, TClonesArray *branchEFlowTrack,	TClonesArray *branchEFlowNeutralHadron,	TClonesArray *branchEFlowPhoton,TClonesArray *branchElectron ,TClonesArray *branchMuon, TClonesArray *branchMissingET,MyPlots* plots,
 		TClonesArray *branchParticle,
 		std::vector<fastjet::PseudoJet> & Vjet,
 		std::vector<fastjet::PseudoJet> & bquark,
 		std::vector<fastjet::PseudoJet> & cquark,
 		std::vector<Electron*>& Velec,std::vector<Muon*>& Vmuon,std::vector<Photon*>& Vphoton,std::vector<MissingET*>& Vmet, AnalyseClass &analyse);
 
-void GetFinalState_equipment(CDraw &para,TClonesArray *branchEFlowNeutralHadron,TClonesArray *branchEFlowTrack, TClonesArray *branchEFlowPhoton, TClonesArray *branchElectron, TClonesArray *branchMuon, std::vector<fastjet::PseudoJet> &jet_candi);
+void GetFinalState_equipment_track(CDraw &para,TClonesArray *branchEFlowNeutralHadron,TClonesArray *branchEFlowTrack, TClonesArray *branchEFlowPhoton, TClonesArray *branchElectron, TClonesArray *branchMuon, std::vector<fastjet::PseudoJet> &jet_candi);
 bool GetFinalState_cut(CDraw &para, std::vector<fastjet::PseudoJet> &input_jet, MyPlots *plots,std::vector<fastjet::PseudoJet> &jet);
 
 #endif

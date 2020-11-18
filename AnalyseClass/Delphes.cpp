@@ -20,6 +20,7 @@ void ADelphes::Init(ExRootTreeReader* treeReader, bool judge){
 	if(!judge){
 		return;
 	}
+	ShowMessage(2,"ADelphes::Init","begin");
 	branchJet                = treeReader->UseBranch("Jet"               );
 	branchElectron           = treeReader->UseBranch("Electron"          );
 	branchMuon               = treeReader->UseBranch("Muon"              );

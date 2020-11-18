@@ -80,11 +80,11 @@ void AObject::Read_Delphes_MCParticle(CDraw &para, ADelphes &var){
 		MCp.Set_Mother(gen->M2);
 		MCp.Set_Daughter(gen->D1);
 		MCp.Set_Daughter(gen->D2);
-//		if(gen->Status==1){
-			OMCParticle_ori.push_back(MCp);
-//		}
-//		else if(gen->Status==2){
-  		if(gen->Status==2){
+  		if(gen->Status==1){
+    		OMCParticle_ori.push_back(MCp);
+  		}
+  		else if(gen->Status==2){
+//  		if(gen->Status==2){
 			if(std::abs(gen->PID)==5){
 				OMCbquark_ori.push_back(MCp);
 			}
@@ -228,7 +228,7 @@ void AObject::Init(AnalyseClass &analysis, CDraw &para){
 	}
 	else if(para.flow.begin_object=="delphes_detector"){
 		para.debug.Message(2,83,"In AObject::Init,  begin to Read Particle","delphes detector ");
-	//	Read_Delphes_AnalysedParticle(para,analysis.delphes); 
+		Read_Delphes_AnalysedParticle(para,analysis.delphes); 
 	//	Read_Delphes_MCParticle(para,analysis.delphes); 
 	}
 	else{

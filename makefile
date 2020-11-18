@@ -13,14 +13,10 @@ RootPath=${HOME}/Software/executable/root
 YAMLPath=${HOME}/Software/lib/yaml-cpp/
 DelphesPath=${HOME}/Software/executable/MG5_aMC_v2_6_5/Delphes
 DelphesextPath=${HOME}/Software/executable/MG5_aMC_v2_6_5/Delphes/external
+EXRootPath=${DelphesextPath}/ExRootAnalysis
 FastjetPath=${HOME}/Software/lib/fastjet-install/lib
 
-INCLUDE = -I. -I..  -I$(RootPath)/include  \
-		    -I$(DelphesPath) \
-		    -I$(DelphesextPath) \
-            -I$(DelphesextPath)/ExRootAnalysis\
-		    -I${YAMLPath}/include
-
+INCLUDE = -I. -I..  -I$(RootPath)/include -I$(DelphesPath) -I$(DelphesextPath) -I${EXRootPath} -I${YAMLPath}/include
 
 LIBS = -lboost_filesystem -lboost_system  -Wl,-rpath,$(DelphesPath) -L$(DelphesPath) -lDelphes ${YAMLPath}/libyaml-cpp.a  
 ROOTLIBS = -L${RootPath}/lib -lCore -lRIO -lNet -lHist -lGraf -lGraf3d -lGpad -lTree -lRint -lPostscript -lMatrix -lPhysics -lMathCore -lThread -lMultiProc -pthread -lEG -lm -ldl -rdynamic
@@ -34,7 +30,7 @@ Fram/Fram.cpp Fram/Fsection.cpp \
 Function/Fbasic.cpp Function/Fvector.cpp Function/Ffastjet.cpp Function/Fdelphes.cpp Function/Froot.cpp Function/Ffile.cpp\
 Function/FTLorentzVector.cpp \
 Lib/MessageFormat.cpp Lib/PlotSetting.cpp Lib/libstructure.cpp Lib/Define.cpp\
-Class/Detector.cpp Class/file.cpp\
+Class/Detector.cpp Class/file.cpp \
 RWpara/RWfile.cpp RWpara/RWDraw.cpp RWpara/RWbasic.cpp RWpara/RWEvent.cpp RWpara/RWcombine.cpp RWpara/RWglobal.cpp RWpara/RWjet.cpp\
 RWpara/RWlepton.cpp RWpara/RWmet.cpp RWpara/RWphoton.cpp RWpara/RWrecoil.cpp RWpara/RWjep.cpp RWpara/RWTag.cpp\
 RWpara/RWMassDrop.cpp RWpara/RWNSubjettiness.cpp RWpara/RWBoostTag.cpp RWpara/RWJetSubStructure.cpp RWpara/RWVar.cpp\

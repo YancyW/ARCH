@@ -2,30 +2,61 @@
 #include "Class/debug.h"
 void CPath::Read_Path(std::string steering_file){
 	YAML::Node path_node = YAML::LoadFile(steering_file);
+	RW_element("INPUT_FOLDER"   ,path_node,this->input_folder                  );
+	RW_element("OUTPUT_FOLDER"  ,path_node,this->output_folder                 );
 	RW_element("RECORD_FILE"    ,path_node,this->record_file   );
-	CreateFileFolder(this->record_file);
+	if(this->output_folder != "NULL"){
+		this->record_file= this->output_folder+"/"+this->record_file;
+	}
+	Create_File_Folder(this->record_file);
 
+	ShowMessage(4,"Please check the RECORD_FILE for detail arguments setting!" );
+	ShowMessage(1);
   	freopen(this->record_file.c_str(),"w",stdout);
-	ShowMessage(3, "read path");
-	RW_element("PROCESS"        ,path_node,this->process       );
-	RW_element("OUTPUT_FILE"    ,path_node,this->output_file   );
-	CreateFolder(this->output_file);
-	RW_element("EVENT_FILE"     ,path_node,this->event_file    );
-	CreateFileFolder(this->event_file);
-	RW_element("SINGLE_PLOT"    ,path_node,this->single_plot   );
-	CreateFolder(this->single_plot);
-	RW_element("COMBINE_PLOT"   ,path_node,this->combine_plot  );
-	CreateFolder(this->combine_plot);
 
-	RW_element("INPUT_FILE"     ,path_node,this->input_file    );
-	RW_element("DEBUG_FILE"     ,path_node,this->debug_file    );
+	ShowMessage(2, "read path");
+	RW_element("PROCESS"        ,path_node,this->process       );
+
+	RW_element("DATA_FOLDER"    ,path_node,this->data_folder );
+	RW_element("EVENT_FOLDER"   ,path_node,this->event_folder  );
+	RW_element("SINGLE_PLOT"    ,path_node,this->single_plot   );
+	RW_element("COMBINE_PLOT"   ,path_node,this->combine_plot  );
+	ShowMessage(1);
+
+	if(this->output_folder != "NULL" || this->output_folder != ""){
+		this->data_folder             = this->output_folder+"/"+this->data_folder+"/";
+		this->event_folder            = this->output_folder+"/"+this->event_folder+"/";
+		this->single_plot             = this->output_folder+"/"+this->single_plot+"/";
+		this->combine_plot            = this->output_folder+"/"+this->combine_plot+"/";
+	}
+
+	this->Create_Folder();
+	this->event_file = this->event_folder + this->process + ".root";
+
+
 	RW_element("ANALYSIS_FILE"  ,path_node,this->analyse_file  );
 	RW_element("DETECTOR_FILE"  ,path_node,this->detector_file );
 	RW_element("FLOW_FILE"      ,path_node,this->flow_file     );
-	RW_element("CUT_FILE"       ,path_node,this->cut_file      );
-	RW_element("PLOT_FILE"      ,path_node,this->plot_file     );
-	RW_element("VAR_FILE"       ,path_node,this->var_file      );
 	RW_element("SIGNAL_FILE"    ,path_node,this->signal_file   );
+
+	RW_element("INPUT_FILE"     ,path_node,this->input_file    );
+	RW_element("VAR_FILE"       ,path_node,this->var_file      );
+	RW_element("CUT_FOLDER"     ,path_node,this->cut_folder    );
+
+	RW_element("DEBUG_FILE"     ,path_node,this->debug_file    );
+	RW_element("PLOT_FILE"      ,path_node,this->plot_file     );
+
+	if(this->input_folder != "NULL" || this->input_folder != ""){
+		this->analyse_file              = this->input_folder+"/"+this->analyse_file     ;
+		this->debug_file                = this->input_folder+"/"+this->debug_file       ;
+		this->flow_file                 = this->input_folder+"/"+this->flow_file        ;
+		this->plot_file                 = this->input_folder+"/"+this->plot_file        ;
+		this->input_file                = this->input_folder+"/"+this->input_file       ;
+		this->cut_folder                = this->input_folder+"/"+this->cut_folder+"/"   ;
+		this->var_file                  = this->input_folder+"/"+this->var_file         ;
+		this->signal_file               = this->cut_folder+"/"+this->signal_file        ;
+		this->detector_file             = this->input_folder+"/"+this->detector_file    ;
+	}
 }
 
 void CFile::  Read_File(CPath path){
@@ -80,9 +111,8 @@ void CFlow::   Read_Flow(CPath path){
 	RW_element("BDT_level"      ,flow_node,this->BDT_level    );
 }
 
-void CSignal::Read_Signal(CPath path){
+void CSignal::Read_Signal(std::string file_name){
 	ShowMessage(3, "read signal");
-	std::string file_name=path.cut_file+"signal.dat";
 	YAML::Node signal_node = YAML::LoadFile(file_name);
 	RW_element("NUM_jets"        ,signal_node,this->NUM_jets     );
 	RW_element("NUM_bjet"        ,signal_node,this->NUM_bjet     );

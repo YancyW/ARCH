@@ -40,10 +40,11 @@ class ExRootTreeReader;
 //		std::vector<Electron*>& Velec,std::vector<Muon*>& Vmuon,std::vector<Jet*>& Vtau,std::vector<Photon*>& Vphoton,std::vector<MissingET*>& Vmet, AnalyseClass &analyse);
 bool GetFinalState_detector(CDraw &para, AnalyseClass &analyse, AObject &object, MyPlots* plots);
 
-bool GetFinalState_detector(CDraw &para, TClonesArray *branchJet, MyPlots *plots,std::vector<Jet*> &jet);
-bool GetFinalState_detector(CDraw &para, TClonesArray *branchElectron, MyPlots *plots,std::vector<Electron*> &elec);
-bool GetFinalState_detector(CDraw &para, TClonesArray *branchMuon, MyPlots *plots,std::vector<Muon*> &muon);
-bool GetFinalState_detector(CDraw &para, TClonesArray *branchMissingET, MyPlots *plots,std::vector<MissingET*> &met);
-bool GetFinalState_detector(CDraw &para, AnalyseClass& analyse, std::vector<Jet*> &jet,std::vector<Jet*> &bjet, std::vector<Jet*> &cjet, std::vector<Jet*> &qjet, std::vector<Jet*>& taujet, std::vector<Jet*> &untagjet, MyPlots *plots);
+bool GetFinalState_detector_jet(CDraw &para, TClonesArray *branchJet, MyPlots *plots,std::vector<Jet*> &jet);
+bool GetFinalState_detector_elec(CDraw &para, TClonesArray *branchElectron, MyPlots *plots,std::vector<Electron*> &elec);
+bool GetFinalState_detector_muon(CDraw &para, TClonesArray *branchMuon, MyPlots *plots,std::vector<Muon*> &muon);
+bool GetFinalState_detector_met(CDraw &para, TClonesArray *branchMissingET, MyPlots *plots,std::vector<MissingET*> &met);
+bool GetFinalState_detector_jet_classify(CDraw &para, AnalyseClass& analyse, std::vector<Jet*> &jet,std::vector<Jet*> &bjet, std::vector<Jet*> &cjet, std::vector<Jet*> &qjet, std::vector<Jet*>& taujet, std::vector<Jet*> &untagjet, MyPlots *plots);
+void GetFinalState_detector_pseudojet(TClonesArray *branchJet, std::vector<fastjet::PseudoJet> &jet);
 
 #endif

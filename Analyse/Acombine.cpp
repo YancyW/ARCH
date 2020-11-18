@@ -5,7 +5,7 @@ bool GetCombine(CDraw &para,MyPlots* plots,AObject &object, AnalyseClass &analys
 	bool Jcomb1       = false;
 	bool Jcomb2       = false;
 	bool Jcomb3       = false;
-	bool Jcomb4       = true;
+	bool Jcomb4       = false;
 	bool Jcomb5       = false;
 	bool Jcomb6       = false;
 	bool Jrecoil      = false;
@@ -17,303 +17,258 @@ bool GetCombine(CDraw &para,MyPlots* plots,AObject &object, AnalyseClass &analys
 		Jcomb=Analysis_Combine(para,plots,object, &Jcomb1,&Jcomb2, &Jcomb3, &Jcomb4, &Jcomb5, &Jcomb6);
 		if(Jcomb1){analyse.counter.getCounter("operation_combine1");}
 		if(Jcomb1&&Jcomb2){analyse.counter.getCounter("operation_combine2");}
-		if(Jcomb1&&Jcomb2&&Jcomb3){analyse.counter.getCounter("operation_combine3");}
-		if(Jcomb1&&Jcomb2&&Jcomb3&&Jcomb4){analyse.counter.getCounter("operation_combine4");}
-		if(Jcomb1&&Jcomb2&&Jcomb3&&Jcomb4&&Jcomb5){analyse.counter.getCounter("operation_combine5");}
-		if(Jcomb1&&Jcomb2&&Jcomb3&&Jcomb4&&Jcomb5&&Jcomb6){analyse.counter.getCounter("operation_combine6");}
 		else{return(false);}
 	}
 	else{Jcomb=true;}
 
-	object.Fill_Combine(para,analyse);
-	return(true);
+	if(para.recoil.SWITCH){
+		para.debug.Message(3,2,"begin recoil");
+		Jrecoil=Analysis_Recoil(para,plots,object);
+		if(Jrecoil){analyse.counter.getCounter("operation_recoil");}
+		else{return(false);}
+	}
+	else{Jrecoil=true;}
+
+
+	if(para.recoil.comb_SWITCH){
+		para.debug.Message(3,2,"begin combine and recoil");
+		Jcomb_recoil=Analysis_Combine_Recoil(para,plots,object.Vjet,object.Vbjet,object.Vcjet,object.Vqjet,object.Vuntagjet, object.Velec,object.Vmuon,object.Vcombine_jet1,object.Vcombine_jet2, object.Vcombine_elec1, object.Vcombine_elec2, object.Vcombine_muon1, object.Vcombine_muon2);
+		if(Jcomb_recoil){analyse.counter.getCounter("operation_recoil_comb");}
+		else{return(false);}
+	}
+	else{Jcomb_recoil=true;}
+
+	if(Jcomb&&Jrecoil&&Jcomb_recoil){
+		Jcombine=true;
+		analyse.counter.getCounter("operation");
+		return(true);
+	}
+	else{
+		return(false);
+	}
 }
+
+/*float Combine4_direct(TLorentzVector mom1, TLorentzVector mom2,TLorentzVector mom3, TLorentzVector mom4, 
+  float cut_mlow1, float cut_mup1, float obj_mass1, 
+  float cut_mlow2, float cut_mup2, float obj_mass2, 
+  float *Fmass1, float *Fmass2,int *group){
+
+  float xi_min=10000.0;
+  bool judge1=false,judge2=false,judge_xi=false;
+  float re_mass1=0.0,re_mass2=0.0;
+
+  judge1=Combine2_direct(mom1, mom2,cut_mlow1,cut_mup1, &re_mass1);
+  judge2=Combine2_direct(mom3, mom4,cut_mlow2,cut_mup2, &re_mass2);
+  if(judge1&&judge2){
+  judge_xi=Find_ximin(&xi_min,re_mass1,obj_mass1,re_mass2,obj_mass2,Fmass1, Fmass2);
+  if(judge_xi){*group=1;}
+  }
+
+  judge1=Combine2_direct(mom1, mom3,cut_mlow1,cut_mup1, &re_mass1);
+  judge2=Combine2_direct(mom2, mom4,cut_mlow2,cut_mup2, &re_mass2);
+  if(judge1&&judge2){
+  judge_xi=Find_ximin(&xi_min,re_mass1,obj_mass1,re_mass2,obj_mass2,Fmass1, Fmass2);
+  if(judge_xi){*group=2;}
+  }
+
+  judge1=Combine2_direct(mom1, mom4,cut_mlow1,cut_mup1, &re_mass1);
+  judge2=Combine2_direct(mom2, mom3,cut_mlow2,cut_mup2, &re_mass2);
+  if(judge1&&judge2){
+  judge_xi=Find_ximin(&xi_min,re_mass1,obj_mass1,re_mass2,obj_mass2,Fmass1, Fmass2);
+  if(judge_xi){*group=3;}
+  }
+
+  judge1=Combine2_direct(mom2, mom3,cut_mlow1,cut_mup1, &re_mass1);
+  judge2=Combine2_direct(mom1, mom4,cut_mlow2,cut_mup2, &re_mass2);
+  if(judge1&&judge2){
+  judge_xi=Find_ximin(&xi_min,re_mass1,obj_mass1,re_mass2,obj_mass2,Fmass1, Fmass2);
+  if(judge_xi){*group=4;}
+  }
+
+  judge1=Combine2_direct(mom2, mom4,cut_mlow1,cut_mup1, &re_mass1);
+  judge2=Combine2_direct(mom1, mom3,cut_mlow2,cut_mup2, &re_mass2);
+  if(judge1&&judge2){
+  judge_xi=Find_ximin(&xi_min,re_mass1,obj_mass1,re_mass2,obj_mass2,Fmass1, Fmass2);
+  if(judge_xi){*group=5;}
+  }
+
+  judge1=Combine2_direct(mom3, mom4,cut_mlow1,cut_mup1, &re_mass1);
+  judge2=Combine2_direct(mom1, mom2,cut_mlow2,cut_mup2, &re_mass2);
+  if(judge1&&judge2){
+  judge_xi=Find_ximin(&xi_min,re_mass1,obj_mass1,re_mass2,obj_mass2,Fmass1, Fmass2);
+  if(judge_xi){*group=6;}
+  }
+
+  return(xi_min);
+  }*/
 
 bool Analysis_Combine(CDraw &para, MyPlots *plots, AObject& object,bool *Jcomb1, bool *Jcomb2, bool *Jcomb3, bool *Jcomb4, bool *Jcomb5, bool *Jcomb6){
 
-	float Icomb1_m,Icomb2_m, Icomb3_m, Icomb4_m, Icomb5_m, Icomb6_m;
-	float cut_mlow1, cut_mup1, cut_mlow2, cut_mup2, cut_mlow3, cut_mup3, cut_mlow4, cut_mup4, cut_mlow5, cut_mup5, cut_mlow6, cut_mup6;
-	float cut_ptlow1, cut_ptup1, cut_ptlow2,cut_ptup2, cut_ptlow3,cut_ptup3, cut_ptlow4,cut_ptup4, cut_ptlow5,cut_ptup5, cut_ptlow6,cut_ptup6;
+	std::vector<Jet*> Vchoose_jet,Vleft_jet;
+	std::vector<Electron*> Vchoose_elec,Vleft_elec;
+	std::vector<Muon*> Vchoose_muon,Vleft_muon;
+	std::vector<Jet*> Vparticle1;
 
-	Icomb1_m  = para.comb.jets.CUT_massr[0];
-	cut_mlow1 = para.comb.jets.CUT_massd[0];
-	cut_mup1  = para.comb.jets.CUT_massu[0];
-	cut_ptlow1= para.comb.jets.CUT_ptd[0];
-	cut_ptup1 = para.comb.jets.CUT_ptu[0];
+	bool Jrecomb1_jet =false,Jrecomb2_jet =false;
+	bool Jrecomb1_bjet=false,Jrecomb2_bjet=false;
+	bool Jrecomb1_cjet=false,Jrecomb2_cjet=false;
+	bool Jrecomb1_qjet=false,Jrecomb2_qjet=false;
+	bool Jrecomb1_elec=false,Jrecomb2_elec=false;
+	bool Jrecomb1_muon=false,Jrecomb2_muon=false;
 
-	Icomb2_m  = para.comb.jets.CUT_massr[1];
-	cut_mlow2 = para.comb.jets.CUT_massd[1];
-	cut_mup2  = para.comb.jets.CUT_massu[1];
-	cut_ptlow2= para.comb.jets.CUT_ptd[1];
-	cut_ptup2 = para.comb.jets.CUT_ptu[1];
-
-	Icomb3_m  = para.comb.jets.CUT_massr[2];
-	cut_mlow3 = para.comb.jets.CUT_massd[2];
-	cut_mup3  = para.comb.jets.CUT_massu[2];
-	cut_ptlow3= para.comb.jets.CUT_ptd[2];
-	cut_ptup3 = para.comb.jets.CUT_ptu[2];
-
-	Icomb4_m  = para.comb.jets.CUT_massr[3];
-	cut_mlow4 = para.comb.jets.CUT_massd[3];
-	cut_mup4  = para.comb.jets.CUT_massu[3];
-	cut_ptlow4= para.comb.jets.CUT_ptd[3];
-	cut_ptup4 = para.comb.jets.CUT_ptu[3];
-
-	Icomb5_m  = para.comb.jets.CUT_massr[4];
-	cut_mlow5 = para.comb.jets.CUT_massd[4];
-	cut_mup5  = para.comb.jets.CUT_massu[4];
-	cut_ptlow5= para.comb.jets.CUT_ptd[4];
-	cut_ptup5 = para.comb.jets.CUT_ptu[4];
-
-	Icomb6_m  = para.comb.jets.CUT_massr[5];
-	cut_mlow6 = para.comb.jets.CUT_massd[5];
-	cut_mup6  = para.comb.jets.CUT_massu[5];
-	cut_ptlow6= para.comb.jets.CUT_ptd[5];
-	cut_ptup6 = para.comb.jets.CUT_ptu[5];
-
-
-	object.Vcombine1.resize(1);
-	object.Vcombine2.resize(1);
-	object.Vcombine3.resize(1);
-	object.Vcombine4.resize(1);
-	object.Vcombine5.resize(1);
-	object.Vcombine6.resize(1);
-	object.Vvalue   .resize(1);
-	object.Vre_met  .resize(1);
-
-
-	std::vector<TLorentzVector> Vtau1;
-	std::vector<TLorentzVector> Vtau;
-	if(para.signal.NUM_taujet>=2){
-//		ShowMessage(1,"object mc",object.OMCParticle_ori);
-		for(int i=0;i<object.Vtaujet.size();i++){
-			Vtau.push_back(object.Vtaujet[i]->P4());
-		}
-		Vtau1=Vtau;
-		std::vector<TLorentzVector>      Vlep;
-		Vlep.push_back(object.Vlep[0]);
-		*Jcomb1=Combine2SameFS_TLorentzvector(para,plots->fcomb1M,Vtau,Icomb1_m,cut_mlow1, cut_mup1, cut_ptlow1, cut_ptup1, object.Vcombine1[0]);
-		*Jcomb2=reconstruct_met_threebody(para,plots->fcomb3M,object.Vcombine1,Vlep,object.Vmet,object.Vre_met,Icomb3_m,cut_mlow3,cut_mup3, object.Vcombine3[0]);
-	//	*Jcomb2=reconstruct_met(para,plots->fcomb2M,Vlep,object.Vmet,object.Vre_met,Icomb2_m,cut_mlow2,cut_mup2, object.Vcombine2[0]);
+	if(para.signal.NUM_elec==2){
+		Jrecomb2_elec=true;
 	}
-	else if(para.signal.NUM_taujet==1){
-		for(int i=0;i<object.Vtaujet.size();i++){
-			Vtau.push_back(object.Vtaujet[i]->P4());
-		}
-		std::vector<TLorentzVector>      Vlep_hardest;
-		Vlep_hardest.push_back(object.Vlep[0]);
-		std::vector<TLorentzVector>      Vlep;
-		for(int i=1;i<object.Vlep.size();i++){
-			Vlep.push_back(object.Vlep[i]);
-		}
-		*Jcomb1=Combine2DifferentFS_TLorentzvector(para,plots->fcomb1M,Vtau,Vlep,Icomb1_m,cut_mlow1, cut_mup1, cut_ptlow1, cut_ptup1, object.Vcombine1[0]);
-        //*Jcomb2=reconstruct_met(para,plots->fcomb2M,object.Vlep,object.Vmet,object.Vre_met,Icomb2_m,cut_mlow2,cut_mup2, object.Vcombine2[0]);
-		*Jcomb2=reconstruct_met_threebody(para,plots->fcomb3M,object.Vcombine1,Vlep_hardest,object.Vmet,object.Vre_met,Icomb3_m,cut_mlow3,cut_mup3, object.Vcombine3[0]);
+	else if(para.signal.NUM_muon==2){
+		Jrecomb2_muon=true;
 	}
-	else if(para.signal.NUM_taujet==0){
-		std::vector<TLorentzVector> Vlep;
-		for(int i=0;i<object.Velec.size();i++){
-			Vlep.push_back(object.Velec[i]->P4());
-		}
-		for(int i=0;i<object.Vmuon.size();i++){
-			Vlep.push_back(object.Vmuon[i]->P4());
-		}
-		for(int i=0;i<object.Vjet.size();i++){
-			Vtau.push_back(object.Vjet[i]->P4());
-		}
-		
-		*Jcomb1=Combine2SameFS_TLorentzvector(para,plots->fcomb1M,Vlep,Icomb1_m,cut_mlow1, cut_mup1, cut_ptlow1, cut_ptup1, object.Vcombine1[0]);
-		std::vector<TLorentzVector>      Vlep_hardest;
-		Vlep_hardest.push_back(Vlep[0]);
-		//*Jcomb2=reconstruct_met(para,plots->fcomb2M,object.Vlep,object.Vmet,object.Vre_met,Icomb2_m,cut_mlow2,cut_mup2, object.Vcombine2[0]);
-		*Jcomb2=reconstruct_met_threebody(para,plots->fcomb3M,object.Vcombine1,Vlep_hardest,object.Vmet,object.Vre_met,Icomb3_m,cut_mlow3,cut_mup3, object.Vcombine3[0]);
-	}
-	if(!*Jcomb1||!*Jcomb2){return(false);}
+
+	////if(para.signal.NUM_bjet==2){
+	////	Jrecomb1_bjet=true ,Jrecomb2_bjet=false;
+	////	Jrecomb1_cjet=false,Jrecomb2_cjet=false;
+	////	Jrecomb1_qjet=false,Jrecomb2_qjet=true ;
+	////	Jrecomb1_elec=false,Jrecomb2_elec=false;
+	////	Jrecomb1_muon=false,Jrecomb2_muon=false;
+	////}
+	////if(para.signal.NUM_cjet==2){
+	////	Jrecomb1_bjet=false,Jrecomb2_bjet=false;
+	////	Jrecomb1_cjet=true ,Jrecomb2_cjet=true;
+	////	Jrecomb1_qjet=false,Jrecomb2_qjet=false;
+	////	Jrecomb1_elec=false,Jrecomb2_elec=false;
+	////	Jrecomb1_muon=false,Jrecomb2_muon=false;
+	////}
+	////else if(para.signal.NUM_elec==2){
+	////	if(para.signal.VETO_bjet && para.signal.VETO_cjet){
+	////		Jrecomb1_qjet=true, Jrecomb2_elec=true;
+	////	}
+	////	else if(!para.signal.VETO_bjet && para.signal.VETO_cjet){
+	////        Jrecomb1_bjet=true, Jrecomb1_qjet=true , Jrecomb2_elec=true;
+	////	}
+	////	else if(para.signal.VETO_bjet && !para.signal.VETO_cjet){
+	////        Jrecomb1_cjet=true, Jrecomb1_qjet=true , Jrecomb2_elec=true;
+	////	}
+	////	else{
+	////		Jrecomb1_jet=true ,Jrecomb2_elec=true;
+	////	}
+	////}
+	////else if(para.signal.NUM_muon==2){
+	////	if(para.signal.VETO_bjet ){
+	////		Jrecomb1_qjet=true ,Jrecomb2_muon=true;
+	////	}
+	////	else{
+	////		Jrecomb1_jet=true ,Jrecomb2_muon=true;
+	////	}
+	////}
+
+	float Icomb1_m,Icomb2_m;
+	float cut_mlow1, cut_mup1, cut_mlow2, cut_mup2,cut_ptlow2,cut_ptup2;
+	////Icomb1_m = para.comb.jets.CUT_massr[0];
+
+	////cut_mlow1 = para.comb.jets.CUT_massd[0];
+	////cut_mup1  = para.comb.jets.CUT_massu[0];
+
+	Icomb2_m  = para.comb.jets.CUT_massr[0];
+	cut_mlow2 = para.comb.jets.CUT_massd[0];
+	cut_mup2  = para.comb.jets.CUT_massu[0];
 
 
-	*Jcomb3=*Jcomb2;
- // *Jcomb3=reconstruct_chargeH(para,plots->fcomb3M,object.Vcombine1[0],object.Vcombine2[0],Icomb3_m,cut_mlow3,cut_mup3, object.Vcombine3[0]);
-//  ShowMessage(2,"combine1", object.Vcombine1[0]);
-//  ShowMessage(2,"combine2", object.Vcombine2[0]);
-//  ShowMessage(2,"combine3", object.Vcombine3[0]);
-    if(*Jcomb3){
-		std::vector<TLorentzVector> Vtjet;
-        if(object.Vqjet.size()>0){
-			for(unsigned int i=0;i<object.Vqjet.size();i++){
-				Vtjet.push_back(object.Vqjet[i]->P4());
-			}
-        }
-        if(object.Vtau.size()!=0){
-        	Vtjet.push_back(Vtau[0]);
-        }
-    	if(Vtjet.size()==0){
-			return(false);
-		}
-    	if(Vtjet.size()==1){
-        	*Jcomb5=reconstruct_topj(para,plots->fcomb5M,object.Vcombine3[0],Vtjet[0],Icomb5_m,cut_ptlow5,cut_ptup5, object.Vcombine5[0]);
-        	*Jcomb6=reconstruct_cms_topj(para,plots->fcomb6M,object.Vcombine5[0],Vtjet[0],Icomb6_m,cut_ptlow6,cut_ptup6,object.Vcombine6[0],object.Vvalue[0]);
-        	if(*Jcomb5 && *Jcomb6){
-        		return(true);
-        	}
-    	}
-    	else{
-			*Jcomb4=reconstruct_top(para,plots->fcomb4M,object.Vcombine3[0],Vtjet,Icomb4_m,cut_mlow4,cut_mup4, object.Vcombine4[0]);
-			if(*Jcomb4){
-				*Jcomb5=reconstruct_topj(para,plots->fcomb5M,object.Vcombine4[0],Vtjet[0],Icomb5_m,cut_ptlow5,cut_ptup5, object.Vcombine5[0]);
-				*Jcomb6=reconstruct_cms_topj(para,plots->fcomb6M,object.Vcombine5[0],Vtjet[0],Icomb6_m,cut_ptlow6,cut_ptup6,object.Vcombine6[0],object.Vvalue[0]);
-				if(*Jcomb5 && *Jcomb6){
-					return(true);
-				}
-			}
-    	}
-    }
+	cut_ptlow2 = para.comb.jets.CUT_ptd[0];
+	cut_ptup2  = para.comb.jets.CUT_ptu[0];
+
+	////if(Jrecomb1_bjet && Jrecomb2_bjet){
+	////	*Jcomb1 = Combine4SameFS(plots, Vbjet, cut_mlow1, cut_mup1, Icomb1_m, cut_mlow2, cut_mup2, Icomb2_m, Vcombined_jet1, Vcombined_jet2);
+	////	*Jcomb2 = *Jcomb1;
+	////}
+
+	////if(Jrecomb1_elec&& Jrecomb2_elec){
+	////	*Jcomb1 = Combine4SameFS(plots, Velec, cut_mlow1, cut_mup1, Icomb1_m, cut_mlow2, cut_mup2, Icomb2_m, Vcombined_elec1, Vcombined_elec2);
+	////	*Jcomb2 = *Jcomb1;
+	////}
+
+	////if(Jrecomb1_muon && Jrecomb2_muon){
+	////	*Jcomb1 = Combine4SameFS(plots, Vmuon, cut_mlow1, cut_mup1, Icomb1_m, cut_mlow2, cut_mup2, Icomb2_m, Vcombined_muon1, Vcombined_muon2);
+	////	*Jcomb2 = *Jcomb1;
+	////}
+
+	////if(Jrecomb1_jet){
+	////	*Jcomb1=Combine2SameFS(plots->fcomb1M,Vjet,Icomb1_m,cut_mlow1, cut_mup1, Vcombined_jet1,Vleft_jet);
+	////	if(!*Jcomb1){return(false);}
+	////	Vjet = Vleft_jet;
+	////}
+	////if(Jrecomb2_jet){
+	////	*Jcomb2=Combine2SameFS(plots->fcomb2M,Vjet,Icomb2_m,cut_mlow2, cut_mup2, Vcombined_jet2,Vleft_jet);
+	////	if(!*Jcomb2){return(false);}
+	////	Vjet = Vleft_jet;
+	////}
+
+
+	////if(Jrecomb1_bjet && Jrecomb1_qjet && !Jrecomb1_cjet){
+
+	////	Vparticle1 = Vbjet + Vqjet;	
+	////	*Jcomb1=Combine2SameFS(plots->fcomb1M,Vparticle1,Icomb1_m,cut_mlow1, cut_mup1, Vcombined_jet1,Vleft_jet);
+	////	if(!*Jcomb1){return(false);}
+	////	Vbjet = Vleft_jet;
+	////}
+	////else if(Jrecomb1_bjet && !Jrecomb1_qjet && !Jrecomb1_cjet){
+	////	*Jcomb1=Combine2SameFS(plots->fcomb1M,Vbjet,Icomb1_m,cut_mlow1, cut_mup1, Vcombined_jet1,Vleft_jet);
+	////	if(!*Jcomb1){return(false);}
+	////	Vbjet = Vleft_jet;
+	////}
+	////else if(!Jrecomb2_bjet && Jrecomb1_cjet && Jrecomb1_qjet){
+	////	Vparticle1 = Vcjet + Vqjet;	
+	////	*Jcomb1=Combine2SameFS(plots->fcomb1M,Vparticle1,Icomb1_m,cut_mlow1, cut_mup1, Vcombined_jet1,Vleft_jet);
+	////	if(!*Jcomb1){return(false);}
+	////	Vcjet = Vleft_jet;
+	////}
+	////else if(!Jrecomb1_bjet && !Jrecomb1_qjet && Jrecomb1_cjet){
+	////	*Jcomb1=Combine2SameFS(plots->fcomb1M,Vcjet,Icomb1_m,cut_mlow1, cut_mup1, Vcombined_jet1,Vleft_jet);
+	////	if(!*Jcomb1){return(false);}
+	////	Vcjet = Vleft_jet;
+	////}
+	////else if(!Jrecomb1_bjet &&  Jrecomb1_qjet && !Jrecomb1_cjet){
+	////	*Jcomb1=Combine2SameFS(plots->fcomb1M,Vqjet,Icomb1_m,cut_mlow1, cut_mup1, Vcombined_jet1,Vleft_jet);
+	////	if(!*Jcomb1){return(false);}
+	////	Vqjet = Vleft_jet;
+	////}
+
+
+	////if(Jrecomb2_bjet){
+	////	*Jcomb2=Combine2SameFS(plots->fcomb2M,Vbjet,Icomb1_m,cut_mlow2, cut_mup2, Vcombined_jet2,Vleft_jet);
+	////	if(!*Jcomb2){return(false);}
+	////}
+
+	////if(Jrecomb2_cjet){
+	////	*Jcomb2=Combine2SameFS(plots->fcomb2M,Vcjet,Icomb1_m,cut_mlow2, cut_mup2, Vcombined_jet2,Vleft_jet);
+	////	if(!*Jcomb2){return(false);}
+	////}
+
+	////if(Jrecomb2_qjet){
+	////	*Jcomb2=Combine2SameFS(plots->fcomb2M,Vqjet,Icomb1_m,cut_mlow2, cut_mup2, Vcombined_jet2,Vleft_jet);
+	////	if(!*Jcomb2){return(false);}
+	////}
+	////if(Jrecomb1_elec){
+	////	*Jcomb1=Combine2SameFS(plots->fcomb1M,Velec,Icomb1_m,cut_mlow1, cut_mup1, Vcombined_elec1,Vleft_elec);
+	////	if(!*Jcomb1){return(false);}
+	////	Velec= Vleft_elec;
+	////}
+	if(Jrecomb2_elec){
+		*Jcomb2=Combine2SameFS(para,plots->fcomb2M,object.Velec,Icomb1_m,cut_mlow2, cut_mup2, cut_ptlow2, cut_ptup2, object.Vcombine_elec2,Vleft_elec);
+		if(!*Jcomb2){return(false);}
+	}
+	////if(Jrecomb1_muon){
+	////	*Jcomb1=Combine2SameFS(plots->fcomb1M,Vmuon,Icomb1_m,cut_mlow1, cut_mup1, Vcombined_muon1,Vleft_muon);
+	////	if(!*Jcomb1){return(false);}
+	////	Vmuon= Vleft_muon;
+	////}
+	if(Jrecomb2_muon){
+		*Jcomb2=Combine2SameFS(para,plots->fcomb2M,object.Vmuon,Icomb1_m,cut_mlow2, cut_mup2, cut_ptlow2, cut_ptup2, object.Vcombine_muon2,Vleft_muon);
+		if(!*Jcomb2){return(false);}
+	}
+
+	*Jcomb1=true;
+	if(Jcomb1&&Jcomb2){
+		return(true);
+	}
 	return(false);
 }
-
-
-bool reconstruct_met(CDraw &para, TH1 *comb, std::vector<TLorentzVector>& Vlep, std::vector<MissingET*> met, std::vector<TLorentzVector> &Vmet,float obj_mass, float cut_mlow, float cut_mup,  TLorentzVector &Vcombine){
-	if(met.size()<1){
-		return(false);
-	}
-	if(Vlep.size()<1){
-		return(false);
-	}
-
-	bool J_w=false;
-	J_w=AN_RC_w_lnu(obj_mass,cut_mlow,cut_mup,Vlep[0],met[0],Vcombine,Vmet[0]);
-
-	if(J_w){
-		AFill_Plot(para,comb,Vcombine.M());
-		return(true);
-	}
-	else{
-		return(false);
-	}
-
-}
-
-bool reconstruct_met_threebody(CDraw &para, TH1 *comb, std::vector<TLorentzVector>& Vtau, std::vector<TLorentzVector>& Vlep, std::vector<MissingET*> met, std::vector<TLorentzVector> &Vmet,float obj_mass, float cut_mlow, float cut_mup,  TLorentzVector &Vcombine){
-	if(met.size()<1){
-		return(false);
-	}
-	if(Vlep.size()<1){
-		return(false);
-	}
-
-	TLorentzVector Vvis;
-	for(unsigned int i=0;i<Vlep.size();i++){
-		Vvis+=Vlep[i];
-	}
-	for(unsigned int i=0;i<Vtau.size();i++){
-		Vvis+=Vtau[i];
-	}
-
-	bool J_w=false;
-	J_w=AN_RC_w_lnu(obj_mass,cut_mlow,cut_mup,Vvis,met[0],Vcombine,Vmet[0]);
-
-
-	if(J_w){
-		AFill_Plot(para,comb,Vcombine.M());
-		return(true);
-	}
-	else{
-		return(false);
-	}
-
-}
-bool reconstruct_chargeH(CDraw &para, TH1 *comb, TLorentzVector &VA, TLorentzVector &VW,float obj_mass, float cut_mlow, float cut_mup,  TLorentzVector &Vcombine){
-	TLorentzVector pchargeH = VA+VW;
-	bool Jre_cut=false;
-	float re_mass=pchargeH.M();
-	if(re_mass>cut_mlow&&re_mass<cut_mup){
-		Jre_cut=true;
-	}
-	if(Jre_cut){
-		Vcombine = pchargeH; 
-		AFill_Plot(para,comb,Vcombine.M());
-		return(true);
-	}
-	else{
-		return(false);
-	}
-
-}
-
-
-bool reconstruct_top(CDraw &para, TH1 *comb, TLorentzVector VchargeH, std::vector<TLorentzVector> &Vbjet,float obj_mass, float cut_mlow, float cut_mup,  TLorentzVector &Vcombine){
-	float re_mass=100000.0;
-	float massclose=100000;
-	int   count1 = -10;
-	bool  judge;
-	for(unsigned int loop1=0;loop1<Vbjet.size();loop1++){
-		judge=Combine2_direct(VchargeH, Vbjet[loop1],cut_mlow,cut_mup, 0, 10000, &re_mass);
-		if(judge && std::abs(re_mass-obj_mass)<std::abs(massclose-obj_mass)){
-			count1 = loop1;
-			massclose = re_mass;
-		}
-	}
-	if(count1!=-10){
-		std::vector<TLorentzVector> left;
-		for(int i=0;i<Vbjet.size();i++){
-			if(i!=count1){
-				left.push_back(Vbjet[i]);
-			}
-		}
-		Vcombine=Vbjet[count1]+VchargeH;
-		Vbjet.clear();
-		Vbjet=left;
-	}
-	AFill_Plot(para,comb,Vcombine.M());
-	return(true);
-}
-
-
-bool reconstruct_topj(CDraw &para, TH1 *comb, TLorentzVector Vtop, TLorentzVector Vjet,float obj_mass, float cut_mlow, float cut_mup,  TLorentzVector &Vcombine){
-	TLorentzVector ptopj= Vtop+Vjet;
-	bool Jre_cut=false;
-	float re_pt=ptopj.Pt();
-	if(re_pt>cut_mlow&&re_pt<cut_mup){
-		Jre_cut=true;
-	}
-	if(Jre_cut){
-		Vcombine = ptopj; 
-		AFill_Plot(para,comb,Vcombine.Pt());
-		return(true);
-	}
-	else{
-		return(false);
-	}
-}
-
-bool reconstruct_cms_topj(CDraw &para, TH1 *comb, TLorentzVector Vtop, TLorentzVector Vjet,float obj_mass, float cut_mlow, float cut_mup,  TLorentzVector &Vcombine, float &Vvalue){
-	TLorentzVector ptopj= Vtop+Vjet;
-	TVector3 boostvec= -ptopj.BoostVector();
-	TLorentzVector ptopj_cms = ptopj;
-	TLorentzVector ptop_cms = Vtop;
-	TLorentzVector pj_cms = Vjet;
-
-	ptopj_cms.Boost(boostvec);
-	ptop_cms.Boost(boostvec);
-	pj_cms.Boost(boostvec);
-
-
-	bool Jre_cut=false;
-	float re_angle=ptopj.Angle(ptop_cms.Vect());
-	//float re_angle=ptop_cms.Angle(Vtop.Vect());
-	float cos_re_angle=std::cos(re_angle);
-
-	if(cos_re_angle>cut_mlow&& cos_re_angle<cut_mup){
-		Jre_cut=true;
-	}
-	if(Jre_cut){
-		Vcombine = ptop_cms; 
-		Vvalue   = cos_re_angle; 
-		AFill_Plot(para,comb,cos_re_angle);
-		return(true);
-	}
-	else{
-		return(false);
-	}
-}
-
 

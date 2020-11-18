@@ -39,7 +39,7 @@ class ExRootTreeReader;
 #include "AnalyseClass/AnalyseClass.h"
 
 
-bool GetFinalState(CDraw &para, TClonesArray *branchParticle,MyPlots* plots,
+bool GetFinalState_particle(CDraw &para, TClonesArray *branchParticle,MyPlots* plots,
 		std::vector<fastjet::PseudoJet> & Vjet,
 		std::vector<fastjet::PseudoJet> & bquark,
 		std::vector<fastjet::PseudoJet> & cquark,

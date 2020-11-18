@@ -2,7 +2,7 @@
 #include "Aslcio_particle.h"
 
 
-bool GetFinalState(CDraw &para, AnalyseClass &analyse, AObject &object, MyPlots* plots){
+bool GetFinalState_slcio(CDraw &para, AnalyseClass &analyse, AObject &object, MyPlots* plots){
 	         
     para.debug.Message(3,80,"in GetFinalState: begin ");
 

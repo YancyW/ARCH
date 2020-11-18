@@ -1,11 +1,11 @@
 #include "Class/Tag.h"
 
 void CTag::Read_Tag_Particle(CPath path, std::string particle_name,CTag_Particle &particle){
-	std::string switch_name=path.cut_file+"switch.dat";
+	std::string switch_name=path.cut_folder+"switch.dat";
     YAML::Node switch_node = YAML::LoadFile(switch_name);
     RW_element(particle_name,"SWITCH"  ,switch_node,particle.SWITCH);
 
-	std::string file_name=path.cut_file+particle_name+".dat";
+	std::string file_name=path.cut_folder+particle_name+".dat";
 	YAML::Node tag_node = YAML::LoadFile(file_name);
 
 		RW_element("coneR"              ,tag_node,particle.coneR);

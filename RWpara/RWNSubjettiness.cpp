@@ -5,11 +5,11 @@ void CNSubjettiness:: Read_NSubjettiness(CPath path){
 	YAML::Node plot_node = YAML::LoadFile(path.plot_file);
 	RW_element("PLOT_NSubjettiness"    ,plot_node  ,this->PLOT  );
 
-	std::string switch_name=path.cut_file+"switch.dat";
+	std::string switch_name=path.cut_folder+"switch.dat";
     YAML::Node switch_node = YAML::LoadFile(switch_name);
     RW_element("SWITCH_NSubjettiness"  ,switch_node,this->SWITCH);
 
-	std::string file_name=path.cut_file+"nsubjettiness.dat";
+	std::string file_name=path.cut_folder+"nsubjettiness.dat";
 	YAML::Node global_node = YAML::LoadFile(file_name);
 
 	RW_element("beta"           ,global_node,this->beta       );

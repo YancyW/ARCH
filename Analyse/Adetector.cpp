@@ -16,25 +16,34 @@ bool GetFinalState_detector(CDraw &para, AnalyseClass &analyse, AObject &object,
 
 	if(para.jet.SWITCH && para.jet.jets.SWITCH){
 		para.debug.Message(3,20,"get jet");
-		Jjet=GetFinalState_detector(para,analyse.delphes.branchJet,plots,object.Vjet);
-		if(Jjet){analyse.counter.getCounter("basic_jet");}
-		else{return(false);}
+		Jjet=GetFinalState_detector_jet(para,analyse.delphes.branchJet,plots,object.Vjet);
+		if(Jjet){
+			analyse.counter.getCounter("basic_jet");
+		}
+		else{
+			return(false);
+		}
 	}
 	else{Jjet=true;}
 
 	// Analyse tagjets
 	if(para.jet.SWITCH && para.jet.jets.SWITCH && (para.jet.bjet.SWITCH||para.jet.cjet.SWITCH||para.jet.qjet.SWITCH||para.jet.taujet.SWITCH)){
 		para.debug.Message(3,20,"get tagged jet");
-		Jtagjet=GetFinalState_detector(para,analyse,object.Vjet,object.Vbjet,object.Vcjet,object.Vqjet,object.Vtaujet, object.Vuntagjet,plots);
-		if(!Jtagjet){return(false);}
+		Jtagjet=GetFinalState_detector_jet_classify(para,analyse,object.Vjet,object.Vbjet,object.Vcjet,object.Vqjet,object.Vtaujet, object.Vuntagjet,plots);
+		if(Jtagjet){
+			analyse.counter.getCounter("basic_bjet");
+		}
+		else{
+			return(false);
+		}
 	}
 	else{Jtagjet=true;}
 
 	// Analyse elec 
 	if(para.lep.SWITCH && !para.lep.elec.SWITCH && !para.lep.muon.SWITCH){
-		Jelec=GetFinalState_detector(para,analyse.delphes.branchElectron,plots,object.Velec);
+		Jelec=GetFinalState_detector_elec(para,analyse.delphes.branchElectron,plots,object.Velec);
 
-		Jmuon=GetFinalState_detector(para,analyse.delphes.branchMuon,plots,object.Vmuon);
+		Jmuon=GetFinalState_detector_muon(para,analyse.delphes.branchMuon,plots,object.Vmuon);
 
 		if(object.Velec.size()+object.Vmuon.size()<para.signal.NUM_lep){return(false);}
 
@@ -43,25 +52,31 @@ bool GetFinalState_detector(CDraw &para, AnalyseClass &analyse, AObject &object,
 			Jelec = true;
 			Jmuon = true;
 		}
-		else{return(false);}
+		else{
+			return(false);
+		}
 	}
-	else{
+	else if(para.lep.SWITCH && (para.lep.elec.SWITCH || para.lep.muon.SWITCH) ){
 		para.debug.Message(3,20,"get elec or muon seperately");
 		if(para.lep.SWITCH && para.lep.elec.SWITCH){
 			para.debug.Message(3,20,"get elec");
-			Jelec=GetFinalState_detector(para,analyse.delphes.branchElectron,plots,object.Velec);
+			Jelec=GetFinalState_detector_elec(para,analyse.delphes.branchElectron,plots,object.Velec);
 			para.debug.Message(3,20,"end get elec",Jelec);
 			if(Jelec){
 				analyse.counter.getCounter("basic_elec");
 			}
-			else{return(false);}
+			else{
+				return(false);
+			}
 		}
-		else{Jelec=true;}
+		else{
+			Jelec=true;
+		}
 
 		// Analyse muon 
 		if(para.lep.SWITCH && para.lep.muon.SWITCH){
 			para.debug.Message(3,20,"get muon");
-			Jmuon=GetFinalState_detector(para,analyse.delphes.branchMuon,plots,object.Vmuon);
+			Jmuon=GetFinalState_detector_muon(para,analyse.delphes.branchMuon,plots,object.Vmuon);
 			para.debug.Message(3,20,"end get muon",Jmuon);
 			if(Jmuon){
 				analyse.counter.getCounter("basic_muon");
@@ -70,20 +85,29 @@ bool GetFinalState_detector(CDraw &para, AnalyseClass &analyse, AObject &object,
 		}
 		else{Jmuon=true;}
 	}
+	else{
+		Jelec = true;
+		Jmuon = true;
+	}
 
 	// Analyse missing ET
 	if(para.met.SWITCH){
 		para.debug.Message(3,20,"get met");
-		Jmet=GetFinalState_detector(para,analyse.delphes.branchMissingET,plots,object.Vmet);
+		Jmet=GetFinalState_detector_met(para,analyse.delphes.branchMissingET,plots,object.Vmet);
 		para.debug.Message(3,20,"end get met",Jmet);
 		if(Jmet){
 			analyse.counter.getCounter("basic_met");
 		}
-		else{return(false);}
+		else{
+			return(false);
+		}
 	}
-	else{Jmet=true;}
+	else{
+		Jmet=true;
+	}
 
 
+	/*
     if(object.Vtaujet.size()>=2){
     	object.Fill_Particle_A(para,analyse);
     }
@@ -96,6 +120,7 @@ bool GetFinalState_detector(CDraw &para, AnalyseClass &analyse, AObject &object,
     else if(object.Vtaujet.size()==0){
     	object.Fill_Particle_C(para,analyse);
     }
+	*/
 
 	//  number pass the all basic cuts;
 	para.debug.Message(3,20,"get all basic cuts");
@@ -121,7 +146,7 @@ bool GetFinalState_detector(CDraw &para, AnalyseClass &analyse, AObject &object,
 
 
 
-bool GetFinalState_detector(CDraw &para, TClonesArray *branchElectron, MyPlots *plots,std::vector<Electron*> &elec){
+bool GetFinalState_detector_elec(CDraw &para, TClonesArray *branchElectron, MyPlots *plots,std::vector<Electron*> &elec){
 	int loop1=0,loope=0,num;
 	float pt,y;
 
@@ -195,7 +220,7 @@ bool GetFinalState_detector(CDraw &para, TClonesArray *branchElectron, MyPlots *
 
 
 
-bool GetFinalState_detector(CDraw &para, TClonesArray *branchMuon, MyPlots *plots,std::vector<Muon*> &muon){
+bool GetFinalState_detector_muon(CDraw &para, TClonesArray *branchMuon, MyPlots *plots,std::vector<Muon*> &muon){
 	int loop1=0,loopm=0,num;
 	float pt,y;
 
@@ -261,7 +286,7 @@ bool GetFinalState_detector(CDraw &para, TClonesArray *branchMuon, MyPlots *plot
 
 
 
-bool GetFinalState_detector(CDraw &para, TClonesArray *branchJet, MyPlots *plots,std::vector<Jet*> &jet){
+bool GetFinalState_detector_jet(CDraw &para, TClonesArray *branchJet, MyPlots *plots,std::vector<Jet*> &jet){
 	int loop1=0,loopj=0,num;
 	float pt,y,mass;
 
@@ -310,7 +335,7 @@ bool GetFinalState_detector(CDraw &para, TClonesArray *branchJet, MyPlots *plots
 
 
 
-bool GetFinalState_detector(CDraw &para, TClonesArray *branchMissingET, MyPlots *plots,std::vector<MissingET*> &met){
+bool GetFinalState_detector_met(CDraw &para, TClonesArray *branchMissingET, MyPlots *plots,std::vector<MissingET*> &met){
 	float pt;
 
 	para.debug.Message(3,25,"in the missingET cut function");
@@ -326,7 +351,7 @@ bool GetFinalState_detector(CDraw &para, TClonesArray *branchMissingET, MyPlots 
 
 
 
-bool GetFinalState_detector(CDraw &para, AnalyseClass& analyse, std::vector<Jet*> &jet,std::vector<Jet*> &bjet, std::vector<Jet*> &cjet, std::vector<Jet*> &qjet, std::vector<Jet*>& taujet, std::vector<Jet*> &untagjet, MyPlots *plots){
+bool GetFinalState_detector_jet_classify(CDraw &para, AnalyseClass& analyse, std::vector<Jet*> &jet,std::vector<Jet*> &bjet, std::vector<Jet*> &cjet, std::vector<Jet*> &qjet, std::vector<Jet*>& taujet, std::vector<Jet*> &untagjet, MyPlots *plots){
 	int loop1=0,loopb=0,loopc=0,looptau=0,loopq=0,jnum;
 	float pt,mass,y;
 
@@ -516,7 +541,7 @@ bool GetFinalState_detector(CDraw &para, AnalyseClass& analyse, std::vector<Jet*
 
 
 
-void GetFinalState_detector(TClonesArray *branchJet, std::vector<fastjet::PseudoJet> &jet){
+void GetFinalState_detector_pseudojet(TClonesArray *branchJet, std::vector<fastjet::PseudoJet> &jet){
 	int loop1=0,num;
 	num = branchJet->GetEntries();
 

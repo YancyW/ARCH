@@ -23,14 +23,14 @@ class ExRootTreeReader;
 #include "Lib/libstructure.h"
 #include "Lib/MessageFormat.h"
 #include "Class/DrawClass.h"
+#include "AnalyseClass/Object.h"
 
 
 
-bool Analysis_Recoil(CDraw &para, MyPlots *plots,std::vector<Jet*> Vjet,std::vector<Jet*> Vbjet,std::vector<Jet*> Vcjet, std::vector<Jet*> Vqjet,std::vector<Electron*> Velec,std::vector<Muon*> Vmuon,
-		std::vector<Jet*> &Vcombined_jet1, std::vector<Jet*> &Vcombined_jet2, std::vector<Electron*> &Vcombined_elec1, std::vector<Electron*> &Vcombined_elec2, std::vector<Muon*> &Vcombined_muon1, std::vector<Muon*> &Vcombined_muon2);
+bool Analysis_Recoil(CDraw &para, MyPlots *plots, AObject& object);
 
 template<typename TRecoil>
-bool Analysis_Recoil(CDraw &para, MyPlots *plots, TRecoil particle){
+bool Analysis_Recoil_For_Special_Particles(CDraw &para, MyPlots *plots, TRecoil particle){
 
 		float Irecoilcut_min,Irecoilcut_max;
 		Irecoilcut_min=para.recoil.jets.CUT_massd[0];

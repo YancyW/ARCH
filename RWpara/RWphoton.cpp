@@ -10,11 +10,11 @@ void CPhoton:: Read_Photon(CPath path){
 	RW_element("PLOT_r_lep_photon"     ,plot_node  ,this->PLOT_r_lep   );
 	RW_element("PLOT_r_jet_photon"     ,plot_node  ,this->PLOT_r_jet   );
 
-	std::string switch_name=path.cut_file+"switch.dat";
+	std::string switch_name=path.cut_folder+"switch.dat";
     YAML::Node switch_node = YAML::LoadFile(switch_name);
     RW_element("SWITCH_photon"  ,switch_node,this->SWITCH);
 
-	std::string file_name=path.cut_file+"photon.dat";
+	std::string file_name=path.cut_folder+"photon.dat";
 	YAML::Node A_node = YAML::LoadFile(file_name);
 	RW_element("CUT_num"                  ,A_node,this->CUT_num);
 	RW_element("ISOLATE_cone_lep"         ,A_node,this->ISOLATE_cone_lep        );

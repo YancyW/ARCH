@@ -5,11 +5,11 @@ void CMassDrop:: Read_MassDrop(CPath path){
 	YAML::Node plot_node = YAML::LoadFile(path.plot_file);
 	RW_element("PLOT_MassDrop"    ,plot_node  ,this->PLOT  );
 
-	std::string switch_name=path.cut_file+"switch.dat";
+	std::string switch_name=path.cut_folder+"switch.dat";
 	YAML::Node switch_node = YAML::LoadFile(switch_name);
 	RW_element("SWITCH_MassDrop"  ,switch_node,this->SWITCH);
 
-	std::string file_name=path.cut_file+"massdrop.dat";
+	std::string file_name=path.cut_folder+"massdrop.dat";
 	YAML::Node md_node = YAML::LoadFile(file_name);
 
 	RW_element("JCUT"          ,md_node,this->JCUT          );

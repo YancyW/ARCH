@@ -6,7 +6,7 @@ void CRecoil::Read_Recoil_particle(CPath path , std::string particle_name,CRecoi
 	YAML::Node plot_node = YAML::LoadFile(path.plot_file);
 	RW_element(particle_name,"PLOT_recoil_mass"  ,plot_node  ,recoil.PLOT_mass  );
 
-	std::string file_name=path.cut_file+"recoil.dat";
+	std::string file_name=path.cut_folder+"recoil.dat";
 	YAML::Node recoil_node = YAML::LoadFile(file_name);
 
 	RW_element(particle_name,"CUT_num" ,recoil_node, recoil.CUT_num);
@@ -30,7 +30,7 @@ void CRecoil::Read_Recoil(CPath path){
 	YAML::Node plot_node = YAML::LoadFile(path.plot_file);
 	RW_element("PLOT_recoil"    ,plot_node  ,this->PLOT  );
 
-	std::string switch_name=path.cut_file+"switch.dat";
+	std::string switch_name=path.cut_folder+"switch.dat";
     YAML::Node switch_node = YAML::LoadFile(switch_name);
     RW_element("SWITCH_recoil"  ,switch_node,this->SWITCH);
     RW_element("SWITCH_recoil_comb"  ,switch_node,this->comb_SWITCH);

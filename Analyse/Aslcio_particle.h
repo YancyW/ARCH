@@ -42,6 +42,6 @@ class ExRootTreeReader;
 #include "AnalyseClass/Pool.h"
 #include "Analyse/Acomb_recoil.h"
 
-bool GetFinalState(CDraw &para, AnalyseClass &analyse, AObject &object, MyPlots* plots);
+bool GetFinalState_slcio(CDraw &para, AnalyseClass &analyse, AObject &object, MyPlots* plots);
 bool Combine_Recoil(CDraw &para, AnalyseClass &analyse, AParticleType par1, AParticleType par2, MyPlots* plots, CCombine_cut comb_cut, CRecoil_cut recoil_cut, int choosed1, int choosed2);
 #endif

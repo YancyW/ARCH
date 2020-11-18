@@ -504,7 +504,7 @@ void AParticle::Get_JEP(int which_jep_fit){
 
 
 	for( int i= 0; i < consti_num; i++) {
-            float const_pt =  _fp.constituents()[i].pt();
+        float const_pt =  _fp.constituents()[i].pt();
 		_pTR = _pTR + const_pt;
 	}
 

@@ -8,7 +8,7 @@ void CCombine::Read_Combine_particle(CPath path , std::string particle_name,CCom
 	RW_element(particle_name,"PLOT_comb_eta"   ,plot_node  ,comb.PLOT_eta   );
 	RW_element(particle_name,"PLOT_comb_mass"  ,plot_node  ,comb.PLOT_mass  );
 
-	std::string file_name=path.cut_file+"combine.dat";
+	std::string file_name=path.cut_folder+"combine.dat";
 	YAML::Node comb_node = YAML::LoadFile(file_name);
 
 	RW_element(particle_name,"CUT_num" ,comb_node, comb.CUT_num);
@@ -37,7 +37,7 @@ void CCombine::Read_Combine(CPath path){
 	YAML::Node plot_node = YAML::LoadFile(path.plot_file);
 	RW_element("PLOT_comb"    ,plot_node  ,this->PLOT  );
 
-	std::string switch_name=path.cut_file+"switch.dat";
+	std::string switch_name=path.cut_folder+"switch.dat";
     YAML::Node switch_node = YAML::LoadFile(switch_name);
     RW_element("SWITCH_comb"  ,switch_node,this->SWITCH);
 

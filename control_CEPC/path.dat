@@ -1,0 +1,26 @@
+PROCESS          : zh2mu2j 
+
+# output folder
+OUTPUT_FOLDER    : 'Event_Analyse_CEPC'
+
+RECORD_FILE      : 'tmp/wtatajj.dat'
+DATA_FOLDER      : 'data'
+EVENT_FOLDER     : 'events'
+SINGLE_PLOT      : 'plot'
+COMBINE_PLOT     : 'plot_compare'
+
+# input folder
+INPUT_FOLDER     : './control_CEPC'
+
+ANALYSIS_FILE    : 'Event.dat'
+DETECTOR_FILE    : 'Detector_CEPC.dat'
+FLOW_FILE        : 'flow.dat'
+SIGNAL_FILE      : 'signal.dat'
+
+INPUT_FILE       : 'file.dat'
+VAR_FILE         : 'Var/Var_jet.dat'
+CUT_FOLDER       : 'cut'
+
+#Advanced input setting
+DEBUG_FILE       : 'debug.dat'
+PLOT_FILE        : 'plot.dat'

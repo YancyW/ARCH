@@ -29,6 +29,7 @@ void Fram(CDraw &para)
 	}
 	else if(para.flow.level==3){
 		para.debug.Message(3,70,"in Fram, plot for more files.");
+		ShowMessage(3,"in Fram, plot for more files.");
 		Fillplot_all(para, plot,result,para.file.file,para.file.file_descrip,sample_num);
 	}
 	else{
@@ -42,7 +43,7 @@ void Fram(CDraw &para)
 
 	if(para.flow.record_event){
 		para.debug.Message(3,70,"in Fram, write data to root file.");
-		std::string output_name=para.path.output_file+para.path.process+".root";
+		std::string output_name=para.path.data_folder+para.path.process+".root";
 		result->Write(output_name.c_str());
 	}
 
@@ -81,7 +82,6 @@ void Analyse_BasicInfo(CDraw &para, ExRootResult *result, std::string sigfile, s
 	ShowMessage();
 	ShowMessage(1,"analyse channel",sampledescrip);
 	ShowMessage(1,"total number is",sample_num);
-	ShowMessage(1,"");
 	ShowMessage();
 }
 

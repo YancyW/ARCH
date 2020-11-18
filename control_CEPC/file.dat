@@ -1,0 +1,13 @@
+FILE_NUM          : 1 
+CHANNEL_NUM       : 1
+
+FILE            : ['/home/ywang/Code/Workplace/Test_Data/CEPCzhto2mu2b_00001.root'
+                  ]
+ 
+FILE_DESCRIP    :  ['CEPCzhto2mu2b'
+                  ]
+
+CROSS_SECTION   : 1
+
+Root_Head_Name     : datatrain
+Root_Head_BDT_Name : datatest

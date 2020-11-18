@@ -1,7 +1,7 @@
 #include "Aequipment.h"
 
 
-bool GetFinalState(CDraw &para, TClonesArray *branchEFlowTrack,	TClonesArray *branchEFlowNeutralHadron,	TClonesArray *branchEFlowPhoton,TClonesArray *branchElectron ,TClonesArray *branchMuon,TClonesArray *branchMissingET,MyPlots* plots,
+bool GetFinalState_equipment(CDraw &para, TClonesArray *branchEFlowTrack,	TClonesArray *branchEFlowNeutralHadron,	TClonesArray *branchEFlowPhoton,TClonesArray *branchElectron ,TClonesArray *branchMuon,TClonesArray *branchMissingET,MyPlots* plots,
 		TClonesArray *branchParticle,
 		std::vector<fastjet::PseudoJet> & Vjet,
 		std::vector<fastjet::PseudoJet> & bquark,
@@ -17,7 +17,7 @@ bool GetFinalState(CDraw &para, TClonesArray *branchEFlowTrack,	TClonesArray *br
 	std::vector<fastjet::PseudoJet> Vjet_candi;
 	if(para.jet.SWITCH && para.jet.jets.SWITCH){
 		para.debug.Message(3,30,"get PseudoJet ");
-		GetFinalState_equipment(para,branchEFlowNeutralHadron,branchEFlowTrack,branchEFlowPhoton, branchElectron,branchMuon,Vjet_candi);
+		GetFinalState_equipment_track(para,branchEFlowNeutralHadron,branchEFlowTrack,branchEFlowPhoton, branchElectron,branchMuon,Vjet_candi);
 		para.debug.Message(3,30,"Whether get jet cut",!para.jetsub.SWITCH);
 		if(para.jetsub.SWITCH){
 			Vjet=Vjet_candi;
@@ -39,11 +39,11 @@ bool GetFinalState(CDraw &para, TClonesArray *branchEFlowTrack,	TClonesArray *br
 	if(para.lep.SWITCH && para.lep.elec.SWITCH && para.lep.muon.SWITCH){
 		para.debug.Message(3,30,"get lepton,  including elec and muon");
 		para.debug.Message(3,30,"get elec");
-		Jelec=GetFinalState_detector(para,branchElectron,plots,Velec);
+		Jelec=GetFinalState_detector_elec(para,branchElectron,plots,Velec);
 		para.debug.Message(3,30,"end get elec",Jelec);
 
 		para.debug.Message(3,30,"get muon");
-		Jmuon=GetFinalState_detector(para,branchMuon,plots,Vmuon);
+		Jmuon=GetFinalState_detector_muon(para,branchMuon,plots,Vmuon);
 		para.debug.Message(3,30,"end get muon",Jmuon);
 
 		if(Jelec || Jmuon){
@@ -57,7 +57,7 @@ bool GetFinalState(CDraw &para, TClonesArray *branchEFlowTrack,	TClonesArray *br
 		para.debug.Message(3,30,"get elec or muon seperately");
 		if(para.lep.SWITCH && para.lep.elec.SWITCH && !para.lep.muon.SWITCH){
 			para.debug.Message(3,30,"get elec");
-			Jelec=GetFinalState_detector(para,branchElectron,plots,Velec);
+			Jelec=GetFinalState_detector_elec(para,branchElectron,plots,Velec);
 			para.debug.Message(3,30,"end get elec",Jelec);
 			if(Jelec){
 		analyse.counter.getCounter("basic_elec");
@@ -69,7 +69,7 @@ bool GetFinalState(CDraw &para, TClonesArray *branchEFlowTrack,	TClonesArray *br
 		// Analyse muon 
 		if(para.lep.SWITCH && para.lep.muon.SWITCH && !para.lep.elec.SWITCH){
 			para.debug.Message(3,30,"get muon");
-			Jmuon=GetFinalState_detector(para,branchMuon,plots,Vmuon);
+			Jmuon=GetFinalState_detector_muon(para,branchMuon,plots,Vmuon);
 			para.debug.Message(3,30,"end get muon",Jmuon);
 			if(Jmuon){
 		analyse.counter.getCounter("basic_muon");
@@ -84,7 +84,7 @@ bool GetFinalState(CDraw &para, TClonesArray *branchEFlowTrack,	TClonesArray *br
 	if(para.met.SWITCH){
 
 		para.debug.Message(3,30,"get met");
-		Jmet=GetFinalState_detector(para,branchMissingET,plots,Vmet);
+		Jmet=GetFinalState_detector_met(para,branchMissingET,plots,Vmet);
 		if(Jmet){
 		analyse.counter.getCounter("basic_met");
 		}
@@ -113,7 +113,7 @@ bool GetFinalState(CDraw &para, TClonesArray *branchEFlowTrack,	TClonesArray *br
 
 
 
-void GetFinalState_equipment(CDraw &para,TClonesArray *branchEFlowNeutralHadron,TClonesArray *branchEFlowTrack,TClonesArray *branchEFlowPhoton, TClonesArray *branchElectron, TClonesArray *branchMuon,  std::vector<fastjet::PseudoJet> &jet_candi){
+void GetFinalState_equipment_track(CDraw &para,TClonesArray *branchEFlowNeutralHadron,TClonesArray *branchEFlowTrack,TClonesArray *branchEFlowPhoton, TClonesArray *branchElectron, TClonesArray *branchMuon,  std::vector<fastjet::PseudoJet> &jet_candi){
 	int loop1=0,loop2=0,num;
 
 	para.debug.Message(3,32,"get EFlowNeutralHadron into vector");
